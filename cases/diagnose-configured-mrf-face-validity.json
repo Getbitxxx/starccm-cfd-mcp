@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "scenario": "geometry_mesh_probe_only",
+  "case_ref": "jobs/configure-imported-mrf-pilot-20260929b/imported_mrf_physics_pilot.sim",
+  "mesh_region_name": "rotor_fluid_pilot_Part0"
+}

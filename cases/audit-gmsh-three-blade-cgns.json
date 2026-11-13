@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "scenario": "geometry_mesh_probe_only",
+  "case_ref": "jobs/probe-gmsh-threeblade-20260928a/gmsh_cgns_imported.sim",
+  "objective": "Read-only STAR 2502 audit of the imported Gmsh rotor-fluid pilot region; verify units through physical volume and audit mesh-quality minima",
+  "mesh_region_name": "rotor_fluid_pilot_Part0",
+  "expected_fluid_volume_m3": 0.08470170793622973,
+  "expected_tetra_count": 111774,
+  "source_mesh_sha256": "8ec56f17021567bf110931c05e0908ffac14416404b3fc0cfac76e906de57272"
+}

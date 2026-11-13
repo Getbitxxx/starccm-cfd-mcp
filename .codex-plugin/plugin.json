@@ -1,0 +1,22 @@
+{
+  "name": "starccm-cfd",
+  "version": "0.4.0",
+  "description": "通过 SSH 调度 Windows STAR-CCM+ 2502，提供 CaseSpec 校验、知识检索、Java 编译和持久工作流执行。",
+  "author": {
+    "name": "Local CFD workspace"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "STAR-CCM+ CFD",
+    "shortDescription": "Mac 调度 Windows CFD 工作流",
+    "longDescription": "接入并检查已有 .sim，校验物理计划，检索资料，编译候选宏并运行已安装的持久阶段图。首个求解包是 120° 周期螺旋桨基准。",
+    "developerName": "Local developer",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": [
+      "检查我的 STAR-CCM+ 算例，补齐 CaseSpec 并显示尚缺操作",
+      "运行已验证的螺旋桨工作流并检查结果"
+    ]
+  },
+  "mcpServers": "./.mcp.json"
+}

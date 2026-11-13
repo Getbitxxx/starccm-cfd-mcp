@@ -1,0 +1,15 @@
+{
+  "purpose": "Real PAT-18b admission refusal; preserve the numeric transport defect without authorizing a retry or normalizing the approved scope.",
+  "request_id": "formal-pat18-full-chain-20261019b",
+  "evidence_dir": "test-evidence/product-acceptance/deployed-20261018/formal-compat-release-20261019/full-chain",
+  "source_case_spec": "cases/static-sphere-external-flow/case_spec.json",
+  "source_digest": "ae0d45ac91220e8492d80eb5e3070e1e4bee6ab4df9e8f0d6fb3481f42f6b62f",
+  "transport_digest": "c9e118fdd04eb3b17bd2f1edc64cb812b18576e9174324aa7cba08652f8cb5f1",
+  "typed_difference_count": 10,
+  "evidence_hashes": {
+    "REQUEST-TRANSPORT.json": "61065c91021df56b02130d91b63f6b0e665eeb29400e92cb472058edab256700",
+    "SCOPE-MISMATCH-DIAGNOSTIC.json": "dd40ce13e015732394e6d0803b23c0e0ddebed7ee3151e46151889767e6c0a73",
+    "SUBMIT.json": "8a233ecf8ee6da7edf2f8cac9de4b9fe7a67ea906b093abb0074581e2425caa1",
+    "SLOT-AFTER.json": "4a979ab202f87a9ffc0aa3cbe093a54d1cff906151b0ee5de084068d5db1405e"
+  }
+}

@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "id": "core",
+  "title": "Generic STAR-CCM+ case audit",
+  "description": "Structured audits and explicitly isolated geometry/mesh/physics probes for existing .sim cases.",
+  "input": "existing_sim",
+  "validated_on": "STAR-CCM+ 2502.0001",
+  "stages": {
+    "preflight": {
+      "description": "Inventory geometry, regions, physics, boundaries, interfaces and reports.",
+      "macros": ["AuditAutomationPreflight.java"],
+      "markers": ["AUTOMATION_PREFLIGHT_COMPLETE"],
+      "required": ["automation_preflight.json"],
+      "postcheck": "preflight_v1",
+      "output_sim": null
+    },
+    "audit-axial-caps": {
+      "description": "Read-only measurement of the legacy propeller inlet and outlet Z planes.",
+      "macros": ["AuditAxialCaps.java"],
+      "markers": ["AXIAL_CAPS_AUDIT_COMPLETE"],
+      "required": ["axial_caps_audit.json"],
+      "postcheck": "artifacts_v1",
+      "output_sim": null
+    },
+    "audit-boundary-physics": {
+      "description": "Read-only inventory of boundary profile classes and region continuum assignments.",
+      "macros": ["AuditBoundaryPhysics.java"],
+      "markers": ["BOUNDARY_PHYSICS_AUDIT_COMPLETE"],
+      "required": ["boundary_physics_audit.txt"],
+      "postcheck": "artifacts_v1",
+      "output_sim": null
+    },
+    "audit-reference-frames": {
+      "description": "Read-only inventory of reference frames, rotating axes, origins and angular rates.",
+      "macros": ["AuditReferenceFrames.java"],
+      "markers": ["REFERENCE_FRAMES_AUDIT_COMPLETE"],
+      "required": ["reference_frames_audit.txt"],
+      "postcheck": "artifacts_v1",
+      "output_sim": null
+    },
+    "audit-mrf-mesh-configuration": {
+      "description": "Read-only inventory of the MRF auto mesh input parts, base size, prism layers and selected surface controls.",
+      "macros": ["AuditMrfMeshConfiguration.java"],
+      "markers": ["MRF_MESH_AUDIT_COMPLETE"],
+      "required": ["mrf_mesh_audit.txt"],
+      "postcheck": "artifacts_v1",
+      "output_sim": null
+    },
+    "export-mrf-rotating-stl": {
+      "description": "Read-only export of the rotating MRF fluid and its three selected source parts as binary STL for topology and geometry-role diagnosis.",
+      "macros": ["ExportMrfRotatingFluidStl.java"],
+      "markers": ["MRF_ROTATING_STL_EXPORT_COMPLETE"],
+      "required": ["mrf_rotating_fluid.stl", "rotor_source_part_0.stl", "rotor_source_part_1.stl", "rotor_source_part_2.stl", "mrf_rotating_stl_export.txt"],
+      "postcheck": "artifacts_v1",
+      "output_sim": null
+    },
+    "probe-mrf-rotating-only-mesh": {
+      "description": "On an isolated copy, mesh only the rotating fluid part to distinguish intrinsic geometry failure from two-part meshing conflict.",
+      "macros": ["ProbeMrfRotatingOnlyMesh.java"],
+      "markers": ["MRF_ROTATING_ONLY_MESH_PROBE_COMPLETE"],
+      "required": ["mrf_rotating_only_mesh_probe.txt"],
+      "postcheck": "artifacts_v1",
+      "output_sim": null
+    },
+    "audit-mrf-split-mesh-configuration": {
+      "description": "Read-only audit of independent stationary and rotating MRF auto mesh operation inputs and controls.",
+      "macros": ["AuditMrfSplitMeshConfiguration.java"],
+      "markers": ["MRF_SPLIT_MESH_AUDIT_COMPLETE"],
+      "required": ["mrf_split_mesh_audit.txt"],
+      "postcheck": "artifacts_v1",
+      "output_sim": null
+    },
+    "audit-mrf-volume-mesh-quality": {
+      "description": "Read-only volume-cell counts and per-Region cell quality, face validity and volume change for every meshed Region.",
+      "macros": ["AuditMrfVolumeMeshQuality.java"],
+      "markers": ["MRF_VOLUME_MESH_QUALITY_AUDIT_COMPLETE"],
+      "required": ["mrf_volume_mesh_quality.csv"],
+      "postcheck": "artifacts_v1",
+      "output_sim": null
+    },
+    "diagnose-mrf-low-volume-change": {
+      "description": "On an isolated copy, locate rotating MRF cells below the Siemens 2502 Volume Change guidance and export their values.",
+      "macros": ["DiagnoseMrfLowVolumeChange.java"],
+      "markers": ["MRF_LOW_VOLUME_CHANGE_DIAGNOSTIC_COMPLETE"],
+      "required": ["mrf_low_volume_change.txt"],
+      "postcheck": "artifacts_v1",
+      "output_sim": null
+    },
+    "probe-gmsh-cgns-import": {
+      "description": "Import a content-hashed Gmsh CGNS volume mesh into an isolated simulation and record new Regions, boundaries and cells.",
+      "macros": ["ProbeGmshCgnsImport.java"],
+      "markers": ["GMSH_CGNS_IMPORT_PROBE_COMPLETE"],
+      "required": ["gmsh_cgns_import_probe.txt", "gmsh_cgns_imported.sim"],
+      "postcheck": "artifacts_v1",
+      "output_sim": "gmsh_cgns_imported.sim"
+    },
+    "audit-gmsh-cgns-import": {
+      "description": "Measure cell count, physical volume and STAR mesh-quality minima on an imported CGNS Region.",
+      "macros": ["AuditImportedGmshRegion.java"],
+      "markers": ["GMSH_IMPORT_QUALITY_AUDIT_COMPLETE"],
+      "required": ["gmsh_import_quality.csv"],
+      "postcheck": "artifacts_v1",
+      "output_sim": null
+    },
+    "probe-imported-mrf-interfaces": {
+      "description": "On an isolated copy, connect the three audited CGNS rotor/stator envelope boundary pairs.",
+      "macros": ["ProbeImportedMrfInterfaces.java"],
+      "markers": ["GMSH_MRF_INTERFACE_PROBE_COMPLETE"],
+      "required": ["gmsh_mrf_interface_probe.csv", "gmsh_mrf_interfaces_probe.sim"],
+      "postcheck": "artifacts_v1",
+      "output_sim": "gmsh_mrf_interfaces_probe.sim"
+    },
+    "diagnose-imported-gmsh-volume-change": {
+      "description": "Locate imported Gmsh cells below the explicit Volume Change pilot gate without changing the mesh.",
+      "macros": ["DiagnoseImportedGmshLowVolumeChange.java"],
+      "markers": ["GMSH_LOW_VOLUME_CHANGE_DIAGNOSTIC_COMPLETE"],
+      "required": ["gmsh_low_volume_change.txt"],
+      "postcheck": "artifacts_v1",
+      "output_sim": null
+    },
+    "clean-imported-mrf-host": {
+      "description": "After an explicit four-region audit, remove the two named legacy regions and interfaces from an isolated imported rotor/stator mesh copy.",
+      "macros": ["CleanImportedMrfHost.java"],
+      "markers": ["CLEAN_IMPORTED_MRF_HOST_COMPLETE"],
+      "required": ["clean_imported_mrf_host.txt", "clean_imported_mrf_probe.sim"],
+      "postcheck": "artifacts_v1",
+      "output_sim": "clean_imported_mrf_probe.sim"
+    },
+    "audit-imported-mrf-boundary-faces": {
+      "description": "Read actual face counts on explicitly selected outer and interface boundaries of a paired imported MRF mesh.",
+      "macros": ["AuditImportedMrfBoundaryFaces.java"],
+      "markers": ["IMPORTED_MRF_BOUNDARY_FACES_AUDIT_COMPLETE"],
+      "required": ["imported_mrf_boundary_faces.csv"],
+      "postcheck": "artifacts_v1",
+      "output_sim": null
+    },
+    "configure-imported-mrf-physics-pilot": {
+      "description": "Apply explicit synthetic-rotor inlet, outlet, farfield and MRF-frame settings to an isolated audited imported mesh copy; initialize and confirm interface faces without solving.",
+      "macros": ["ConfigureImportedMrfPilotPhysics.java"],
+      "markers": ["IMPORTED_MRF_PHYSICS_PILOT_COMPLETE"],
+      "required": ["imported_mrf_physics_pilot.txt", "imported_mrf_physics_pilot.sim"],
+      "postcheck": "artifacts_v1",
+      "output_sim": "imported_mrf_physics_pilot.sim"
+    },
+    "solve-imported-mrf-smoke-100": {
+      "description": "Run exactly 100 iterations on an explicitly initialized two-region MRF mesh in an isolated copy; records iteration progress and saves a checkpoint, without claiming convergence.",
+      "macros": ["RunImportedMrfSmoke.java"],
+      "markers": ["IMPORTED_MRF_SMOKE_COMPLETE"],
+      "required": ["mrf_solver_smoke.csv", "smoke_status.json", "mrf_solver_smoke_checkpoint.sim"],
+      "postcheck": "smoke_100_v1",
+      "output_sim": "mrf_solver_smoke_checkpoint.sim"
+    },
+    "audit-imported-mrf-residuals": {
+      "description": "Export available STAR residual monitor histories from a saved MRF checkpoint and record the final samples without advancing the solver.",
+      "macros": ["ExportBaselineQA.java"],
+      "markers": ["RESIDUAL_QA_COMPLETE"],
+      "required": ["residual_normalization.txt"],
+      "postcheck": "artifacts_v1",
+      "output_sim": null
+    },
+    "repair-imported-mrf-reports": {
+      "description": "On an isolated two-region MRF checkpoint, bind inherited force and moment reports to rotor wall boundaries and density to the stator Region; save only after finite report values are verified.",
+      "macros": ["RepairImportedMrfReports.java"],
+      "markers": ["REPORT_REPAIR_COMPLETE"],
+      "required": ["mrf_report_repair.txt", "mrf_reports_repaired.sim"],
+      "postcheck": "artifacts_v1",
+      "output_sim": "mrf_reports_repaired.sim"
+    },
+    "diagnose-imported-mrf-face-validity": {
+      "description": "On an isolated copy, initialize, count cells below Face Validity 1 with CellSet, and spatially localize each bad cell by coordinate-box subdivision; no mesh changes. case_spec.mesh_region_name selects the Region for STAR preview and extent validation.",
+      "macros": ["DiagnoseImportedMrfFaceValidity.java"],
+      "markers": ["MRF_LOW_FACE_VALIDITY_DIAGNOSTIC_COMPLETE"],
+      "required": ["mrf_low_face_validity.txt"],
+      "postcheck": "artifacts_v1",
+      "output_sim": null
+    }
+  }
+}

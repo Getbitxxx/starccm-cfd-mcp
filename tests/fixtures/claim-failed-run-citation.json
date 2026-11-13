@@ -1,0 +1,14 @@
+{
+ "schema_version": 1,
+ "claims": [
+  {
+   "id": "diag-f2-field-inventory-ok",
+   "text": "diag-F2 field-profile inventory status",
+   "value": "ok",
+   "record": "test-evidence/handoff-20261023/diag-F2/field-profile-inventory.json",
+   "field": "status",
+   "record_sha256": "0af6e7e6bc86cbc2a92a83ba278ddccd7efb267c9aa691f2ad5fceae1d8b9ee5",
+   "asserts_success": true
+  }
+ ]
+}

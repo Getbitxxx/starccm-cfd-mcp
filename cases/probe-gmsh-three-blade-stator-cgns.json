@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "scenario": "geometry_mesh_probe_only",
+  "case_ref": "jobs/probe-gmsh-threeblade-20260928a/gmsh_cgns_imported.sim",
+  "objective": "Isolated STAR 2502 import of the matching free-air stator mesh around the synthetic three-blade rotor. The old two regions remain only as import host.",
+  "mesh_ref": "library/cgns_candidates/three_blade_stator_pilot.cgns",
+  "mesh_sha256": "fd41dcc16f7fada3b4b3acef5bc185e729c7a243d3c82df5894d6cba01e83106",
+  "mesh_length_unit": "m",
+  "expected_tetra_count": 86638,
+  "expected_fluid_volume_m3": 108.1760306373841,
+  "rotation_axis": [
+    0,
+    0,
+    1
+  ],
+  "assumptions": [
+    "No physical models or boundary values from the host sim are reused for CFD acceptance."
+  ]
+}

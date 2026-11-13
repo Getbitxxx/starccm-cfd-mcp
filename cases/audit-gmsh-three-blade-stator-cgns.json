@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "scenario": "geometry_mesh_probe_only",
+  "case_ref": "jobs/probe-gmsh-stator-20260928a/gmsh_cgns_imported.sim",
+  "objective": "Read-only STAR 2502 stator CGNS mesh volume and quality audit",
+  "mesh_region_name": "three_blade_stator_pilot_Part0",
+  "expected_fluid_volume_m3": 108.1760306373841,
+  "expected_tetra_count": 86638,
+  "source_mesh_sha256": "fd41dcc16f7fada3b4b3acef5bc185e729c7a243d3c82df5894d6cba01e83106"
+}

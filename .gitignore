@@ -1,0 +1,46 @@
+# Credentials and machine configuration
+.env
+.env.*
+!.env.example
+connection.json
+.mcp.json
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+# Local runtime, approvals, results and research evidence
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.class
+.pytest_cache/
+.DS_Store
+.workbuddy/
+work/
+review/
+test-evidence/
+campaigns/
+registered-workflows/
+registered-workflows-v2/
+plans/
+candidates/
+tmp/
+results/
+# Native simulation, geometry and large data
+*.sim
+*.sim~
+*.step
+*.stp
+*.stl
+*.f3d
+*.hm
+*.msh
+*.cgns
+*.npz
+*.h5
+*.hdf5
+*.zip
+*.7z
+*.msg
+*.log

@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "starccm-cfd": {
+      "command": "/absolute/path/to/starccm-cfd-mcp/.venv/bin/python",
+      "args": [
+        "/absolute/path/to/starccm-cfd-mcp/scripts/server_gateway.py"
+      ],
+      "env": {
+        "STARCCM_CONFIG": "/absolute/path/to/starccm-cfd-mcp/connection.json"
+      }
+    }
+  }
+}

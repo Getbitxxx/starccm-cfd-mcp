@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "scenario": "geometry_mesh_probe_only",
+  "case_ref": "jobs/probe-gmsh-tip-stator-20260929a/gmsh_cgns_imported.sim",
+  "objective": "Probe three rotor/stator interfaces after tip-transition rotor mesh passes STAR quality metrics.",
+  "stationary_region": "three_blade_stator_pilot_Part0",
+  "rotating_region": "rotor_fluid_pilot_Part0",
+  "interface_pairs": [
+    {
+      "role": "top",
+      "stationary": "3_S_5",
+      "rotating": "3_S_584"
+    },
+    {
+      "role": "bottom",
+      "stationary": "3_S_6",
+      "rotating": "3_S_585"
+    },
+    {
+      "role": "side",
+      "stationary": "3_S_4",
+      "rotating": "3_S_583"
+    }
+  ],
+  "source_rotor_cgns_sha256": "3076f8a262fd33da1c91d38a5f7809288fd39e0f6b84693ad91f0fd234b14e3e",
+  "source_stator_cgns_sha256": "fd41dcc16f7fada3b4b3acef5bc185e729c7a243d3c82df5894d6cba01e83106"
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "scenario": "geometry_mesh_probe_only",
+  "case_ref": "library/517cfd27aa4cf69519470d301d9088d060ec1cbb85aff7e8b848207d8bd065d8.sim",
+  "objective": "Diagnostic Netgen-optimized Gmsh rotor-fluid mesh import",
+  "mesh_ref": "library/cgns_candidates/three_blade_rotor_netgen.cgns",
+  "mesh_sha256": "9f6c51f71f7be1021dc7fa0698fc76f3a586350f375601707450250d7d5a8748",
+  "mesh_length_unit": "m",
+  "source_step_ref": "cad/STEP/three_blade_test_rotor.step",
+  "source_step_length_unit": "mm",
+  "rotation_axis": [
+    0,
+    0,
+    1
+  ],
+  "assumptions": [
+    "New synthetic geometry, independent from host sim; not CFD accepted."
+  ]
+}

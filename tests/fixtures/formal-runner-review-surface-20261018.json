@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-10-18",
+  "purpose": "Frozen exact hashing/pinned-field surface of the reviewed formal runner update. Tests read this static fixture; they never derive their expected lines from the current source.",
+  "runner_review_fields": {
+    "run_job.ps1": "runner_sha256",
+    "run_pipeline.ps1": "pipeline_runner_sha256"
+  },
+  "scripts": {
+    "run_pipeline.ps1": {
+      "pin_field": "pipeline_runner_sha256",
+      "get_filehash_lines": [
+        "if($ExpectedRequestSha256 -cnotmatch '^[a-f0-9]{64}$' -or (Get-FileHash -LiteralPath $requestPath -Algorithm SHA256).Hash.ToLowerInvariant() -cne $ExpectedRequestSha256){throw 'Scheduled request hash mismatch'}",
+        "if((Get-FileHash -LiteralPath $PSCommandPath -Algorithm SHA256).Hash.ToLowerInvariant() -ne $req.pipeline_runner_sha256){throw 'Pipeline runner hash mismatch'}",
+        "if((Get-FileHash -LiteralPath (Join-Path $PSScriptRoot 'runtime_guard.ps1') -Algorithm SHA256).Hash.ToLowerInvariant() -cne $req.runtime_guard_sha256){throw 'Runtime guard hash mismatch'}",
+        "if((Get-FileHash -LiteralPath $source -Algorithm SHA256).Hash.ToLowerInvariant() -ne $req.source_sha256){",
+        "$pipelineSelfHash=(Get-FileHash -LiteralPath $PSCommandPath -Algorithm SHA256).Hash.ToLowerInvariant()",
+        "if($priorState.state -cne 'SUCCEEDED' -or (Get-FileHash -LiteralPath $priorRecordPath -Algorithm SHA256).Hash.ToLowerInvariant() -cne $previous.stage_record_sha256){throw 'Checkpoint successful stage identity mismatch'}",
+        "if($previous.input_sha256 -ne (Get-FileHash -LiteralPath $source -Algorithm SHA256).Hash.ToLowerInvariant()){",
+        "(Get-FileHash -LiteralPath $previous.output_path -Algorithm SHA256).Hash.ToLowerInvariant() -ne $previous.output_sha256){",
+        "source_sha256=(Get-FileHash -LiteralPath $fromPath -Algorithm SHA256).Hash.ToLowerInvariant()}",
+        "source_sha256=(Get-FileHash -LiteralPath $source -Algorithm SHA256).Hash.ToLowerInvariant()",
+        "$stageRequestHash=(Get-FileHash -LiteralPath (Join-Path $job 'request.json') -Algorithm SHA256).Hash.ToLowerInvariant()",
+        "$checkpointData=@{request_digest=$req.request_digest;runtime_digest=$req.runtime_digest;stage_record_sha256=(Get-FileHash -LiteralPath (Join-Path $job ('stage-'+$item.stage+'.json')) -Algorithm SHA256).Hash.ToLowerInvariant();stage_key=$item.key;input_sha256=$stageReq.source_sha256;completed_at=[DateTime]::UtcNow.ToString('o')}",
+        "$checkpointData.output_sha256=(Get-FileHash -LiteralPath $out -Algorithm SHA256).Hash.ToLowerInvariant()",
+        "$state.final_sha256=(Get-FileHash -LiteralPath $source -Algorithm SHA256).Hash.ToLowerInvariant()"
+      ],
+      "pinned_field_lines": [
+        "if(!$req.pipeline_runner_sha256){throw 'No reviewed pipeline-runner hash pinned in this request'}",
+        "if((Get-FileHash -LiteralPath $PSCommandPath -Algorithm SHA256).Hash.ToLowerInvariant() -ne $req.pipeline_runner_sha256){throw 'Pipeline runner hash mismatch'}",
+        "# `pipeline_runner_sha256` here against $PSCommandPath, and `runner_sha256` (forwarded unchanged) in",
+        "$state.pipeline_runner_sha256=$pipelineSelfHash",
+        "pipeline_runner_sha256=$req.pipeline_runner_sha256"
+      ]
+    },
+    "run_job.ps1": {
+      "pin_field": "runner_sha256",
+      "get_filehash_lines": [
+        "if($ExpectedRequestSha256 -cnotmatch '^[a-f0-9]{64}$' -or (Get-FileHash -LiteralPath $requestPath -Algorithm SHA256).Hash.ToLowerInvariant() -cne $ExpectedRequestSha256){throw 'Scheduled request hash mismatch'}",
+        "if((Get-FileHash -LiteralPath $PSCommandPath -Algorithm SHA256).Hash.ToLowerInvariant() -ne $request.runner_sha256){throw 'Runner hash mismatch'}",
+        "if((Get-FileHash -LiteralPath (Join-Path $PSScriptRoot 'runtime_guard.ps1') -Algorithm SHA256).Hash.ToLowerInvariant() -cne $request.runtime_guard_sha256){throw 'Runtime guard hash mismatch'}",
+        "$sourceHash=(Get-FileHash -LiteralPath $source -Algorithm SHA256).Hash.ToLowerInvariant()",
+        "$selfHash=(Get-FileHash -LiteralPath $PSCommandPath -Algorithm SHA256).Hash.ToLowerInvariant()",
+        "if((Get-FileHash -LiteralPath $macroFile -Algorithm SHA256).Hash.ToLowerInvariant() -ne $pinned){",
+        "if((Get-FileHash -LiteralPath (Join-Path $JobDir 'input.sim') -Algorithm SHA256).Hash.ToLowerInvariant() -cne $sourceHash){throw 'Staged input copy hash mismatch'}",
+        "$inheritedActual=(Get-FileHash -LiteralPath $inheritedSource -Algorithm SHA256).Hash.ToLowerInvariant()",
+        "$inheritedCopy=(Get-FileHash -LiteralPath $inheritedDest -Algorithm SHA256).Hash.ToLowerInvariant()",
+        "$macroInputSha=(Get-FileHash -LiteralPath $macroInputPath -Algorithm SHA256).Hash.ToLowerInvariant()",
+        "if((Get-FileHash -LiteralPath (Join-Path $JobDir $macro) -Algorithm SHA256).Hash.ToLowerInvariant() -cne $request.macro_hashes.$macro){throw 'Staged macro hash mismatch'}",
+        "$outSha=(Get-FileHash -LiteralPath $outPath -Algorithm SHA256).Hash.ToLowerInvariant()",
+        "$stageRecord.output_sha256=(Get-FileHash -LiteralPath $stageOutPath -Algorithm SHA256).Hash.ToLowerInvariant()"
+      ],
+      "pinned_field_lines": [
+        "if(!$request.runner_sha256){throw 'No reviewed runner hash pinned in this request'}",
+        "if((Get-FileHash -LiteralPath $PSCommandPath -Algorithm SHA256).Hash.ToLowerInvariant() -ne $request.runner_sha256){throw 'Runner hash mismatch'}",
+        "$state.runner_sha256=$selfHash"
+      ]
+    }
+  }
+}

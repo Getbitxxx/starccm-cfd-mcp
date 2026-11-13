@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "scenario": "geometry_mesh_probe_only",
+  "case_ref": "library/517cfd27aa4cf69519470d301d9088d060ec1cbb85aff7e8b848207d8bd065d8.sim",
+  "objective": "Isolated STAR 2502 CGNS import of localized blade-tip mesh transition",
+  "mesh_ref": "library/cgns_candidates/threeblade-tip-transition-a.cgns",
+  "mesh_sha256": "3076f8a262fd33da1c91d38a5f7809288fd39e0f6b84693ad91f0fd234b14e3e"
+}

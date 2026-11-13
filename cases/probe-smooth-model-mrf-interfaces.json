@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "scenario": "geometry_mesh_probe_only",
+  "case_ref": "jobs/probe-smooth-model-stator-b-20260929a/gmsh_cgns_imported.sim",
+  "expected_input_sha256": "372bd9a1295bb4d2592cf3e16370d2004275cad5f3f8247140b786bab54020a4",
+  "stationary_region": "three_blade_stator_pilot_Part0",
+  "rotating_region": "rotor_fluid_pilot_Part0",
+  "expected_stationary_boundaries": 6,
+  "expected_rotating_boundaries": 12,
+  "stationary_top_boundary": "3_S_5",
+  "stationary_bottom_boundary": "3_S_6",
+  "stationary_side_boundary": "3_S_4",
+  "rotating_top_boundary": "3_S_11",
+  "rotating_bottom_boundary": "3_S_12",
+  "rotating_side_boundary": "3_S_10",
+  "source_rotor_cgns_sha256": "d05166ab7205dacbc709ed4133ac204fef59235ae6ad8f2035c702f79847af54",
+  "source_stator_cgns_sha256": "6a64d658ee3a0b1247c746584d46f9680959cf79c56d6a2624b120b56b3796e5"
+}

@@ -1,0 +1,22 @@
+{
+  "source_stage": "test-evidence/resource-contract-20261009/fine-readback/resource64-fine-readback-20261009a/stage-property-nearwall.json",
+  "source_sha256": "32e38c5ef8d08f1be1614d99a190402051cd71f996b5704987af3bf996514399",
+  "license_checkout_lines": [
+    {
+      "value": "1 copy of ccmpsuite checked out from C:\\Program Files\\Siemens\\20.02.008-R8\\license.dat",
+      "PSPath": "C:\\CodexCFDRestricted\\resource64-fine-readback-20261009a\\star-property-nearwall-0-ExportExternalFlowResults.log",
+      "PSParentPath": "C:\\CodexCFDRestricted\\resource64-fine-readback-20261009a",
+      "PSChildName": "star-property-nearwall-0-ExportExternalFlowResults.log",
+      "ReadCount": 1783
+    }
+  ],
+  "core_evidence_lines": [
+    {
+      "value": "Total number of processes : 64",
+      "PSPath": "C:\\CodexCFDRestricted\\resource64-fine-readback-20261009a\\star-property-nearwall-0-ExportExternalFlowResults.log",
+      "PSParentPath": "C:\\CodexCFDRestricted\\resource64-fine-readback-20261009a",
+      "PSChildName": "star-property-nearwall-0-ExportExternalFlowResults.log",
+      "ReadCount": 1776
+    }
+  ]
+}

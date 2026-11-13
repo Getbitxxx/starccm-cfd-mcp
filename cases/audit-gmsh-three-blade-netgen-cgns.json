@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "scenario": "geometry_mesh_probe_only",
+  "case_ref": "jobs/probe-gmsh-netgen-20260928a/gmsh_cgns_imported.sim",
+  "objective": "Read-only STAR 2502 quality check of a diagnostic Netgen-optimized Gmsh rotor-fluid mesh",
+  "mesh_region_name": "rotor_fluid_pilot_Part0",
+  "expected_fluid_volume_m3": 0.08470170793622973,
+  "expected_tetra_count": 217122,
+  "source_mesh_sha256": "9f6c51f71f7be1021dc7fa0698fc76f3a586350f375601707450250d7d5a8748"
+}

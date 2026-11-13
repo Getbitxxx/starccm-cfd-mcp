@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "scenario": "propeller_mrf",
+  "case_ref": "jobs/full360-build-20260925d/full_rotor_360_built.sim",
+  "objective": "Diagnostic recovery of true blade solids from three audited 120-degree fluid sector parts",
+  "model_length_unit": "m",
+  "medium": "air",
+  "geometry": {
+    "body_parts": [
+      "PROPELLER"
+    ],
+    "rotor_parts": [
+      "PROPELLER",
+      "AUTO_FULL_ROTOR_BLADE_120",
+      "AUTO_FULL_ROTOR_BLADE_240"
+    ]
+  },
+  "domain": {
+    "shape": "cylinder",
+    "outer_bounds_m": [
+      -2.05,
+      -2.05,
+      -6.15,
+      2.05,
+      2.05,
+      2.05
+    ],
+    "cylinder_center_xy_m": [
+      0.0,
+      0.0
+    ],
+    "cylinder_radius_m": 2.05,
+    "cylinder_z_min_m": -6.15,
+    "cylinder_z_max_m": 2.05
+  },
+  "boundary_roles": {
+    "region": "AUTO_FULL360_FLOW",
+    "inlet": "AUTO_INLET",
+    "outlet": "AUTO_OUTLET",
+    "radial_farfield": "AUTO_RADIAL_FARFIELD"
+  },
+  "flow": {
+    "velocity_m_s": [
+      0.0,
+      0.0,
+      -30.0
+    ],
+    "pressure_pa": 101325.0,
+    "temperature_k": 300.0,
+    "turbulence_intensity": 0.01,
+    "turbulent_viscosity_ratio": 10.0
+  },
+  "rotation": {
+    "axis": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "center_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "rpm": 10000.0
+  },
+  "assumptions": [
+    "PROPELLER and its two rotated copies are fluid sectors, not blade solids; these dimensions reconstruct the enclosing full disk from audited STL bounds. This is a diagnostic trial and needs topology verification before CFD use."
+  ],
+  "recovery_disk_radius_m": 0.205,
+  "recovery_disk_z_min_m": -0.02,
+  "recovery_disk_z_max_m": 0.02
+}

@@ -1,0 +1,2483 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-14",
+  "source_commit": "9354a15a762b464af1856ff47f2215e2abe022e7",
+  "kind": "sanitized-source-snapshot",
+  "files": [
+    {
+      "path": "scripts/bootstrap.py",
+      "sha256": "3ed641be4360dd8488da9432b838e8098faea2996a589cd2f30e3186e2ba1c5d",
+      "redacted": false
+    },
+    {
+      "path": "scripts/validate_clearance_trial.py",
+      "sha256": "bb8cbe0974d0cab321741a97917100544b7cfde2d62b9b80b205b58c6a015f1a",
+      "redacted": false
+    },
+    {
+      "path": "scripts/mesh_quality.py",
+      "sha256": "bedf510bc9da083ae172b2329bb12790a168469731473b6bd06e941f470a4996",
+      "redacted": false
+    },
+    {
+      "path": "scripts/run_crmhl_geom_audit.py",
+      "sha256": "e05427804bdf7e149d005daa59a443b265446cf59aadd6580c64c7769c6552fb",
+      "redacted": false
+    },
+    {
+      "path": "scripts/evaluate_baseline.py",
+      "sha256": "17a7fb60864f99ddcf718df699ec20ecfe61ea07ade64c702a226920bb0af824",
+      "redacted": false
+    },
+    {
+      "path": "scripts/le_surface_gate.py",
+      "sha256": "abd576bdc50e58e8a0e32a828e42e194842feb54af6ca6fc578462c74495d11a",
+      "redacted": false
+    },
+    {
+      "path": "scripts/run_trapwing_te_prism.py",
+      "sha256": "2a1a954c5d2ae1df888397d78ddb4aaabc10339901452f1823ec41b1a80635a2",
+      "redacted": false
+    },
+    {
+      "path": "scripts/server.py",
+      "sha256": "77d24f9711845759823bf075b2f54b645d8a703310344b9172fe434303582c83",
+      "redacted": false
+    },
+    {
+      "path": "scripts/compile_e387_p2.py",
+      "sha256": "ebae696523cd2d9af2d2b39afaab3922b1302f3c18c7071bc4901d7ddc7d3d8d",
+      "redacted": false
+    },
+    {
+      "path": "scripts/backend.py",
+      "sha256": "6a806a4449d459787f879c6c4f5d2630265921470b8b6567f40582d5142ba2f4",
+      "redacted": false
+    },
+    {
+      "path": "scripts/run_trapwing_geom_audit.py",
+      "sha256": "d444354d5e4f1e0f59bb43ede80bb4ce688534c00b546c7b246c0e90b91cbb51",
+      "redacted": false
+    },
+    {
+      "path": "scripts/mesh_regime.py",
+      "sha256": "e3033afa9bc4ff860113dc78d10b4e578beb5ebd9326a681fa055771d494736d",
+      "redacted": false
+    },
+    {
+      "path": "scripts/run_convergence_audit.py",
+      "sha256": "32f1e52ec55bd3a7c8fbc8068697f6d8e8e77ae824e281872b1ee17461aa77cd",
+      "redacted": false
+    },
+    {
+      "path": "scripts/compile_e387_roles.py",
+      "sha256": "f057fc8789f6d110dfce87d3be42fc186dec6272e91c95a4c403f1ca561ba1cf",
+      "redacted": false
+    },
+    {
+      "path": "scripts/sync_surface_ownership.py",
+      "sha256": "aa14d34db785f4d23304d88c41f0e1f96b2751d80b97302d70349b291f32bafd",
+      "redacted": false
+    },
+    {
+      "path": "scripts/run_registered_workflow_v2.py",
+      "sha256": "33cab3e6ec46863aeb7988b629a5520ffd3c1e8e231cb329bdc8e2f51248e78a",
+      "redacted": false
+    },
+    {
+      "path": "scripts/evaluate_convergence.py",
+      "sha256": "654de31856680a844415e58caa84f73184429738610959e81cfbaef015da5e6b",
+      "redacted": false
+    },
+    {
+      "path": "scripts/compare_geometry_evidence.py",
+      "sha256": "ba54fa570ad7700248e74e9abc943e7e22786bb72e1536d24feaee88f61d59d5",
+      "redacted": false
+    },
+    {
+      "path": "scripts/run_registered_workflow.py",
+      "sha256": "6d88b9bf56fe38bd489e7e90d5efc2284575958f64a53a6ed7a9dfba70b98f44",
+      "redacted": false
+    },
+    {
+      "path": "scripts/derive_solve_history_density_columns.py",
+      "sha256": "00067c590253dac9ae3636f3390f78dd078ca8f587e03ec0d961f96af18c03d6",
+      "redacted": false
+    },
+    {
+      "path": "scripts/model_form_swing.py",
+      "sha256": "5322de41103f01643ed24d3dea9d5d012e3dd9f29cc53c245463f8146d674f71",
+      "redacted": false
+    },
+    {
+      "path": "scripts/air3b_residual_slope.py",
+      "sha256": "ec87452898c98613946cfebdb04d518c6112eb093d60e318ba0ffe8e5097db80",
+      "redacted": false
+    },
+    {
+      "path": "scripts/claim_lint.py",
+      "sha256": "34229861344fe6489373f89ba1d9a30a6286cbce9b959c926379e56438085d57",
+      "redacted": false
+    },
+    {
+      "path": "scripts/run_e387_roles.py",
+      "sha256": "1a786161a57d7bd6275f8726dba56e9b239d6523c94c1a0735c5a941fa9f3118",
+      "redacted": false
+    },
+    {
+      "path": "scripts/plan_mesh_gate.py",
+      "sha256": "33e923d92f804faa777ac6a634cb199d897baf0fd56db1d92a6731a62b60032a",
+      "redacted": false
+    },
+    {
+      "path": "scripts/diagnose_gmsh_interface_cells.py",
+      "sha256": "6861965bb59cb4662fd7f04df3b6a2f7f40831f1edf858291efbfa431b21bca8",
+      "redacted": false
+    },
+    {
+      "path": "scripts/formal_study_reuse.py",
+      "sha256": "7730d6bf2ed0abbc811a2bbcddbdf284a670a2f64ccca7e461be00a2a1f16d0b",
+      "redacted": false
+    },
+    {
+      "path": "scripts/ref_applicability_audit.py",
+      "sha256": "b483e46e9898a631a70b82a37afecba0772b690ac3f3750af9cef5240c0cc742",
+      "redacted": false
+    },
+    {
+      "path": "scripts/casespec.py",
+      "sha256": "f0878d90ec77b4f523f81ca6890d10da8917490f027cadee9e859d1d11079ed3",
+      "redacted": false
+    },
+    {
+      "path": "scripts/plan_registry.py",
+      "sha256": "9adfe0c149a2a0853924dbef84a13683e3532142c90ded22328b2109bbfd3a65",
+      "redacted": false
+    },
+    {
+      "path": "scripts/repin_progress_codified.py",
+      "sha256": "e2e927ef22a685ce9d8267a5041e03d04da6e9fc47fb8da1e0ca64e530d8b32b",
+      "redacted": false
+    },
+    {
+      "path": "scripts/production_catalog.py",
+      "sha256": "3e59912856e5071c002e7cbdcd1c73d04b8335e0e137aff938e70de4dc8b88b1",
+      "redacted": false
+    },
+    {
+      "path": "scripts/gmsh_cad_rotor_pilot.py",
+      "sha256": "34001a944b6460f555906f60ad40c291ccbca63eb47f07a5f4f7bf0658f9ae24",
+      "redacted": false
+    },
+    {
+      "path": "scripts/static_flow_probe.py",
+      "sha256": "018222caefd0aa4e5851dcbf51a843ed3473dec10fd3800c512df79ef8371398",
+      "redacted": false
+    },
+    {
+      "path": "scripts/build_te_variant_fc.py",
+      "sha256": "ffb1447c08058de71f196083881277addc356128be74cd4f4502c4adb15c4ac2",
+      "redacted": false
+    },
+    {
+      "path": "scripts/validate_geometry_evidence.py",
+      "sha256": "8dde9921017ebfacb4fcda340aad24fbc197610e1ea23442e2989cae7f0ddce2",
+      "redacted": false
+    },
+    {
+      "path": "scripts/gmsh_stator_pilot.py",
+      "sha256": "222346e2735c592b4ee19e0f0b1d8d428a54f7b3929a0d816783348771b6a372",
+      "redacted": false
+    },
+    {
+      "path": "scripts/mcp_business_worker.py",
+      "sha256": "af736e64a62c3190ac9daaae222f0c022827f34d80d35061e7d43bfa35b0b82b",
+      "redacted": false
+    },
+    {
+      "path": "scripts/gmsh_conformal_mrf.py",
+      "sha256": "4bdf172e2bede126a57a35e3e2b73fdc09d5ac0f665b780c51658788fcff2c65",
+      "redacted": false
+    },
+    {
+      "path": "scripts/run_prop_geom_audit.py",
+      "sha256": "ccd05504f46acbf6d34479f112dd95d43800d0e6ecfb448382ade56b1c06a1ce",
+      "redacted": false
+    },
+    {
+      "path": "scripts/server_gateway.py",
+      "sha256": "08d36eea42751a435f3cb205e271d803cc138d71d3212cf7f49c7ef3dda3ca51",
+      "redacted": false
+    },
+    {
+      "path": "scripts/split_gmsh_conformal_cgns.py",
+      "sha256": "720374d831e0bf387f7f023de1920952526471e0a566cb13702af2f563fe8d92",
+      "redacted": false
+    },
+    {
+      "path": "scripts/resource_contract.py",
+      "sha256": "586cf1a2bf63143d96bf55f29ccfae26ffc4805e464b6525e73d7d039330b3ea",
+      "redacted": false
+    },
+    {
+      "path": "scripts/mesh_acceptance.py",
+      "sha256": "d16b4ef3ef1789b6cd58ba424f69a1b2f5e45c85fd79a760cf07300590bbd26b",
+      "redacted": false
+    },
+    {
+      "path": "scripts/air3b_pipeline_trial.py",
+      "sha256": "f4c5aeb805ed63edb3b505465d2f14df378e5cf24eb10c1808755165eb534418",
+      "redacted": false
+    },
+    {
+      "path": "scripts/run_sensitivity_study.py",
+      "sha256": "7a3c1e184d3e48926ec78fcd7314e140446fc6208b6818faf83e6218e6283f22",
+      "redacted": false
+    },
+    {
+      "path": "scripts/evaluate_sensitivity.py",
+      "sha256": "dab263d86fe434fdb90cceef90f4f93582f25f72268156e8a44bf130ddba9ae0",
+      "redacted": false
+    },
+    {
+      "path": "scripts/validate_local_mesh_trials.py",
+      "sha256": "50f68ccf2e9c6d3f84e1f209f1bad100fcb64589f29c805dff63844f4ad498cd",
+      "redacted": false
+    },
+    {
+      "path": "scripts/restricted_local_mesh_trial.py",
+      "sha256": "103eb1c3e15256dcdf93f952be4df46c9ec89590126651b0a6c00f7d6a6b21c5",
+      "redacted": false
+    },
+    {
+      "path": "scripts/audit_step_candidate.py",
+      "sha256": "224013ec645a4dfe8eeae7da803feb80ef06bba490695f9c38d74d81e2abfccf",
+      "redacted": false
+    },
+    {
+      "path": "scripts/formal_run_report.py",
+      "sha256": "48d0ca0b579b9e3f85006114570ca0077f329d72656fa8090fcf49219458b8d7",
+      "redacted": false
+    },
+    {
+      "path": "scripts/gmsh_rotating_trial.py",
+      "sha256": "69355f1dfe146ffc9c6b5f737f0779688f3d451c7fe3c0cde8fb3ee56695600c",
+      "redacted": false
+    },
+    {
+      "path": "scripts/compile_mrf_macro.py",
+      "sha256": "5daf6dceb8fb142df4ea906d71ceab5d222645cb3a3b56b82be07f5a65a9682e",
+      "redacted": false
+    },
+    {
+      "path": "scripts/part_classification.py",
+      "sha256": "d549e76cbb613b5e25d0624acb7415acbcc88afeaa328ec2e892e963b4f71bbe",
+      "redacted": false
+    },
+    {
+      "path": "scripts/air3b_contract.py",
+      "sha256": "f422f600311f013624bb5652a9e6e2d70dd7b9ecd921f05878995784dc7348b9",
+      "redacted": false
+    },
+    {
+      "path": "scripts/generate_run_report.py",
+      "sha256": "757240e7f85c0005305548939b79a9b79e2ece2964d9120e3900bd5fe6ff63ca",
+      "redacted": false
+    },
+    {
+      "path": "scripts/compare_gmsh_interfaces.py",
+      "sha256": "c06fd8e296a4927d36ee9ed11270411cd02747770fc611dbf1df34dfb5a64e9b",
+      "redacted": false
+    },
+    {
+      "path": "scripts/run_solve_default_1200.py",
+      "sha256": "5951cf6e3bc7768888c8ec3a5d4f1c4181301738fe436da7ec26ebc38ca80bae",
+      "redacted": false
+    },
+    {
+      "path": "scripts/run_trapwing_mesh_spike.py",
+      "sha256": "f89fade14c90c323a3a921a9cc1f693aee6d962ed053bfc3356cd9b60215c6fb",
+      "redacted": false
+    },
+    {
+      "path": "scripts/kpi_ledger.py",
+      "sha256": "3e3950bae4a132ead50987a542d7db129c71f29cea1062e43ec683a215aef88e",
+      "redacted": false
+    },
+    {
+      "path": "scripts/diagnose_gmsh_neighbor_volume.py",
+      "sha256": "bb0cff888b983d1c6376ad5e1c59e49d20a2d10d04426b47bdc00293aea72416",
+      "redacted": false
+    },
+    {
+      "path": "scripts/run_trapwing_core005_bl8mm.py",
+      "sha256": "d73f95ff0003ad4118f66b546ac92b5bcd01014a3a2ae52f0caff0105186168d",
+      "redacted": false
+    },
+    {
+      "path": "scripts/validate_preflight_audit.py",
+      "sha256": "c5b59a6c2a5ab6170443027868787044f90564715a4e8dc388549c5904cd12a8",
+      "redacted": false
+    },
+    {
+      "path": "scripts/local_mesh_plan.py",
+      "sha256": "cdae851c5b99115efc75dcc4d4388578cda8c07205a01829aa1af7f3ae78aea7",
+      "redacted": false
+    },
+    {
+      "path": "scripts/compile_macros.py",
+      "sha256": "729c2cf01279a7b2934520bb69d2b03b55bd4d3eac8e0b125b8b81166b680763",
+      "redacted": false
+    },
+    {
+      "path": "scripts/domain_sensitivity_gate.py",
+      "sha256": "37e4d5cce3a04d8c6f938681f8e9941a48971bd694f1af815110dc25f80d17cf",
+      "redacted": false
+    },
+    {
+      "path": "scripts/run_trapwing_named_region_spike.py",
+      "sha256": "da2bcdc0aa37bfc7afd22c11dc3dae9320110b9082cfbe5c1c35efbae55d1eb2",
+      "redacted": false
+    },
+    {
+      "path": "scripts/case_spec_diff.py",
+      "sha256": "4d496449646fa86885d15ec0e21037d8cd8d5631e4f4b763e5c48ad25426336f",
+      "redacted": false
+    },
+    {
+      "path": "scripts/check_e387_runner.py",
+      "sha256": "5bbfb21fb966b6b9a2409058e384c389c1934d0e6d00e9e4b806b4906ef71e2a",
+      "redacted": false
+    },
+    {
+      "path": "scripts/hypermesh_quality_gate.py",
+      "sha256": "4a5a03b67b97e018ca9250a3aaaf3b0b0327b1d9b0465a0a99bc4c3b121dd7b7",
+      "redacted": false
+    },
+    {
+      "path": "scripts/iteration_error_bound.py",
+      "sha256": "5576d7606942b5636fc3382c327ea9113a74dc33e692ed67be761d3d71e0e8f9",
+      "redacted": false
+    },
+    {
+      "path": "scripts/extract_rotating_fluid_shells.py",
+      "sha256": "9c5fe008764819ba85d4e98742ee2558366fdf5642184dbafe974cf61d09bdc0",
+      "redacted": false
+    },
+    {
+      "path": "scripts/registered_workflow_mcp_v2.py",
+      "sha256": "8a4f919423cf02f26ba5fcc0095b422e06c70cef500f1d5e440d959c7646a32d",
+      "redacted": false
+    },
+    {
+      "path": "scripts/signed_ladder_summary.py",
+      "sha256": "7440940a0cdd63281aaa405434f467bd5ecfde21be9de2cbd165417cd9541181",
+      "redacted": false
+    },
+    {
+      "path": "scripts/verify_unit_variant.py",
+      "sha256": "cd249051504c02a625f114d9a10b75c8053c716078c5a5f5508945d2de34c991",
+      "redacted": false
+    },
+    {
+      "path": "scripts/run_crmhl_mesh_spike.py",
+      "sha256": "dc769c00323e9aa00f86cfb91a5f426750fe97b3cd264d0b279430f6b168588d",
+      "redacted": false
+    },
+    {
+      "path": "scripts/gmsh_step_rotor_pilot.py",
+      "sha256": "7e9964775695dee7874d7dd88e1999fd92b8182b800cde057eeea69dfe6f9723",
+      "redacted": false
+    },
+    {
+      "path": "scripts/run_pat.py",
+      "sha256": "8374e96feff39859fba10454ea40a9b56b4a8511187326188578df7813efec5c",
+      "redacted": false
+    },
+    {
+      "path": "scripts/server_v2.py",
+      "sha256": "6731f9dfcebf24d4c0fca304f54c2405b0c97693f8c4916ff66075d97d3ed873",
+      "redacted": false
+    },
+    {
+      "path": "scripts/run_record_gate.py",
+      "sha256": "fd7b0d03eb44edafe2678d0852989cb6fbb24931ed8773b6e7f7904fab14721b",
+      "redacted": false
+    },
+    {
+      "path": "scripts/air3b_convergence_gate.py",
+      "sha256": "f497b859c18625baf029d6c400902499147776077fac7244e4ad42946261e6a7",
+      "redacted": false
+    },
+    {
+      "path": "scripts/stage_plan.py",
+      "sha256": "235bd5b740b804258b24480753ed231b410aef94f5c3c3f3f5c7195ff7c09e9d",
+      "redacted": false
+    },
+    {
+      "path": "scripts/run_trapwing_volume_fix.py",
+      "sha256": "1c0b93a213028a5bd8107c9e46e97f6d1dc11f36e0a309444ed1be8c97b1779f",
+      "redacted": false
+    },
+    {
+      "path": "scripts/run_trapwing_first_layer6e5.py",
+      "sha256": "416b9607f7a798994f61fa215324b313b83d18cd22f59c5e09c081b434c40f32",
+      "redacted": false
+    },
+    {
+      "path": "scripts/mesh_scatter_gate.py",
+      "sha256": "9279eefdf49213ccc8c63635707b4317658316afde2c3024cc88c005d544aa57",
+      "redacted": false
+    },
+    {
+      "path": "scripts/verify_negative_evidence.py",
+      "sha256": "ae9e382843b0cd2bdcd7a138cc501a4a484325d384db3d1df3d05f4aa2a04160",
+      "redacted": false
+    },
+    {
+      "path": "scripts/map_face_validity_to_gmsh.py",
+      "sha256": "21388daae2eec72a55138e0a81f70e3d14bf202974fe319aa1432153089182c4",
+      "redacted": false
+    },
+    {
+      "path": "scripts/local_stl_remeasure.py",
+      "sha256": "2ab89b0171f3ad0a2953a4974622c3ba462b094d96847c6dfe312062ef11f636",
+      "redacted": false
+    },
+    {
+      "path": "scripts/progress_matrix.py",
+      "sha256": "822d1c336e4348008692076791729d525ab6b0555d8df54ed3afaff82c3ca1b7",
+      "redacted": false
+    },
+    {
+      "path": "scripts/mcp_runtime_release.py",
+      "sha256": "3187fba7f5a1de18e7e7bb85b582807391dddc7714c9f91a4307f4ddb5965f33",
+      "redacted": false
+    },
+    {
+      "path": "scripts/grid_convergence.py",
+      "sha256": "40272873252d34f592d82fdc3091dcc6a3261492b8bcd9af3556259e5978ab9c",
+      "redacted": false
+    },
+    {
+      "path": "scripts/status_writer.py",
+      "sha256": "2761df0a0d48d47bc4ab525de153bb51843b49e81e257f3424d26bab8ba66169",
+      "redacted": false
+    },
+    {
+      "path": "scripts/surface_mesh_qa.py",
+      "sha256": "c8787431ff8003d86f423a1196f274fd4a7b39cacbc715c7e38847301ae1e72a",
+      "redacted": false
+    },
+    {
+      "path": "scripts/formal_worker.py",
+      "sha256": "c3c9bc99fa38b360e9d707eeadfb15cea71b50e26d8117a9c20aa271f7ab9700",
+      "redacted": false
+    },
+    {
+      "path": "scripts/run_static_external_flow_e2e.py",
+      "sha256": "f740953541f9099d3a9f6d51bb19949dd03aaa34cc7465760a783d2be793b775",
+      "redacted": false
+    },
+    {
+      "path": "scripts/round4_run.py",
+      "sha256": "7a20de3b6a8908fb27bb2989b82b851ccea04a84f323f2c3133fde75417ad6f9",
+      "redacted": false
+    },
+    {
+      "path": "scripts/registered_workflow_mcp.py",
+      "sha256": "c4e1764873a60814c27e53da8903ae8685199904f7f3e8fc641c1c0e0d2378c9",
+      "redacted": false
+    },
+    {
+      "path": "scripts/quality_contract.py",
+      "sha256": "95085c27de87199af75d1e9d26a25164c107f97b58c79c4d6cc273223e3ef0d2",
+      "redacted": false
+    },
+    {
+      "path": "scripts/supersession_ledger.py",
+      "sha256": "a7174a00bb84f08a76bf90337338b44f5c88b281ad7d3adeb3980b93e9db671a",
+      "redacted": false
+    },
+    {
+      "path": "scripts/formal_run_entry.py",
+      "sha256": "19b73690d39de8c0dbd6b113887df703c2d81b433aa758ae4de8f1fc0b8fea41",
+      "redacted": false
+    },
+    {
+      "path": "scripts/air3b_geometry_build.py",
+      "sha256": "b291e1e20302fc0dc2c46544213bc2cff06a661198b62d91af5291f4c117931b",
+      "redacted": false
+    },
+    {
+      "path": "scripts/knowledge.py",
+      "sha256": "73159dda55e38a09358416cef9fd2306cf00e7b3a17f8688c59c8eb19af06c1e",
+      "redacted": false
+    },
+    {
+      "path": "scripts/release_gate.py",
+      "sha256": "521b5db02cbae1b2dd96d5e9f8eabde6f2920873855d83f3ad5880168ab475b6",
+      "redacted": false
+    },
+    {
+      "path": "scripts/run_mrf_chain.py",
+      "sha256": "1fa232dfbad250feccdf14aaf48f84d21fe508cbf0dc80ee0fa7ae76db47ce64",
+      "redacted": false
+    },
+    {
+      "path": "scripts/gci.py",
+      "sha256": "2fae9ce62a04c6be8dfcc1618a5021ef52ca3acfd8d41c219f0274072d468884",
+      "redacted": false
+    },
+    {
+      "path": "scripts/air3b_mesh_levels.py",
+      "sha256": "0901406c3496b25c4c417f677969fdd5c1caecba415c0e30ba72f2156b235b63",
+      "redacted": false
+    },
+    {
+      "path": "scripts/result_storage_policy.py",
+      "sha256": "aee86a4a7ac1c2badce75d90b4d7741c853fabf183a007404cfddf2666412276",
+      "redacted": false
+    },
+    {
+      "path": "scripts/evaluate_hypermesh_control_effect.py",
+      "sha256": "ea77facf78687e790853f39afdb6dc95c6845b158be3e1fbdf5a87d576d72ba4",
+      "redacted": false
+    },
+    {
+      "path": "scripts/probe_sim_cad_bodies.py",
+      "sha256": "197b700c6101a8c66c8917591c267eeea423d4f6f8e223c757de9955c1db1a5b",
+      "redacted": false
+    },
+    {
+      "path": "scripts/run_trapwing_no_local_boxes.py",
+      "sha256": "d7ced9c3bb78a65366f979f84203fe87607dca23f368f1f6cb844fb532d4a6a6",
+      "redacted": false
+    },
+    {
+      "path": "scripts/audit_star_api.py",
+      "sha256": "621a95e8b8683badbe9af3aad909c835b2a30e41f9ec04ecbf231aa7e29fbe69",
+      "redacted": false
+    },
+    {
+      "path": "scripts/air3b_production_segment.py",
+      "sha256": "d8b39b99d71df4f85f93c3cb10084a96b711cdb16b632e889a695ea20f827a6f",
+      "redacted": false
+    },
+    {
+      "path": "scripts/pre_submit_check.py",
+      "sha256": "d15c0441143c34342c27d6b8f3bbdbe21fb69c51e0a99a019b9a0065f7e939e5",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditBadMeshCellBounds.java",
+      "sha256": "04484ed19605525c9f65dbf1b0ad71b4696ad810a730fe277913928d01bacae8",
+      "redacted": false
+    },
+    {
+      "path": "macros/ImportFrozenBoundaryStepC.java",
+      "sha256": "27cf44e0d1272c3a402991c159560912b64530e52114e5824506556f62f23bbf",
+      "redacted": false
+    },
+    {
+      "path": "macros/ProbeImportedMrfInterfaces.java",
+      "sha256": "eddb4cbc9ae204460e4c4e20396f86f207d894faadc47eb1f025a1495c737d3a",
+      "redacted": false
+    },
+    {
+      "path": "macros/ImportMeshRepair2Candidate.java",
+      "sha256": "471b2a197df647a92a904bf4d7ac7be51db9907d8e04815a04938b991b96de46",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditAir3bForceDirection.java",
+      "sha256": "acb5e77d84ce545883bd1d19a2a70272f2e965d1b22d98751db414a0cd60ab67",
+      "redacted": false
+    },
+    {
+      "path": "macros/ImportFrozenNeutralMesh.java",
+      "sha256": "2a7f389327d5e34fd183259ec65f0da748734e65ce412dc4aec689e76005aa2f",
+      "redacted": false
+    },
+    {
+      "path": "macros/BuildExternalDomain.java",
+      "sha256": "b92d682c88eaa1d1ac742abd80f7d18d7095c8e6c1983ac701398c752e8e51b5",
+      "redacted": false
+    },
+    {
+      "path": "macros/ProbeNativeResidualSpatialNoBatchSave.java",
+      "sha256": "e95ad29ea1edb2ee1c5c6800553ac0d6e7779527bbb680a31089544dbc4ef415",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditMrfFluidVolumes.java",
+      "sha256": "8e8200648442e7b59cc539d4289658a5aa3fe91c95851974abd0420aece94734",
+      "redacted": false
+    },
+    {
+      "path": "macros/ProbeNaca0012Native2D.java",
+      "sha256": "a8f6091faf7d28bf668dd2c7819faf18388921dc0955be2e1dddce1f3cad7ddc",
+      "redacted": false
+    },
+    {
+      "path": "macros/ProbeGmshCgnsImport.java",
+      "sha256": "c50c0ec9bdb50503a9f6aa7b74561f483980e043340dbd9fed07db3ea6eda035",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditMrfBadCellLocalization.java",
+      "sha256": "aa4e6007200ac7c8c0d1a5b8bb573bf33f176bf0a3e560d86e9d9b176a346816",
+      "redacted": false
+    },
+    {
+      "path": "macros/ProbeMrfRotatingOnlyMesh.java",
+      "sha256": "f5fa8f19d7df258db9018602ff807d59be6c4ce04dbb50c164a848064a1e41af",
+      "redacted": false
+    },
+    {
+      "path": "macros/ProbeMrfAlmPrismHistogram.java",
+      "sha256": "b2aa87452fba6720e8391fcf93336c16e7422739bc6acfbecc4adcfc95fe42fb",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditNativePrismCoverage.java",
+      "sha256": "305b263cc86c14976b1dcde42f052ca782a148e0639ab29a969fc7c5b66f52cb",
+      "redacted": false
+    },
+    {
+      "path": "macros/ReadMeshRepairMetrics.java",
+      "sha256": "fef66d78efa81959289302305480c3d28fe7d97230304799c21bc690d84f2e8c",
+      "redacted": false
+    },
+    {
+      "path": "macros/ConfigureImportedMrfPilotPhysics.java",
+      "sha256": "02b49a9a90eeb47e1481ec79b9f8fa9d0c11c68a3443ced5ab611db9bd31f625",
+      "redacted": false
+    },
+    {
+      "path": "macros/QualityReadonly3D.java",
+      "sha256": "5935248d218889623cca23272e7b17ef3aeffbbf75dac3a7aa99e9aa0f0b991a",
+      "redacted": false
+    },
+    {
+      "path": "macros/RunAir3bMrfPilot.java",
+      "sha256": "f355cb56f8ec3506c5a96db68765f8e4661e9d00f05a52ec71d5ffe48517b45c",
+      "redacted": false
+    },
+    {
+      "path": "macros/ProbeMrfAlmConditionValues.java",
+      "sha256": "2da27c5f29a0c81ea9440cf5fc83f620e79bb3cdbd7768afc5991eed6f150ee6",
+      "redacted": false
+    },
+    {
+      "path": "macros/InspectMrfSolverObjects.java",
+      "sha256": "82225ba4eca3edb5d202bbe3c22c036728d06c9f57c7d43f65808e07425f1ba2",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditAir3bPrismCoverage.java",
+      "sha256": "de582caa089dbf187a33afc04da7010c604720c1b2239ab77265935ad877c359",
+      "redacted": false
+    },
+    {
+      "path": "macros/BuildExternalFlowRegion.java",
+      "sha256": "55c1c9548b2b0b570bed954383f009e616feecaaf4d5e8745458c5670fefe96a",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditBoundaryRoles.java",
+      "sha256": "de95bc5dcb346b906d833d0306b4051ec6326ad87697d130ebeb0c30ce89aa8a",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditReferenceFrames.java",
+      "sha256": "f9594b0100d1c638122b164739969627a9f49f0dff2d0e82e94894afe607381f",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditMrfTrial.java",
+      "sha256": "7c8c34c34a05d9be1121ca99cfdd6f064a343eafbd0502e0afd39d2fc589da3f",
+      "redacted": false
+    },
+    {
+      "path": "macros/ImportFrozenFluentMesh.java",
+      "sha256": "8bf96b43e2caf75694ccef3ce0b15913c581276137fc0b0bda5c5ab840d238c4",
+      "redacted": false
+    },
+    {
+      "path": "macros/DiagnoseMrfLowVolumeChange.java",
+      "sha256": "0778343f4aceff0231c9baabd2e4b1a7e087fa898f1f75badbd46011522edce1",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditAir3bWallAreas.java",
+      "sha256": "b1cf0589723ae2db138546870cf537a1b1613ffdb1aa94188fd21e066dae886f",
+      "redacted": false
+    },
+    {
+      "path": "macros/ConfigureAir3bAmgSolver.java",
+      "sha256": "5000a5b9fe3117ccde11c3e4332e91be8a94c760eb58c6442f1b234c604d8b83",
+      "redacted": false
+    },
+    {
+      "path": "macros/TessellateFrozenFluidStep.java",
+      "sha256": "de0cba3f7d9eafccaa3732ff1c12bd19e7605b4e77f6e3f213ce66eb22ffc247",
+      "redacted": false
+    },
+    {
+      "path": "macros/InspectMrfSolverSettings.java",
+      "sha256": "c2763cb669bc7bc4acea2cab95df2e5b300160f2c7ce9bc98cf808f3d1f52a0b",
+      "redacted": false
+    },
+    {
+      "path": "macros/InspectEvidence.java",
+      "sha256": "e562d4ef6608d9720ddfadd565b84fa10ff99c1404e4e8d82df1e4e095a9e61c",
+      "redacted": false
+    },
+    {
+      "path": "macros/ImportFrozenBoundaryStepB.java",
+      "sha256": "8610a11b6fa5707a7c41099633408e9a53f2e3bf18cb2ac3c992b64bfae06f8c",
+      "redacted": false
+    },
+    {
+      "path": "macros/RunExternalFlowSolve.java",
+      "sha256": "ac64b70e74b80031cd9fa59579fc23945c3c3ae64d6e1b35caa4ad005115add7",
+      "redacted": false
+    },
+    {
+      "path": "macros/ImportPropellerStep.java",
+      "sha256": "bda2697655413018c9e5f5c41200b6f9fb6d66a10d67b3cf8db9848a082faf13",
+      "redacted": false
+    },
+    {
+      "path": "macros/ConfigureAir3bMrfPhysics.java",
+      "sha256": "846a920dc157d7150d6051acb0a73fc52440da33d67894fc2a3b0cfb4652144e",
+      "redacted": false
+    },
+    {
+      "path": "macros/ImportFrozenFluidStep.java",
+      "sha256": "1ecb93bf8d9caa80c5b784155774b37fdc4a7b65e39274af3c250d555cfa7c64",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditAutomationPreflight.java",
+      "sha256": "ea3087f27b792db2ffa65bdcb645f8a3c72d4d72a028ef6a3d3b95a034f9e2d9",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditMrfVolumeMeshQuality.java",
+      "sha256": "b4e308fa5bbba56a8cef5928dabb0825e51703d950ca72fcc369d99f330358a8",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditMrfSplitMeshConfiguration.java",
+      "sha256": "60a16ced58c48e457077ef6257c23261837d48bf83a5e70a4880fa3318942048",
+      "redacted": false
+    },
+    {
+      "path": "macros/RunBaselineSmoke.java",
+      "sha256": "7ad4f2681f8ccc5eac0a8ea4b6fd6cf8dfc43d633bf9059ddc7e949bc2bd64d3",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditImportedMrfBoundaryFaces.java",
+      "sha256": "0abc407b8578910a6658f6b329354275d08dd81120aa423899b5dae76585592b",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditAir3bMassBalance.java",
+      "sha256": "3a14a6b2fdab9ecf3c031dfbe81d626aa540e5debcab7220fc46f670c7d62a81",
+      "redacted": false
+    },
+    {
+      "path": "macros/ConfigureMrfPropellerPhysics.java",
+      "sha256": "e244568a43499219b46e70683096449d8721ab737bf9d9662668e592153fcfcf",
+      "redacted": false
+    },
+    {
+      "path": "macros/ImportAuditedRotorSurface.java",
+      "sha256": "5f99677e37028cab3edb54ac3c82c00ea1263c5a1ce6c09e079ff9d588feba8b",
+      "redacted": false
+    },
+    {
+      "path": "macros/TessellateFrozenFluidStepC.java",
+      "sha256": "46fe27f0acf90502564649acb0d73dfd4ffd6ee8ac6d12c358ac9fb2f54d9e81",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditMrfRotorSolid.java",
+      "sha256": "146ddb1a920d4c305e849bbfca368a962fda1e875ce1916a8afa42f1030d629d",
+      "redacted": false
+    },
+    {
+      "path": "macros/ExecuteMrfSplitDiagnosticMesh.java",
+      "sha256": "6f77a5f50a585f0d89a4ea68e2b8749137cbe5c86a9acb3a31fc0ad167fd89e6",
+      "redacted": false
+    },
+    {
+      "path": "macros/RecoverRotorSolidsFromSectorFluid.java",
+      "sha256": "45fa1de8570730cad6e0b2fcb5bea36198ae4838ceae8a758b74f54937c4a771",
+      "redacted": false
+    },
+    {
+      "path": "macros/ImportFrozenBoundaryStep.java",
+      "sha256": "eafa336eb7330058f565a65336a64c1ea96948ef18dafe9e627d8924f0b488e7",
+      "redacted": false
+    },
+    {
+      "path": "macros/ConfigureMrfInterfaces.java",
+      "sha256": "01d1dde0af49e7d9111e1a3eb92c639c6c3874e6fde018ab7784b47ae143230b",
+      "redacted": false
+    },
+    {
+      "path": "macros/BuildAir3bMrfRegions.java",
+      "sha256": "c6987889cb4ffa9b8b04eb45985bd09834273f7b118bd4436b7db5bded2ec09e",
+      "redacted": false
+    },
+    {
+      "path": "macros/ConfigureExternalFlowLaminar.java",
+      "sha256": "38938aca28464415a5bd7a603021a5872a4aeeaab5c5f33a05b64dda4c1b57e8",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditStaticBodyGeometry.java",
+      "sha256": "0289ee652e41105e9299151a28d5718f22263346f197caaff036678018ba4b2b",
+      "redacted": false
+    },
+    {
+      "path": "macros/DiagnoseMrfResidualPlateau.java",
+      "sha256": "3c5f0d8ad5a239d89fc88e90ae5f59d48a3cd1d80d00a6c676f229e25349ec5e",
+      "redacted": false
+    },
+    {
+      "path": "macros/GenerateAuditedLocalMesh.java",
+      "sha256": "e6678da01bda0c1a93c5e15b7033c104d048fd15a63ca7e26114e3e2d5b20425",
+      "redacted": false
+    },
+    {
+      "path": "macros/ConfigureMrfMeshOperation.java",
+      "sha256": "bb939c1a95d9fdc6d62abc56030363b5919b4d7d41f5ba52e03accb6305b8417",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditCylinderPatchMap.java",
+      "sha256": "3372e146463b408269f4696c46ba557560cf15bd68ea40fd5027a33292cf06b7",
+      "redacted": false
+    },
+    {
+      "path": "macros/CleanImportedMrfHost.java",
+      "sha256": "68af23643a82f35b100f538d1533a4177d79f681c072770003742a0b040a5a6f",
+      "redacted": false
+    },
+    {
+      "path": "macros/ProbeNativeResidualSpatial.java",
+      "sha256": "8829f7dfb2c76139fcc7121b9d3413069a561cfcfc10ec0c88cc87b09eb08b1a",
+      "redacted": false
+    },
+    {
+      "path": "macros/ImportAir3bBlockGeometry.java",
+      "sha256": "f785ad6767304fbd633baeebf4daf0d86fc79a7e044a878c2cf099badd3beb39",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditLocalMeshConfiguration.java",
+      "sha256": "8bf99dc5634635123cc8a00ec5b28c3c4ed38a5dbbbd37a154aa8fbcb77c04ab",
+      "redacted": false
+    },
+    {
+      "path": "macros/ExportNativePartSurfaceInventory.java",
+      "sha256": "8f900be3fa83d7673e4431bae4f0d24a177cd70451ff5bf14d5d01afed82b24d",
+      "redacted": false
+    },
+    {
+      "path": "macros/MapFullFlowOuterBoundaries.java",
+      "sha256": "db70482349c97bf21fed1bc859e1a48aca0adc35824833de212f9d986e2887ce",
+      "redacted": false
+    },
+    {
+      "path": "macros/RunAir3bTransientRevolution.java",
+      "sha256": "acfc013141ed0a9894b599e578ea2d702031b06b77f167db9d38035bb8ebe7b7",
+      "redacted": false
+    },
+    {
+      "path": "macros/BuildCylindricalDomain.java",
+      "sha256": "fbc7e485cd6ec86418d9fb519d86c68182e2458baa7d341becb816d5777c11e0",
+      "redacted": false
+    },
+    {
+      "path": "macros/ExecuteMrfDiagnosticMesh.java",
+      "sha256": "63f3d62dac2f4d25cd8e58fefb57045ecda90beaa4f3368b4e09fa5d068faaff",
+      "redacted": false
+    },
+    {
+      "path": "macros/ProbeNativePatchSplit.java",
+      "sha256": "a05c580468b196bebe298c027826e83461460a3881c5d7eefbe7d62eb5a91bd8",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditMrfSurfaceMap.java",
+      "sha256": "82dc3fe3d76d599da74410b8372ff318cb448dc640e5bc65924b8a7fa23273a5",
+      "redacted": false
+    },
+    {
+      "path": "macros/InspectCaseLicensed.java",
+      "sha256": "e220e56114336b4e07ce3ac48e8cc210d1e7f9285207864ccc36d226689cfe98",
+      "redacted": false
+    },
+    {
+      "path": "macros/BuildAir3bMrfMesh.java",
+      "sha256": "4b68375face5fd957b30b2ae01795809f1ac9c3aac87e0e67600ee8cf08b1d06",
+      "redacted": false
+    },
+    {
+      "path": "macros/ReadbackFrozenColumnMesh.java",
+      "sha256": "5cd0f3353396441fdfae29b684042ff50c16008d3867b9dbea39ef16cca79555",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditCadTessellationParameters.java",
+      "sha256": "cc0bac5a0d5ef654ff97713bb86822a4a1f66a5b3b34bd1c7f13274aa681acb2",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditExternalFlowConvergence.java",
+      "sha256": "6748edb4ce018d0143a2687639ab9b00b43f0ebb6b2f03d37e1966f351fbbc1c",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditMrfWallPrismCoverage.java",
+      "sha256": "e18d4710fad6eb2e99dd7c6ce32294f12b0845aae4754c43d095b5a410136260",
+      "redacted": false
+    },
+    {
+      "path": "macros/CreateFullFlowRegion.java",
+      "sha256": "752c465372455b61878fea999bbfd405ce5af6d09053af2ec059dc894143a614",
+      "redacted": false
+    },
+    {
+      "path": "macros/ExportMeshSpatialDiagnostics.java",
+      "sha256": "4ef4c712a0f40077d563fed27e98993e190d5f9558fde45466c072d8c0f6a3ea",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditBadCellSurfaceDistances.java",
+      "sha256": "5b15a4c79897f41abec06fdf5ac365881b261cc962def268df4de6030edfa6a2",
+      "redacted": false
+    },
+    {
+      "path": "macros/ConfigureThin3DBenchmark.java",
+      "sha256": "c5378e0bce5dd63f91df7eae1b36678fe4d931abb69ec24e19d6bb07321ff0d5",
+      "redacted": false
+    },
+    {
+      "path": "macros/ConfigureNormalInletOutlet.java",
+      "sha256": "0b7f61254e27241cc51ecdd7a8db092d31a7734f531ab5b9b206b7ad6654236d",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditOuterBoundary.java",
+      "sha256": "09c050b0bafba008d5586c65be870be864e88bcd2e77092e0915385f9f5dfb0b",
+      "redacted": false
+    },
+    {
+      "path": "macros/AdjustMrfRotatingPrismLayers.java",
+      "sha256": "2a8b1bd509482696bd0c4085afb3f4c06346b69333eb890487281ba736ec54b4",
+      "redacted": false
+    },
+    {
+      "path": "macros/ImportFrozenColumnMesh.java",
+      "sha256": "61a78aab161c742ecd24c6028931c1a7f4af8e0b47b405869568a7c40a076e66",
+      "redacted": false
+    },
+    {
+      "path": "macros/ReadbackFrozenFluidStepB.java",
+      "sha256": "d633982510217c847d5809d78483affcfa604f0aa459391424b225a4b12db89a",
+      "redacted": false
+    },
+    {
+      "path": "macros/ExportFrozenNativeConnectivityCandidate.java",
+      "sha256": "d7f8d8ff9fd3bdc096ac484664f9328bf14b749ff7355dca71fe745409a4316a",
+      "redacted": false
+    },
+    {
+      "path": "macros/ImportHmSurfaceControl.java",
+      "sha256": "095456df3e5512d5ffbed99c2371bd1f225d1787e4f928104324f70e392d9bdf",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditImportedGmshRegion.java",
+      "sha256": "aa050f0131a7063546c1498561d4966bad51774327d39f8fdbb811079bc42b5b",
+      "redacted": false
+    },
+    {
+      "path": "macros/ConfigureNative2DBenchmark.java",
+      "sha256": "063686dc7ae6692b6158228a7a343b31f7f5771f7e493ae6d5822157022d2bec",
+      "redacted": false
+    },
+    {
+      "path": "macros/RemoveLegacySectorRegions.java",
+      "sha256": "4b8f3acc1a948f3a501ec7b2e913f86c8e22684dcd91483026447a537fadb570",
+      "redacted": false
+    },
+    {
+      "path": "macros/BuildMrfFluidVolumes.java",
+      "sha256": "b38d1661a2f5bdb8081608b44ac7146bd3d3e1024555c10371c9935502956dc3",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditAxialCaps.java",
+      "sha256": "20b9842ef787a30cacf04c2c0df306fba5186c6b583fdd2b5c6140c2a427b6fb",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditFrozenFluentQuality.java",
+      "sha256": "4433889bed61ad3b24509fbb87bab3e3b305924eee249a388a0a5092dea1e24f",
+      "redacted": false
+    },
+    {
+      "path": "macros/RunMrfSegment.java",
+      "sha256": "e3f165cd9909bc9cac013931ea20a72239225254a2126440db62609c1e8df3c3",
+      "redacted": false
+    },
+    {
+      "path": "macros/ConfigureMrfVelocityExperiment.java",
+      "sha256": "51fe1bdcb68f60c7aa0c8d57a63bf33b4d49f5b0972a74b6685477d69c197925",
+      "redacted": false
+    },
+    {
+      "path": "macros/DiagnoseImportedMrfFaceValidity.java",
+      "sha256": "6ce2b0a62f8e17c807d666e574655d7aaf28825021646889247d579134381798",
+      "redacted": false
+    },
+    {
+      "path": "macros/RunAir3bMrfSegment.java",
+      "sha256": "0f542f93b2daba041b2d3f9e062e1d13c67ec07b2018b9125b2fc288c6c761f6",
+      "redacted": false
+    },
+    {
+      "path": "macros/SplitMrfMeshOperations.java",
+      "sha256": "a2554ca52f34a18ea0b32ecdfaca1bad03501fa91455339a7d29456daf5e184f",
+      "redacted": false
+    },
+    {
+      "path": "macros/PrepareBaseline.java",
+      "sha256": "232a8c11e03227944fa7d010e45004b9b0e286e2c2245f3f6b00a5dc02b4b0f6",
+      "redacted": false
+    },
+    {
+      "path": "macros/BuildNamedFluidRegion.java",
+      "sha256": "0492d42ac8a5aba0f3230eac6aa940eb007bc0f33ca366dc246e9263f36960a2",
+      "redacted": false
+    },
+    {
+      "path": "macros/ConfigureAir3bMrfPhysicsV2.java",
+      "sha256": "547713cbb91a5650a1aef8dbf62891ed88ec74da5fca6e8e564ee6005d629468",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditMrfMeshConfiguration.java",
+      "sha256": "b9f058bcfd1ce4cf00b962a9e2c9561d9ab8b23b68a2de08d215f8aff7243dae",
+      "redacted": false
+    },
+    {
+      "path": "macros/ProbeNaca0012Extruded3D.java",
+      "sha256": "0855c99d66bf68eb97b133a27a9b2ecd7924c1d75d0be06b0dbf303539ea9be5",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditAir3bResidualProvenance.java",
+      "sha256": "d84f4f6570f76b893d1528a4131060e536a4f7ab0eea92dc8e04870361d8be67",
+      "redacted": false
+    },
+    {
+      "path": "macros/ImportStepToSim.java",
+      "sha256": "fc4ed4452fa19ad197db5cb3e3adc060be0caf790afe9777d98826b61cc015fd",
+      "redacted": false
+    },
+    {
+      "path": "macros/ExportBaselineQA.java",
+      "sha256": "69b2d19742e9a43209f9e4a784036ce5564abddce1c39a92408d308f3c5bf4f3",
+      "redacted": false
+    },
+    {
+      "path": "macros/ReadbackFrozenFluidStepC.java",
+      "sha256": "86eb2b84d99a1d5fe7fc5fe404ee4702609e13b1511e16b058827f9a5e9e81db",
+      "redacted": false
+    },
+    {
+      "path": "macros/InitializeAuditedLocalMesh.java",
+      "sha256": "e368c481fda46e5fac3be0b6347b666cf1bf01c3dc8d8e80621489894e793deb",
+      "redacted": false
+    },
+    {
+      "path": "macros/BuildStaticBodyGeometry.java",
+      "sha256": "1fbabdc4fb99bef63992dd0acd119b5da0021314667d6b4e9559b4a44ede0556",
+      "redacted": false
+    },
+    {
+      "path": "macros/RenameLocalMeshFixture.java",
+      "sha256": "4b08e509104a08558d852572670a85fea4869c0ebaad9df162ff8e77931e1d7d",
+      "redacted": false
+    },
+    {
+      "path": "macros/ListAir3bLowFaceValidityCells.java",
+      "sha256": "f1a11a9d35f8cb2e912ccab09090ad3e6f0be97d1528f859840bcd0481a7fb31",
+      "redacted": false
+    },
+    {
+      "path": "macros/ProbeMaterialUnits.java",
+      "sha256": "a84af5ba53fadc1a88a57bf4bbd60e3a0fa97de96f4296f65918d21eb77db3b6",
+      "redacted": false
+    },
+    {
+      "path": "macros/ReadHmSurfaceControl.java",
+      "sha256": "930eff174124a5e2ac827395581b659e42198774e579efe8623b2c7fc09600fd",
+      "redacted": false
+    },
+    {
+      "path": "macros/ReadbackFrozenFluentMesh.java",
+      "sha256": "04f022149d05bfbc1d82d8752699502a6aa345762aeb3c627ddfc99d21a21a02",
+      "redacted": false
+    },
+    {
+      "path": "macros/ExportCellSpatialDiagnostics.java",
+      "sha256": "ca8385511a2a144c5dbcfd28a2bbe73889ed183a6a2add5e3dc1c1bcbfce8f60",
+      "redacted": false
+    },
+    {
+      "path": "macros/ConfigureAuditedLocalMesh.java",
+      "sha256": "79196e6298c12fcf11861c1c4f92d38f1c57d37cebc296b975c883df8aa45c10",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditPhysicalReadiness.java",
+      "sha256": "ddf102ed31450f9a71c6793a0b6acabe886f1325901d40a7090ec8f2e9bbf9be",
+      "redacted": false
+    },
+    {
+      "path": "macros/ProbeMrfAlmControls.java",
+      "sha256": "48ee73273358b5f873ee1aa43b60da58c94fd5fb4d5ef7e5fece1c49b15bfd8d",
+      "redacted": false
+    },
+    {
+      "path": "macros/ExportMrfRotatingFluidStl.java",
+      "sha256": "71ccfdebcaefb55feb85c00aad523e7b3a41f11594985e522f1edd27e2ce8f99",
+      "redacted": false
+    },
+    {
+      "path": "macros/CreateMrfRegions.java",
+      "sha256": "1a9a5146be1f0f3b3e47ee19ecbe73a6aa42832e8299ec569334d0f1f3429f9d",
+      "redacted": false
+    },
+    {
+      "path": "macros/ProbeMrfAlmPrismDefaultsManager.java",
+      "sha256": "4d45855f887f1ca7896f3a6d789bf12170c5e0081978a496a2d877d2e0cafce4",
+      "redacted": false
+    },
+    {
+      "path": "macros/InspectFullRotorApi.java",
+      "sha256": "75290bd7ea2251aecadfaeff5003130295f3ab71a54f1583102e925b4118ea73",
+      "redacted": false
+    },
+    {
+      "path": "macros/BuildFullRotor360.java",
+      "sha256": "f57ab78fb6b52ee83ca295da79a327fb31dfc53ab588f5baf1f9776a682f7b5d",
+      "redacted": false
+    },
+    {
+      "path": "macros/ExportExternalFlowResults.java",
+      "sha256": "02f6a8eb022c01c2bac260baeed8feac6b088bbb9fad14671a25d2f7a3668951",
+      "redacted": false
+    },
+    {
+      "path": "macros/ReadbackFrozenNeutralMesh.java",
+      "sha256": "6231c9e8d25115aecd9d3d409d03ea2d31062a19373a0d036267714a9c3c0cd1",
+      "redacted": false
+    },
+    {
+      "path": "macros/RunMrfTrial.java",
+      "sha256": "d9e0f7bd0c17d5909b8b1799defaaa99e8ffac7323178bb686c95a9c7ac69ac5",
+      "redacted": false
+    },
+    {
+      "path": "macros/RunExternalFlowTransient.java",
+      "sha256": "27599eb19facbbba3b9509ed4e84c64f880544a57bca855467fb0df91c5ec3eb",
+      "redacted": false
+    },
+    {
+      "path": "macros/RunImportedMrfSmoke.java",
+      "sha256": "723b5595fa08b75918a8d99126e1517973c682caffbd3b4bc4c3c2269b339996",
+      "redacted": false
+    },
+    {
+      "path": "macros/ConfigureMrfSolverExperiment.java",
+      "sha256": "439290801acc2bd244427dc56dd361fe4f0b1aeb586655badfa41691091facc8",
+      "redacted": false
+    },
+    {
+      "path": "macros/ReadbackFrozenFluidStep.java",
+      "sha256": "3cf2451e30a6bb7497205a449ff476138e793b9ced2420543c3d6443dcdd81f6",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditExternalFlowMesh.java",
+      "sha256": "598610a93f97b0df060806d148e984a40579905ba7b2fc436f0d5028ba142346",
+      "redacted": false
+    },
+    {
+      "path": "macros/ConfigureExternalFlowPhysics.java",
+      "sha256": "04c6db0e62f349ba3ffa8fa001d0604a65642044756ca064be3e6cd6cbc4b2b2",
+      "redacted": false
+    },
+    {
+      "path": "macros/ImportMeshRepairCandidate.java",
+      "sha256": "bfca5ab0aa89f78643c6a3469aeb656ef904046551a8aacce2b75af477372cfa",
+      "redacted": false
+    },
+    {
+      "path": "macros/ProbeSurfaceFluidBridge.java",
+      "sha256": "ed3382ecaeb3d5d4852c5f80dd7a1489d271f4dd975115e93f6968b78e37fb35",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditBoundaryPhysics.java",
+      "sha256": "cdcb4b80a757752c7a4dc7634c9cf3d47ffa98db2802fb4ef50108d6e643968e",
+      "redacted": false
+    },
+    {
+      "path": "macros/RepairImportedMrfReports.java",
+      "sha256": "f489ad1420928191c023a5610567b29a22c09acd573c818de07750c5c6967283",
+      "redacted": false
+    },
+    {
+      "path": "macros/ImportMrfStepGeometry.java",
+      "sha256": "4b65c3e65cd40671f4ead58f3813d8eeb5b918327ed45021417580e36d8ee106",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditFrozenColumnQuality.java",
+      "sha256": "0ef51fff1d1d45caa23a70da0cf5e0938bebc1a6011c141a7444518bdc259f39",
+      "redacted": false
+    },
+    {
+      "path": "macros/ReadMeshRepair2Metrics.java",
+      "sha256": "59cb2106d67487301200db0b5842358856f6b64053cbb7b2c251652c86f8a905",
+      "redacted": false
+    },
+    {
+      "path": "macros/ExportMeshQuality.java",
+      "sha256": "fb22043536f8846c46dfe6f0fcacd28505890e38024fdd19d75d04fe14d5fe65",
+      "redacted": false
+    },
+    {
+      "path": "macros/BuildExternalFlowMesh.java",
+      "sha256": "f7d0b133aba21affd8bc515dd6d275a146d7d9bb01aa4825510af456aeee53a0",
+      "redacted": false
+    },
+    {
+      "path": "macros/DiagnoseImportedGmshLowVolumeChange.java",
+      "sha256": "c420bf7bac2c0cdf17eb5e173cd232e77cbfa7b7ac16fd0ae40a5349e5aec65f",
+      "redacted": false
+    },
+    {
+      "path": "macros/AuditAir3bYplus.java",
+      "sha256": "cb59949192c6f46163e88e630d17957e646b875f46f6d1356e71efe44e0b0c3f",
+      "redacted": false
+    },
+    {
+      "path": "macros/QualityReadonly.java",
+      "sha256": "844978e26bad5d1608e57af78b150d7eb1fa4d51d600c562e84e5f7c7121fae6",
+      "redacted": false
+    },
+    {
+      "path": "macros/ReadSurfaceFluidBridge.java",
+      "sha256": "998f59e1c6fba0caf3270936993a25c7d6bdbf9f23c5e3805c14cfe67fd4aba8",
+      "redacted": false
+    },
+    {
+      "path": "macros/ConfigureAir3bIncompressible.java",
+      "sha256": "94f7dc4b648e8af37a35ece6e4bb14a192ffeab9fbfae1205e4b5fc918edcee5",
+      "redacted": false
+    },
+    {
+      "path": "macros/ProbeMrfAlmDefaults.java",
+      "sha256": "352bcc0e188a0f3764ba29d9d0f73519313a11e28c7459798576e878e5dafe4a",
+      "redacted": false
+    },
+    {
+      "path": "macros/adhoc/LocateBadCells.java",
+      "sha256": "55aef16ffed4c3f8fa69765caf6efc493574182d195f68371b843dc839f7f8a3",
+      "redacted": false
+    },
+    {
+      "path": "macros/adhoc/README.md",
+      "sha256": "e2f77bf920eafc9c59d5b7c4feef0fd09921deb5d9e62154b91f9ceef61467fa",
+      "redacted": false
+    },
+    {
+      "path": "worker/run_pipeline.ps1",
+      "sha256": "09ff775d5c11f875d9c1c72d7a7a28c82ca885800d6af2f97e4f937e0e700633",
+      "redacted": false
+    },
+    {
+      "path": "worker/identity_probe.ps1",
+      "sha256": "51a83a8104d24b8b809cb8533d6bec8a908bbf7f293436850d2ab30f2decc7cc",
+      "redacted": false
+    },
+    {
+      "path": "worker/run_job.ps1",
+      "sha256": "dfd7f39828d8fc24dc255ca4fc87dac6bbf7ac6757993e360e23bf62c35f0728",
+      "redacted": false
+    },
+    {
+      "path": "worker/runtime_guard.ps1",
+      "sha256": "135b68022cd67bbf046e4fdda1616800ffc0ecd10cbb52a24c95af829371cd4e",
+      "redacted": false
+    },
+    {
+      "path": "workflows/README.md",
+      "sha256": "c2244655db1b2e18db0822973cb4d893828f1be2260657800699f7ffef2c2016",
+      "redacted": false
+    },
+    {
+      "path": "workflows/core/manifest.json",
+      "sha256": "5fc3ea6d59dfa5e5e22aba8768a9384fab5cefab15a7efa19f75e1b973ade32b",
+      "redacted": false
+    },
+    {
+      "path": "workflows/external-domain-2502/manifest.json",
+      "sha256": "dd4d3bbc327b5fb57e761bf869d2c4c1af92edd737d7a9acf6663cb49abe43b6",
+      "redacted": false
+    },
+    {
+      "path": "workflows/propeller-periodic-2502/manifest.json",
+      "sha256": "d91a34d898fd3bd69b066dd9c2255da63e61c43518fa1f566bdc12e8cfbdbd78",
+      "redacted": false
+    },
+    {
+      "path": "workflows/static-external-flow-2502/manifest.json",
+      "sha256": "a39e39f329c7fc24ef39616f59cbdf89ef0c23385b8132afef866f1ebc3df1f2",
+      "redacted": false
+    },
+    {
+      "path": "operations/production-catalog.json",
+      "sha256": "a92306ac888d8fe012eedcb09a1bb5ddecedce2968da052f1757b36087ead17c",
+      "redacted": false
+    },
+    {
+      "path": "operations/catalog.json",
+      "sha256": "3d7b39adee6ab4229a49554d2b52e8d2bb6ae36b04359c91c7d147dc84335d61",
+      "redacted": false
+    },
+    {
+      "path": "skills/starccm-external-flow/SKILL.md",
+      "sha256": "69037209b8e54f8c1a1a3063abcb63261ea5fe47e4ddf3e4f4eba40733d61791",
+      "redacted": false
+    },
+    {
+      "path": "skills/starccm-propeller/SKILL.md",
+      "sha256": "9fe15b941a631bb8a25679b9881554468894e95f35497cdefe875eec69413f78",
+      "redacted": false
+    },
+    {
+      "path": "skills/starccm-general/SKILL.md",
+      "sha256": "10adc73e423129934cbae958850b7ab84b5f27ecbba35069ad771d2feab2fcb7",
+      "redacted": false
+    },
+    {
+      "path": "skills/starccm-rotating-machinery/SKILL.md",
+      "sha256": "39bf9a63de6f239d45d599d8ebe59cd787563ad3a31b701ab7c4df87650a174a",
+      "redacted": false
+    },
+    {
+      "path": "skills/starccm-general/references/casespec.md",
+      "sha256": "e2d457231c516d39c89f771e9f93cbe8fc66769c3544901c96e562781405e21f",
+      "redacted": false
+    },
+    {
+      "path": "skills/starccm-propeller/references/jobs.md",
+      "sha256": "0bd71a8dc0a9be05015680ecb2a00a0b4214a35338bc72e5bbb93087d35e6ab5",
+      "redacted": false
+    },
+    {
+      "path": "skills/starccm-propeller/references/evidence.md",
+      "sha256": "5c7d62d6eb2f50d780b67f0b20465566694376026bba5610c358bfb5886d1479",
+      "redacted": false
+    },
+    {
+      "path": "skills/starccm-propeller/references/free-air-plan.md",
+      "sha256": "ef3e150b2e3ba905b420d23b9bec44fc1418f22ff79dd4c208f309ecce5fa35f",
+      "redacted": true
+    },
+    {
+      "path": "skills/starccm-propeller/references/preflight.md",
+      "sha256": "a79433893a422bdeb1fe4e4b6cde09920d8e7c7bd333a6789c43e3d6501a5d77",
+      "redacted": false
+    },
+    {
+      "path": "skills/starccm-propeller/references/siemens-examples.md",
+      "sha256": "822d425bb2796e7d0a07287dc9f1fa3266fd45f2f901b408dc1804441239093a",
+      "redacted": false
+    },
+    {
+      "path": "knowledge/index.json",
+      "sha256": "8be94a439a7226548389b3c234290cd146975960d0feece110d4cebe3d297cae",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_knowledge_evidence.py",
+      "sha256": "a521c55b9a24f44850418fd8198931054239303c69506a60fb41fa8f73b74ea6",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_deployed_pat_gate.py",
+      "sha256": "a87fd94a3d41ae9b8f975f53e45c06f07ce43ef6cc1fb085d23f19e640f39624",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_casespec.py",
+      "sha256": "fa931becbef0fffa7dd63b87da707f565f36ca273b4818f0287d9ccf1a2f41e7",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_worker_hardening.py",
+      "sha256": "81a63d939e1f3b8e0dd8376ac589b175f192076c6e558dec5729b279c4549c75",
+      "redacted": false
+    },
+    {
+      "path": "tests/formal_worker_test_helpers.py",
+      "sha256": "0e6f0993e59b9ffbb3a0a1811c09400a1195ae28da8b6447f1d8b98c7bbe1f8f",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_original_geometry_r17.py",
+      "sha256": "d71b2fecc5775097ccdb1e3514df781f57a9a0a89a1febdf849be6974871ceb4",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_run_record_gate.py",
+      "sha256": "34a1efd46c6d40b7cbc67ccdd9296fc670455acfa747266ffed7d270124c2f56",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_grid_convergence.py",
+      "sha256": "73a3770f99983383dd8f9b9ab0137a67179b3821e2554650e2bdca0597bc55cd",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_mcp_runtime_refresh.py",
+      "sha256": "d55545be0f796f4b7dbfdb0501953f03abb9a2c32d3f0f25bf01df043873d6ca",
+      "redacted": true
+    },
+    {
+      "path": "tests/test_status_consistency.py",
+      "sha256": "a2489b8e3d9ee6cd06e861eac5d24fd07ed72b38bc349ec42380cc169c21bfb2",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_static_explicit_mesh.py",
+      "sha256": "7aea0a78cb7ee7b67709ae66d87758aef2b10133d255e0509ae0b0380a4bc93e",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_progress_matrix.py",
+      "sha256": "c0497107b938956b49551011c62f79b39e50d064ed230a33fcb8d3bb355463e1",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_air3b_convergence_gate.py",
+      "sha256": "43238cbd2a798e3e30862bf32571083cf1218d52fca6de95745208f417820fba",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_progress_counter_aliases.py",
+      "sha256": "e3e82521b983482a1bcfa52ec5e2741f8c069a4d91eb138f5c93f705dd63b8f1",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_derive_solve_history_columns.py",
+      "sha256": "73d665d0d0fe7bf587aad06160f8f3ae67e1803d5b29b36db8d37f0d59fedb8a",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_trapwing_waiver.py",
+      "sha256": "5d434488bce0fc9237965ad7d08ced0773fdc3490523ba4b0dcada35bcb20ba6",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_air3b_p_e2e.py",
+      "sha256": "e04c4cab4ddbe6acb8cda7ddae37907699fc23b0b55eecc617ce57710ef108d2",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_re100_s1b_force_option.py",
+      "sha256": "c5afd643da21df8ea6c8b5eb9a3b98fb30dd54f84d2d4556a28dc02210c1669f",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_hypermesh_control_effect.py",
+      "sha256": "99e7b5aff7a3e870cc292f0284d07a0ba6af53549d3d49dd27b025b9e9079863",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_quality_contract.py",
+      "sha256": "57da4a8e69269aa449d1d325d25d2f73d1c0a051447aff3307a2b22824d0777b",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_hypermesh_quality_gate.py",
+      "sha256": "a2ea4fa860429b42410625020f8429427509c43a3d10c099f2b4f3091312bf76",
+      "redacted": false
+    },
+    {
+      "path": "tests/mcp_registered_acceptance.py",
+      "sha256": "9e86a3637de757ceda98de7fae71528352003dca5b8ecbed280512485ea04ffd",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_formal_run_entry.py",
+      "sha256": "ad8dfb3d9171d59a5d410abd8db33ad29d60f3f9ec8203fe3dd410ec20ded1e0",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_local_mesh_plan.py",
+      "sha256": "5c58121716f430317259cd47b6bcb3acbadb2d12598b6e6feb15649ca19072b1",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_part_classification.py",
+      "sha256": "19fd78cb0df01a7f6789f191d661c8256b15921ec5cdfc6769f2c6e63d90b6dc",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_product_accounting.py",
+      "sha256": "133a44283b64b27d49ba3cf2ef4eaa5df085dcaa26490e5a785f71eb02adfc79",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_restricted_local_mesh_trial.py",
+      "sha256": "b0d081d50aa7d99ba0ea6472dd2f8f61dc8248d9a0539670a3a3ab14fba88c1d",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_phase3_geometry_audit.py",
+      "sha256": "6e3df98c2d997a62355c2331b64d06a4e4a8538ce82a0eea65c8b127f397be6f",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_applicability_contract.py",
+      "sha256": "ea7f46a89a942da9864e7d5c6f9f3edff1e4409efc1d7f6e5fb97d681314f462",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_pre_submit_check.py",
+      "sha256": "c92592a57ba27149d0ddf5894aa724943673d1f0d86a391b151ec3785779920d",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_ref_applicability_audit.py",
+      "sha256": "f058409068552f8e7fb73888162d56950b40569da61916eaaf854e36178e3079",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_casespec_mesh_regime.py",
+      "sha256": "53c66fb06dda1184afec61f5244fc7e1f9b2f36fdd6b7b4cf9a33f0748eed74c",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_formal_scope_numeric_semantics.py",
+      "sha256": "e6de0ea1b35b3b0104c1addc8fe154f9b15e6d58c8231d5782aefb890ce09ee7",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_uav_prop_case.py",
+      "sha256": "f3efd3dbf2fdc00481a7e95d53a1bde1812a383e90aee4bc3e98487a555b54ee",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_size_variant.py",
+      "sha256": "f466dfea3d6354d7dbbafc51def0c2f8454826cbe2fb3706fdca0c6cf687c9e4",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_registered_workflow_v2.py",
+      "sha256": "b118f2752b3007797f2a94998ff018348516570cdd2db205d5925da99b0b08f4",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_mesh_scatter_gate.py",
+      "sha256": "88b3787879e7e004a232d40d8fbd6e8240d75f216a2e9a53dfcd10b081471aba",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_sensitivity.py",
+      "sha256": "7a5b4db52caeee481791941024ed3327f9f3a59fe56f3c09507b3211a25dd312",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_product_acceptance.py",
+      "sha256": "65769d78d8fdaff750aec65d43f145cb84d9ce83f60ae10bde21b474c1efda8f",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_local_mesh_admission.py",
+      "sha256": "29560d8bcf3f3e4bc6b7c8609b9871e5840c94c7b198d9836469d951420f9e21",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_uav_import_surface_gate.py",
+      "sha256": "3d58f461bf42fcd83d6bfa0463616153846f40022c117acaf54a20f4efe691bf",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_original_r18_review.py",
+      "sha256": "7fd516b2f3d937164ec0aa41c443ef782bcdc10ee0215452564d9626f02b77c8",
+      "redacted": false
+    },
+    {
+      "path": "tests/mcp_runtime_smoke.py",
+      "sha256": "3efdbbd4294658b38aa6fb5aa2bf204bdb9e3e79f048967fbde5c3ef933e6322",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_stage_handover.py",
+      "sha256": "60d8f1e4a7aa3ae5f8756c72c833f5e14bf99d5816055e54fb41126d32a405b0",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_air3b_numeric_gate.py",
+      "sha256": "5b36494a561f20846eb0de7f19522e0132d868564c1bf2aca277b8cc385313b8",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_prop_staging_drift.py",
+      "sha256": "81af69ca335cf0d7987c927cf009f4b11a03c6829fd4bb4d1e1012edcbe708de",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_original_geometry_r19.py",
+      "sha256": "0c7b6f6e2a9450f66ed6ec235e6fcffa2e04abcee8457f40cb2f57665289f089",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_engineering_reference_audit.py",
+      "sha256": "f47379ab719c9a32e33657d1851c7b7e765d50748d94b6516c5f87b020e9de3b",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_r24_cylinder_candidate_readiness.py",
+      "sha256": "7bfc05ad1aea20ab5617cacee7b001635aad70d2076ee901fd21819513e9e947",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_case_spec_diff_tools.py",
+      "sha256": "f6f41a336d434eadbfa9d534adcd951ea0a4acd22d10c301fc7a0da8ea1838cb",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_urans_pilot_bom_failure.py",
+      "sha256": "c5655d5e8a8b8fda74abe41e6fad59eb80b5161695b74b9d4b8e29e10787988a",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_runtime_manifest.py",
+      "sha256": "c6861db19eac9167005d54306a08f061ef583a8fe1227c131475cebbe21faa2f",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_case_spec_diff.py",
+      "sha256": "8a5a404993ebc9028e4dee0c456b600c430f02fb043615ceafe7f19d8897bbd3",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_kpi_ledger.py",
+      "sha256": "63e0b7a6412137551a6246f75133257d1499baa93ee4a770777b0d5cd0d47777",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_urans_campaign_statistics.py",
+      "sha256": "0479122bb1df43e461c3f54d89ccd8207c099d7ef68522726f9d41a102760f75",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_quality_productization.py",
+      "sha256": "df6ece852e4bd95d12cb023ac6746db0096e26a99cbbe612c9d9fe3d71e352e5",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_original_geometry_r18.py",
+      "sha256": "5abaf30966f3ad561b45a3138a43c3524f83fb2a9a3f25ac1de3254c1c77d8d7",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_convergence.py",
+      "sha256": "bf3b44334db74bdc9d994541d168ea443b2222297a0ad51a3d0f1d42658e8c4c",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_gate_waiver.py",
+      "sha256": "893e3dc926c449c150e365f31ab1094fcb063f689995f05f0824a501544e3f95",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_stage_plan.py",
+      "sha256": "f88bd5e5fcb569695d055bf9ecb95891c6008e677817716feaee5b0b172158f5",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_sensitivity_source_has_no_time_budget.py",
+      "sha256": "e8db473080868264ce6ab7e5064ca37481103af86737ecb7c88f9c0695bf04e7",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_uav_campaign_status.py",
+      "sha256": "4c30e24422477f0bc0102801a002fe9573a92400177ba428dfe9ee4d34e638a1",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_resource_contract_independent.py",
+      "sha256": "12f15fd1ff5f6ff0f9807032c896cf2e9589a78e143ebe60da92289e5a41bdc2",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_surface_mesh_qa.py",
+      "sha256": "54f0042d77cbe02f6501f74497f8afce3036088fc5ff613641bb111a62717065",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_r23_v2_offline_review.py",
+      "sha256": "bcd808395d3c6cf68686d8f47e7db1b995811123bc3a1127a1e0b47e54e5db9a",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_formal_numeric_transport_refusal.py",
+      "sha256": "c2b7fc8cb63b63ea557f28f3b05414761e0e569527ec1a35d9c5ac77fcbcb472",
+      "redacted": false
+    },
+    {
+      "path": "tests/failure_cancel.py",
+      "sha256": "ea5bae2306d8464eab604f2dbacb782844b558ef087a2ccd64760458030d8204",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_deployed_acceptance_evidence.py",
+      "sha256": "e8f073e4a8d686a5ec63f23d40c0b64b487c39eb5015778fb817bd77d0d009cf",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_e387_import_runner_mode.py",
+      "sha256": "abdbe9c2ce151f711924ccfa423fff37976b161b0c91dbaf014174601a730383",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_static_flow_diagnostics.py",
+      "sha256": "56c57cc8d366212e22a1c9eb611e47d780f0c8478b7c81a6b6d72cceff244b09",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_mrf_plan_spike_gate.py",
+      "sha256": "2cfe67a41267b7d44a12585df8a55c2c027b67cdb3e48f76828505b10d8c976a",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_rotor_import_trial.py",
+      "sha256": "f39b268ae99b7de24dffbc456f95ad761d18f235222c382a321ee491330df2ef",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_signed_ladder_summary.py",
+      "sha256": "085e5ded7f5170e6bb57a3cef940047c72071b93bb2a9a24bb295eefbcb575af",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_air3b_r16.py",
+      "sha256": "a989c847a3abe8985476fbf8aa18a54ac6ba9595df5def57eb4f64533fd9589a",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_combined_axis_real_counterexamples.py",
+      "sha256": "e87fa447689f4dc304a622bc298811bc5d42e5ce133db266b8d44b63beec8549",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_mrf_chain_contract.py",
+      "sha256": "26c2f772d023f658c9b585b2144691920eb92580496c57d6cf5f6ffa99ec12f0",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_case_spec_macro_key_uniqueness.py",
+      "sha256": "1d6e7c464d2783ca699d99f9c65b07144e20f357841cb58cae407bf08f2639d9",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_uav_airfoil_case.py",
+      "sha256": "6ee979dce86afc905dc1220b43681ead37a8dea491cd6a0f678e34bc0a258235",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_iteration_error_bound.py",
+      "sha256": "d62050f839421f8c5c1e54fbb96df2cc065215999992b671e8c5eed34088f7ce",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_cylinder_nested_leaf_lookup.py",
+      "sha256": "6cf2b21fc089f83f476dfbfac1b080fbc8c1cc78ef6c860a2cce34bb881aebbd",
+      "redacted": false
+    },
+    {
+      "path": "tests/integration.py",
+      "sha256": "df2cf86390e23be9d6d91dbd3c2e1e0ab7d560bd18ce4a30d41252560401eee4",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_prop_geom_audit_contract.py",
+      "sha256": "c398a5a804876315d876851b222aafdf8043eca11867a88f90a6c54e23ba18e4",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_formal_worker_deployment_guards.py",
+      "sha256": "eae10479fe0fde0ff3d5c6f24575f9ca0b9730f67ffa2878b69431c918acb919",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_formal_worker_io.py",
+      "sha256": "cdfe694958bd969b39b78a405566112335b61e7ccd50cc499c719aeb8c42a463",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_formal_catalog.py",
+      "sha256": "a67f8381643ebebba7b2a9c769061a20cd4e0bce11adf32795432aa975de4620",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_original_mrf_roles_r17.py",
+      "sha256": "e4bde34891e44f76ed1de041f2163b7b0840ed705ed2cb096c1c0198fd9e411e",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_runtime_review_coverage.py",
+      "sha256": "30bec8c4598764d3da295ed14f59032edd520bea61eed882c59f7b9875473ae1",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_readback_diagnostic_admission.py",
+      "sha256": "6abe8be977eb3018da4c684781af27426b6349f7116c6194fa112aed62d539a0",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_formal_run_entry_review_fixes.py",
+      "sha256": "7b0fbc24ef4d8d5eff095ab6252062f076aed46694e60d1ee2d00d648ee85896",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_crmhl_mesh_spike_contract.py",
+      "sha256": "669ac0592fcabc7a1bdcea8360a09b35b73b23481196fb55007bddf5969593b6",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_uav_p13_ownership.py",
+      "sha256": "b1d65c8b2a78d5e7b7ed00d8ba200ca77efb80b0039f9ebf581058f0a9955b4a",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_production_catalog.py",
+      "sha256": "7cfc036edfc73ae2ea3e11df5e2e5ad3026cf3fdf3ea0fad8832ba00dd43c0a2",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_formal_study_reuse.py",
+      "sha256": "007c8eb172a0d9debbdeb813329709251815392cdc5a0219018582d6255173b9",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_formal_worker_credentials.py",
+      "sha256": "9acf31bb08b5b909369105429d1f5deca2c39d14fd47670004041e8862c9c270",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_time_budget_execution_layer.py",
+      "sha256": "21e4b2824d1d47ee6ba56a27b0f7f64875b7283cab22908efb78c91676fca341",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_registered_workflow_mcp.py",
+      "sha256": "b3761a4426f5282f28d8abb3de041ade68d2bed42b359eb581133a4aae58ecf8",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_reference_policy_derived.py",
+      "sha256": "4b15c76c306de877ee76639707526850efc3085b96dc6239e193fcd83205961b",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_gci.py",
+      "sha256": "a64de8d11c817819a338ab3fea2e39373b819b7af807d7d0fba6faa33d080bd1",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_production_runtime_guards.py",
+      "sha256": "8a5dc5d91bfd92f37eb824d4327fd2c774a82bb12e65a5eefb7858dc1e98cb73",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_catalog_status_registration.py",
+      "sha256": "3fcd4c09c06ebdf879b4c83f31d7e7fd9abd15cd5b4b2968720a5e51e6b6465b",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_uav_adhoc_start.py",
+      "sha256": "16c7a947923671f2d0a6366422c38079e9e27b28f02a47db79c588053d92180e",
+      "redacted": false
+    },
+    {
+      "path": "tests/superseded_pins.py",
+      "sha256": "9575515b25eef615ed8cf43abb4c9af8047a54540e55cb5caf7e6ec2ca3d2db9",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_phase3_admission.py",
+      "sha256": "bcb0239ee6f9967eb95612d176231cb2960dffba6dd63a274361c01f9d0ce883",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_air3b_contract.py",
+      "sha256": "e9b10396b8a644a5877f054481e3db47b069d336003de21b62afe7a47aecbb95",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_operation_wiring.py",
+      "sha256": "1b3cf82c91076f754d7784108b03af055047aa0a45012ff8fb5619326295c703",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_phase3_trapwing_case.py",
+      "sha256": "00c405332c5d42c8d106d5fc50184aa7261e9a6b8c8227ba1bc7598e2bb30285",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_runner_hash_handover.py",
+      "sha256": "d1d830782870f176e724cda3ff9f8f7abf74784259c9c944062082781b3c4091",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_pipeline_description_hygiene.py",
+      "sha256": "e3df17781db5a49109d0b760f4b9f73f749cfdfcd1ca57deb556bb290d047460",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_cell_spatial_diagnostics_macro.py",
+      "sha256": "74499d1fbca6c124d11e69dc805e627b2a60d0cbb85a9607c1d870d836b5a9c3",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_sensitivity_study.py",
+      "sha256": "d21fa58d0ee5e583de994ad706bfac3f59c5e868b89c12c795117a30fa5fc259",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_mrf_contract_divergences.py",
+      "sha256": "3bec86dbf0bcaf68f5beb20f9fb9dab19422370f02c4cc334f1e105f39e233e9",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_supersession_ledger.py",
+      "sha256": "6c7cd0dd3410ae7720db6ad02df47bb18950aae5261f89ec4ac665feda2da75c",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_external_flow_transient.py",
+      "sha256": "a9c315d446fdc88852e4a58756b8ab994c3bcbc6f8f4c6f19f5f21c673181293",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_air3b_r10.py",
+      "sha256": "8dafe5e6619e151eb37ec25e9ff506716c92074398ff783b4ce9a0e7e8c5d59a",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_mrf_finite_iteration_policy.py",
+      "sha256": "f2b4aa4689a43177a579690980b8b4f535d2195cf918299fd6790d3f2d7d2bd6",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_release_scope.py",
+      "sha256": "2b83cc51fea6666fd4cd24bc6389583dc3c76998b2be7d2d72475c1e27197995",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_trapwing_staging_contract.py",
+      "sha256": "fce2b24285488356e89e8d356c64fdf935e44a5e2122a829daa3b6462aaa52ab",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_interface_match.py",
+      "sha256": "2a02b35449844de36efd12930800552279eea8ec08577e3bfdfa39858d968573",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_wave_plan.py",
+      "sha256": "cbaaa55b24179599b46db610d98283dfca92bfff0308e686e400790dd48d2751",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_mcp_tool_surface.py",
+      "sha256": "518d4ac32e0890e58b903668ba2c4c5b561c40c8cd8af7712ca3643c01f69b83",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_full_chain_admission_evidence.py",
+      "sha256": "8f4192fd863a200f7d37878945e8b89a006bb33638ee09633ac0a1d09128af1b",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_contract_amendment_c3_20261023.py",
+      "sha256": "455a46fe00914109499dde2648a37a604c408e38ea2fdd8c02b5576450cded16",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_mesh_acceptance.py",
+      "sha256": "38d20160c43a77821b733e1524c541c43a823b497a00e2337ba4fa6df1e3f1a0",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_original_geometry_r21.py",
+      "sha256": "28459cc3b07ae569d31815dfbcfb024fe4b99631e6d888a28e1c5a6ead3410b6",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_mesh_quality.py",
+      "sha256": "b808635c986e99eafaaf2b038b5a115de2f4854a3919374430bea14e1a1024e9",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_method_acceptance_packet.py",
+      "sha256": "f505fd22e5e61309d62cd78152890f5fc0d8ec5e33b4c43a3bc33e385f29184c",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_original_r17_review.py",
+      "sha256": "75ea66fb4ba9b0ed0e59312652fa7eefd8e494748a003a409df53ed684b5fa19",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_claim_commit.py",
+      "sha256": "6bf48da37e39eb21f3de981f28d30def155e3d4f782e0a9713a27063bf6af377",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_uav_adhoc_fetch.py",
+      "sha256": "47119452b8e823bf3f62921a8080d0d1def8685af6e65bc0525a981045a4230d",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_claim_lint.py",
+      "sha256": "d26dce2aa54ad9b2c1650d780fe1c77a0902d43cbc512ee51a6a15fcc498b347",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_report_quality_labels.py",
+      "sha256": "5d124c5d9b17bd638e90945086232410a653bf0a4a5c8fff33b3bc44ad109e4f",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_original_geometry_r20.py",
+      "sha256": "f766616153da41c1cb54b8633b14b11b0ef85ba90c6f849384e15997eb61fb72",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_boundaries.py",
+      "sha256": "813793ea18e45ed6c94772dd4ba19e7cb31f9e672255f9df7fa63a18898d0c05",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_translate_variant.py",
+      "sha256": "c62b4633a486aa641d06ab2249980ebdd099c1761451681f25309abc324e2133",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_mrf_plan_registry.py",
+      "sha256": "39c3df8c8b0d46c3370dd0b1d68834aae5d29ad65039313f55ce760394dd3f53",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_windows_resource_contract.py",
+      "sha256": "266b2f4844a6859bb5d129675aff01f96844162eb725b51fc5695563865810de",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_reference_comparison_verdict.py",
+      "sha256": "53c93b1205d3860232ce44138dade04bec9765ab367bea28ba566e6b47bd42ff",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_plan_mesh_gate.py",
+      "sha256": "eb8c0a39f203a49c382f20c57d48ba3e122ba2befcefaab3c1ad903a7cc868ad",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_resource_contract.py",
+      "sha256": "95aa635931cef9cf73dd3e69c7b9ae5c1ca077b5836f34dcc42e075e28a58a1b",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_evidence_checks.py",
+      "sha256": "305b2c12fd1ec6318d519b0fe15a642c03ba120182ca088c1e00036525a84396",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_contract_amendments_20261023.py",
+      "sha256": "3c0171135f06a830da5186f284c534fd49e2d6e8a8bbaa41bd9f01c34dc33509",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_star_body_tolerances.py",
+      "sha256": "fbe1850a3d5cfa4faa6f45cdb101fe0bbab52d62afda845d030b820b92a954f8",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_region_stage_handover.py",
+      "sha256": "d7532d51c7f9590b1fca61e661aaaf74d41bc0cc1daa57fce257c218cc4cca84",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_audit_convergence_repair.py",
+      "sha256": "871d8a61ffe12932402346c101bebe374fb11d0a6739b4b2b23bb1ad1049479c",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_production_catalog_acceptance.py",
+      "sha256": "da8ab6bcffdfdd35daa3fd12b9ef84fe6dc6cd3c0a688013e3d043c2812df0fe",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_formal_run_report.py",
+      "sha256": "15fd7566a7cc52ab08a11558d3e669502b26688136d89a04015915a0abfb4d22",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_re100_s1_minimal.py",
+      "sha256": "bccaf01042d2e0ce6c2ba3c4ecc7a22594c3b3dcb5be3178c98134d4db43add7",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_crmhl_geom_audit_contract.py",
+      "sha256": "667a2914e86529150c246b76093a66cd3c8c53f2591abbddaf8abfc7fb9e6ce9",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_model_form_swing.py",
+      "sha256": "915ae3f4c87984e153421a7845c4b0ae88914e8c05b1ccd197a66abd22187719",
+      "redacted": false
+    },
+    {
+      "path": "tests/test_domain_sensitivity_gate.py",
+      "sha256": "ba0e265ad008adff1a4afebc3b3cc704763cdca449a065ba3cc4708c2de1ce69",
+      "redacted": false
+    },
+    {
+      "path": "tests/fixtures/claim-positive-signed-ladder.json",
+      "sha256": "d50073491c2d727daad124cab27ca37856ed5cd1551c5ee0edd2b032c9b0c2eb",
+      "redacted": false
+    },
+    {
+      "path": "tests/fixtures/mrf-contract-known-divergences-20261030.json",
+      "sha256": "017da0eab7b92136b4cbe061381a9a624c9d7f6b4e4b583112dbdbfa1af70199",
+      "redacted": false
+    },
+    {
+      "path": "tests/fixtures/mrf-plan-config-golden-20261030.json",
+      "sha256": "3e7a93dd60f0ef1a60555cf8604fe2ac6a660ae01cd333b1b75fcb099006f863",
+      "redacted": false
+    },
+    {
+      "path": "tests/fixtures/formal-numeric-transport-refusal-20261019.json",
+      "sha256": "dcaf81a51180067caf203e06c22d420dd58c8fc6adf5e62f4224f15849e1b359",
+      "redacted": false
+    },
+    {
+      "path": "tests/fixtures/wave-plan-20261030.json",
+      "sha256": "6064b1ebf5618c0b6e3553e4abb1e6356f7e153af74e226cba7eede665dc44db",
+      "redacted": false
+    },
+    {
+      "path": "tests/fixtures/claim-failed-run-citation.json",
+      "sha256": "6b09537d296039689e6dbdd15936b57d58f9cd99f54b0fbc054e37e13f6605eb",
+      "redacted": false
+    },
+    {
+      "path": "tests/fixtures/mrf-plan-contract-golden-20261030.json",
+      "sha256": "aaad5d5ca8a7914ad231db1860786f5397c0d73cc666d5e8f5a3ead68b00eda2",
+      "redacted": false
+    },
+    {
+      "path": "tests/fixtures/prop-geometry-audit-staging-drift-20261031.json",
+      "sha256": "f6299cda71cf3061f5ebc33ee1a01bbe125ffcd5aae0408c6c0c3081c7450c97",
+      "redacted": false
+    },
+    {
+      "path": "tests/fixtures/formal-runner-review-surface-20261018.json",
+      "sha256": "9cd6a095979cc144db5321bd2a6805377d8fdc531b2460aa27c636470ab10274",
+      "redacted": false
+    },
+    {
+      "path": "tests/fixtures/resource-log-line-metadata-20261009.json",
+      "sha256": "f4e4e11cb11188f8003851020b08cfb1e172d198d5802a9d507f1ee1c06dab38",
+      "redacted": false
+    },
+    {
+      "path": "tests/fixtures/formal-runner-review-surface-20261019.json",
+      "sha256": "eafd96eb1e57b304039c5aeaa57539988c0f37020b4f78aa3bb8f6b168d7a8c1",
+      "redacted": false
+    },
+    {
+      "path": "cases/free-air-propeller-360-mrf-prism3-adjustment.json",
+      "sha256": "dc59b031dd911f2ecb8f6f9e9aa22ed336fb6ec6030b9b3d802a25bb9946837f",
+      "redacted": false
+    },
+    {
+      "path": "cases/free-air-propeller-360-mrf-prism-mesh-execution.json",
+      "sha256": "9c4186d4dfc597ba6e355a9a125af13bd1a240226a6fd9f87158a540bfd4a728",
+      "redacted": false
+    },
+    {
+      "path": "cases/probe-gmsh-three-blade-tip-transition-a.json",
+      "sha256": "f54ea20bdc715bef71b73a6f9b9a7353d3f818a95865a33dd1b4fb33aaf1f9de",
+      "redacted": false
+    },
+    {
+      "path": "cases/probe-gmsh-tip-transition-interfaces.json",
+      "sha256": "cb0f14ec9d6d6eab2982d35ba0740df785b4bc4d788896d26f020a4a433dd255",
+      "redacted": false
+    },
+    {
+      "path": "cases/free-air-propeller-360-mrf-prism4-adjustment.json",
+      "sha256": "acf3c0b6944f9a183ee59470956f5ef0795aa273ef8352c8c9ef79036fcbe7e4",
+      "redacted": false
+    },
+    {
+      "path": "cases/probe-smooth-model-mrf-interfaces.json",
+      "sha256": "d683288168393e572e97de596a6f82fd0e49679cb7cfebf10f42afade6165d28",
+      "redacted": false
+    },
+    {
+      "path": "cases/free-air-propeller-360-mrf-mesh-execution.json",
+      "sha256": "6f4c5945c1d42e780ee27233948daf14257782145bead96f8543072d3dfeef51",
+      "redacted": false
+    },
+    {
+      "path": "cases/clean-gmsh-tip-transition-host.json",
+      "sha256": "6a5e647949655e38487bd527fdb4261fba9d20f5dc2a2d272aea8459691fa766",
+      "redacted": false
+    },
+    {
+      "path": "cases/probe-gmsh-three-blade-mrf-interfaces.json",
+      "sha256": "5326be6ae62475857208c7a15a299e633ea061e76dff6d23e34a3bb43b5d5313",
+      "redacted": false
+    },
+    {
+      "path": "cases/audit-gmsh-three-blade-cgns.json",
+      "sha256": "8f696c56736df299f168450286adba084c5650e638dba216e3611ea0db1dadef",
+      "redacted": false
+    },
+    {
+      "path": "cases/probe-synthetic-three-blade-step.json",
+      "sha256": "af97e607f96e27dc57da9bff25675aa852d4363cc9bedc04a76636ec411cfc66",
+      "redacted": false
+    },
+    {
+      "path": "cases/free-air-propeller-360-mrf-prism-adjustment.json",
+      "sha256": "4f163f6c0e85855fb3f58ae5f7af0b57431dbb574c9d7c8af15db07f0b9cb201",
+      "redacted": false
+    },
+    {
+      "path": "cases/probe-gmsh-three-blade-cgns.json",
+      "sha256": "b4ed0d78bf7fd73d5377d0ed329fb731b436249b5477ff3b1040a9c64e07278b",
+      "redacted": false
+    },
+    {
+      "path": "cases/free-air-propeller-360-mrf-regions.json",
+      "sha256": "c5afad36ec98ce99903329ddd1353049bd5ac712173145d8622e62dc22bfbd08",
+      "redacted": false
+    },
+    {
+      "path": "cases/audit-gmsh-three-blade-fine-cgns.json",
+      "sha256": "349d857786d9cb39f8b89830f5490c8215e5fd6d67d70e6535c86eb69506a3fa",
+      "redacted": false
+    },
+    {
+      "path": "cases/free-air-propeller-360-mrf-zone.json",
+      "sha256": "6eb3a7e5390cbe0c0febf47c9d408b794bad15f53d396b8adb64554a5496c344",
+      "redacted": false
+    },
+    {
+      "path": "cases/audit-clean-gmsh-tip-rotor.json",
+      "sha256": "446efd5850f95aec486c8b0d4507b55a461516e6a066dc411b7879567ee81782",
+      "redacted": false
+    },
+    {
+      "path": "cases/probe-solidworks-propeller-step.json",
+      "sha256": "996b119cfb8aade25cde8058441e2e93e858800947c73af99ba4a5f6f0511486",
+      "redacted": false
+    },
+    {
+      "path": "cases/diagnose-configured-mrf-face-validity.json",
+      "sha256": "457ec10562b103ff090a0c1339ec4ce0e135fd7ef10a1bbf229fbb1ca7009fa9",
+      "redacted": false
+    },
+    {
+      "path": "cases/probe-heeds-propeller-prt.json",
+      "sha256": "59e7b6fb7c8e3e4761811273f793ad676ba13e8e1b7f1f3a0328d26ed477b76c",
+      "redacted": false
+    },
+    {
+      "path": "cases/audit-gmsh-three-blade-netgen-cgns.json",
+      "sha256": "e7d8e4016587417dc5b69d61cb2de5285138fa8a63ac8dae1fb2f5ec7e59eb06",
+      "redacted": false
+    },
+    {
+      "path": "cases/probe-synthetic-three-blade-stl.json",
+      "sha256": "4f2bb3f5f7e79acf6eee5581694bcd2671c8c23bd9e0282fb5bdf0ff7d1dc136",
+      "redacted": false
+    },
+    {
+      "path": "cases/free-air-propeller-360-mrf-mesh.json",
+      "sha256": "12290a7d94115791a03a77c3d266c0a5fad09fd84694ae093032376f3f363ea7",
+      "redacted": false
+    },
+    {
+      "path": "cases/probe-gmsh-three-blade-netgen-cgns.json",
+      "sha256": "a8dbc4b95db1557e87432d1b1996e9f499c409fb93310d7eb73e2a45d00a17cd",
+      "redacted": false
+    },
+    {
+      "path": "cases/audit-clean-gmsh-mrf-boundary-faces.json",
+      "sha256": "ec24e59b57563dcfd0c2c7d49eb57b70ac1f0058c96cbe3d3fa5df77dc40a381",
+      "redacted": false
+    },
+    {
+      "path": "cases/free-air-propeller-360-mrf-prism4-mesh-execution.json",
+      "sha256": "6d5aca7bf7394053ba2e83713235fdc0220ed0114f4329186fa233e82e5aeba8",
+      "redacted": false
+    },
+    {
+      "path": "cases/audit-gmsh-three-blade-tip-transition-a.json",
+      "sha256": "51b30a9da6a8785628400fd776cb5e20aee28108bee13226fcf968cfad095d58",
+      "redacted": false
+    },
+    {
+      "path": "cases/audit-clean-gmsh-mrf-boundary-faces-initialized.json",
+      "sha256": "0a731bc786a3426dd14b9630fc4a97e85e5d74bfb1240ccb2e868b9bac8d3756",
+      "redacted": false
+    },
+    {
+      "path": "cases/recover-rotor-solids-trial.json",
+      "sha256": "18a2c7341914343b0e0f84590649e880af28e5f45854ec2440f650d63c5595c9",
+      "redacted": false
+    },
+    {
+      "path": "cases/configure-imported-mrf-physics-pilot.json",
+      "sha256": "f00a39b7f626b7eb6b88024f50085d6042458222e6ea1d4e503bc0c89dd917a6",
+      "redacted": false
+    },
+    {
+      "path": "cases/free-air-propeller-360-mrf-split-mesh-execution.json",
+      "sha256": "a4aefe7b62b4c24b06c013af9287dfea67624bb4679387b2b285d7b89de71bcd",
+      "redacted": false
+    },
+    {
+      "path": "cases/audit-clean-gmsh-tip-stator.json",
+      "sha256": "5075999938ef3487b1d447b312f604ee58912e086d86f8b8efea8692b0ddee66",
+      "redacted": false
+    },
+    {
+      "path": "cases/probe-gmsh-tip-transition-stator.json",
+      "sha256": "ff1be159f656a75f3cfe04e0721dc097a3054b69279df1f68c4bdb9b9a1d5668",
+      "redacted": false
+    },
+    {
+      "path": "cases/audit-gmsh-three-blade-stator-cgns.json",
+      "sha256": "b551c7c1d73f0f436a1cca836c7aa41a2281b4a2a8cdce21cfd8d21f7b99f8c8",
+      "redacted": false
+    },
+    {
+      "path": "cases/free-air-propeller-360-mrf-prism3-mesh-execution.json",
+      "sha256": "0d21003b40860c3062ce2e349943bcc532e2d1943f7583682967c8a6e7e67921",
+      "redacted": false
+    },
+    {
+      "path": "cases/probe-gmsh-three-blade-fine-cgns.json",
+      "sha256": "604f4133ebe409609f0d8e7b08ffcd7fa0c33d65c52c969a52fcaafc50e18957",
+      "redacted": false
+    },
+    {
+      "path": "cases/probe-gmsh-three-blade-stator-cgns.json",
+      "sha256": "a2b564d207bd040f80a5520a8677566bc8fae767c2e92cdd41cead3134639ca9",
+      "redacted": false
+    },
+    {
+      "path": "cases/free-air-propeller-360.json",
+      "sha256": "ac96a7f9963578b20ed15bc81a7407e12ffa7879838e84cf65717307681100e1",
+      "redacted": false
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "4fe75062c5d424bbc86a8cd58c63ab19aeffe4f0a0e100022252c8032e12ee5b",
+      "redacted": false
+    },
+    {
+      "path": "requirements-lock.txt",
+      "sha256": "0d97e8447cfaddfb13e84f98a242a75f73fa9ff77988be212627c967df32916a",
+      "redacted": false
+    },
+    {
+      "path": "runtime-manifest.txt",
+      "sha256": "171d9e804b5004943da481b4743515864bac512fbcc687b8ce51a17bc33cafcb",
+      "redacted": false
+    },
+    {
+      "path": "release-scope.json",
+      "sha256": "7ef0f2825d9a964426a8df4deede660c58eaaef91476cc3b6c9a75b920ff4c5e",
+      "redacted": false
+    },
+    {
+      "path": ".codex-plugin/plugin.json",
+      "sha256": "da132079ac4e2076ad60106651a2b220cfcb9dedc3ceb2f49dd34cc17ca7a321",
+      "redacted": false
+    },
+    {
+      "path": "docs/mcp-runtime-updates.md",
+      "sha256": "d8e653e1cd7afd1e53d4eec4bfaff15ba033bd1a22404323d1b057a3578bebe9",
+      "redacted": true
+    },
+    {
+      "path": "docs/mcp-user-guide.md",
+      "sha256": "73f2be2c6b5009aa935bfd2ec01c9621674a5d13c4b2689e5599e510579833c7",
+      "redacted": false
+    },
+    {
+      "path": "docs/cad-modeling-policy.md",
+      "sha256": "eb2950c239611a75b30336f8c46d85584fe5ebeff52897689fc3ccf743338990",
+      "redacted": false
+    },
+    {
+      "path": "docs/mesh-tooling-policy.md",
+      "sha256": "8e278e5ca23ed97ec899993f5fc263bfe9911085a11ce82cefdc557e6b84e2da",
+      "redacted": false
+    },
+    {
+      "path": "docs/quality-contract-20261020.md",
+      "sha256": "b8417b31f22fcdfbcd93ce9d2cddec492f4b364cdb2761d0b1cb2d844c8c557b",
+      "redacted": false
+    },
+    {
+      "path": "docs/product-acceptance-and-release-policy-20261018.md",
+      "sha256": "d4580486179f2f264d8f9c289bc35d335e3f401d648b6fa84d5975ab57b260af",
+      "redacted": false
+    },
+    {
+      "path": "docs/release-scope-20261102.md",
+      "sha256": "7de4d303d129c6d3b8293d3f125d7a020c17d68e70ded41f4a1df33601c26d34",
+      "redacted": false
+    }
+  ]
+}

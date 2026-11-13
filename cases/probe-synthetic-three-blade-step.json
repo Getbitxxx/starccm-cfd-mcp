@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "scenario": "geometry_mesh_probe_only",
+  "case_ref": "library/517cfd27aa4cf69519470d301d9088d060ec1cbb85aff7e8b848207d8bd065d8.sim",
+  "objective": "Isolated STAR 2502 STEP import of new synthetic three-blade solid; original sim is only an import host",
+  "candidate_cad_ref": "library/cad_candidates/three_blade_test_rotor.step",
+  "candidate_sha256": "2265b5b05b4828c2209f7228e5a4890369f1d8b1b05b1b613f2388b502ef0ef3",
+  "source_length_unit": "mm",
+  "rotation_axis": [
+    0,
+    0,
+    1
+  ]
+}

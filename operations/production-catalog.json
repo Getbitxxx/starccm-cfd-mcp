@@ -1,0 +1,1693 @@
+{
+  "schema_version": 1,
+  "policy": "2026-10-18: pre-reviewed operation catalog + runtime review materialization. No entry may run autonomously until approved_for_autonomous_run=true and every pinned hash still matches the bytes on disk.",
+  "entries": [
+    {
+      "id": "static-sphere-chain-v1",
+      "version": "2026-10-19b",
+      "pipeline": "cases/static-sphere-external-flow/pipeline-production-v1-20261018a.json",
+      "scope": "Exact reviewed sphere inputs, m and +X air external flow; no arbitrary new shape or input admission",
+      "release_channel": "v1",
+      "sample_specific": false,
+      "required_input_preflight": true,
+      "approved_for_autonomous_run": true,
+      "approved_hashes": {
+        "pipeline_sha256": "435768113bd89d6f60d987a045afdedf33d18daa53c5ecfd975101c9d8725843",
+        "macro_hashes": {
+          "AuditStaticBodyGeometry.java": "0289ee652e41105e9299151a28d5718f22263346f197caaff036678018ba4b2b",
+          "BuildExternalDomain.java": "b92d682c88eaa1d1ac742abd80f7d18d7095c8e6c1983ac701398c752e8e51b5",
+          "BuildExternalFlowRegion.java": "55c1c9548b2b0b570bed954383f009e616feecaaf4d5e8745458c5670fefe96a",
+          "ConfigureExternalFlowPhysics.java": "d7c581eb00a72470bfc664e61ff8252cce422281e2c8389c6d4e2b9d568bf051",
+          "BuildExternalFlowMesh.java": "f7d0b133aba21affd8bc515dd6d275a146d7d9bb01aa4825510af456aeee53a0",
+          "AuditExternalFlowMesh.java": "598610a93f97b0df060806d148e984a40579905ba7b2fc436f0d5028ba142346",
+          "RunExternalFlowSolve.java": "10a4db85c8420ea76bbfffe0a9262f172455c0b8ec598848e26d925d74cf52a0",
+          "AuditExternalFlowConvergence.java": "467518f959b4c39ed1bb4ca33e52678abbbaa8c73b488c6a3a2fa6fd7be0d8c2"
+        },
+        "controller_sha256": "f4c5aeb805ed63edb3b505465d2f14df378e5cf24eb10c1808755165eb534418",
+        "runner_sha256": "5b0d8a3d02f3994272ff5f3540d650cfb30a0dd10ecc2fe5520aeaaa30ff5f46",
+        "support_hashes": {
+          "scripts/production_catalog.py": "893c8360d46926a10eb07e8f7e9fc7fafbe3657695dfee39ef9ebeac4f58a16c",
+          "scripts/resource_contract.py": "586cf1a2bf63143d96bf55f29ccfae26ffc4805e464b6525e73d7d039330b3ea",
+          "scripts/stage_plan.py": "235bd5b740b804258b24480753ed231b410aef94f5c3c3f3f5c7195ff7c09e9d",
+          "scripts/run_record_gate.py": "fd7b0d03eb44edafe2678d0852989cb6fbb24931ed8773b6e7f7904fab14721b",
+          "scripts/progress_matrix.py": "822d1c336e4348008692076791729d525ab6b0555d8df54ed3afaff82c3ca1b7",
+          "scripts/backend.py": "cb401ca292d26113b53c0e0448675d103ffee901f9c62f59804f6a39435f153b",
+          "scripts/generate_run_report.py": "a5e66cb716a16689bab090d42f272e11dc322d0c0eb133226dac4c81edb855c3",
+          "scripts/run_static_external_flow_e2e.py": "f740953541f9099d3a9f6d51bb19949dd03aaa34cc7465760a783d2be793b775",
+          "cases/air-three-blade/air3b_summary.py": "28b166c31bb26147e2bc577ac7714d7cdcef56991bc9816a2174d65981a48ebe",
+          "scripts/air3b_convergence_gate.py": "f497b859c18625baf029d6c400902499147776077fac7244e4ad42946261e6a7",
+          "scripts/evaluate_convergence.py": "654de31856680a844415e58caa84f73184429738610959e81cfbaef015da5e6b",
+          "scripts/security/provision_restricted_worker.ps1": "c435332aa1480459eb26415edfea780341a83a87c1db18980ed1751c0eb9e9b3",
+          "scripts/security/grant_batch_logon.ps1": "a002191fa22fe8eeb43e62d6bcced8d21a8a0ecefd9783a5d79f7d782b79fcf0",
+          "test-evidence/restricted-worker-20261001/local-mesh-trial-config.json": "e1861433edc4aaaaaba727cdf0a4cf178e74d066214aaba7135a2f8b98c0bc31"
+        },
+        "resource_contract_sha256": "586cf1a2bf63143d96bf55f29ccfae26ffc4805e464b6525e73d7d039330b3ea",
+        "admission_hashes": {
+          "scripts/production_catalog.py": "893c8360d46926a10eb07e8f7e9fc7fafbe3657695dfee39ef9ebeac4f58a16c",
+          "worker/run_pipeline.ps1": "88c9849de14347537ad741e099d9711d1f98b4381bcd2ba92953b38cec6a422f",
+          "worker/run_job.ps1": "61e7f436207255b304abcca62232e21f581158d0be9f38682552d7399a6687b7"
+        }
+      },
+      "review_record": "test-evidence/product-acceptance/deployed-20261018/semantic-v1-release-20261019/review/catalog-static.json",
+      "status": "APPROVED_EXACT_INPUT_VERSION",
+      "notes": "Exact prior reviewed CFD input/pipeline/macros retained. Only scoped runtime support bytes upgraded; formal installation readiness requires actual connection_health and deployment PAT, tracked separately. E remains unverified.",
+      "preflight_sha256": "d4ad591ecc88e2bc6e5f803a38f8ee92a90172fac0f6a136c655a9d89947897c",
+      "formal": {
+        "version": "2026-10-20a",
+        "approved_for_autonomous_run": true,
+        "review_record": "test-evidence/product-acceptance/deployed-20261018/handover-runtime-20261020/review/catalog-static-formal.json",
+        "workflow_manifests": {
+          "static-external-flow-2502": "workflows/static-external-flow-2502/manifest.json",
+          "external-domain-2502": "workflows/external-domain-2502/manifest.json"
+        },
+        "pipeline_hashes": {
+          "static-external-flow-2502": "db5ebbfdc77c5e1a701293b1ffb81fb8b76ac3fc2b3e11604180878d1a5be03b",
+          "external-domain-2502": "dd4d3bbc327b5fb57e761bf869d2c4c1af92edd737d7a9acf6663cb49abe43b6"
+        },
+        "input_ref_policy": "library/<sha256>.sim",
+        "input_sha256": "4150f8e1be38e255efb73e2c4347bf9ccd0035ea5086d72127973b6a096d72b1",
+        "input_source": "test-evidence/static-external-flow/build-body-positive/s1-static-sphere-body-20261003a/static_body_geometry.sim",
+        "case_spec_source": "cases/static-sphere-external-flow/case_spec.json",
+        "case_spec_digest_algorithm": "semantic-v1",
+        "case_spec_digest": "86b2175623a978c5fc03a8d06b82702c9c939efb9c41fe4dcb6a4ee325a182fb",
+        "steps": [
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "audit-body",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "external-domain-2502",
+            "stage": "build",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "region-physics-mesh",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "mesh-quality-audit",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "solve",
+            "parameters": {
+              "EXTERNAL_FLOW_CHUNK": "50",
+              "EXTERNAL_FLOW_MAX_ITERATIONS": "600"
+            }
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "validation",
+            "parameters": {}
+          }
+        ],
+        "plan_operations": [
+          "classify_parts",
+          "audit_static_body",
+          "build_external_domain",
+          "build_external_flow_region_physics_mesh",
+          "audit_external_flow_mesh",
+          "run_external_flow_solve",
+          "audit_external_flow_convergence",
+          "mesh_study",
+          "domain_study",
+          "export_evidence",
+          "report"
+        ],
+        "preflight_record": "test-evidence/product-acceptance/completion-20261018/static-sphere-chain-v1-preflight.json",
+        "controller_sha256": "cb401ca292d26113b53c0e0448675d103ffee901f9c62f59804f6a39435f153b",
+        "runner_sha256": "61e7f436207255b304abcca62232e21f581158d0be9f38682552d7399a6687b7",
+        "pipeline_runner_sha256": "88c9849de14347537ad741e099d9711d1f98b4381bcd2ba92953b38cec6a422f",
+        "macro_hashes": {
+          "AuditStaticBodyGeometry.java": "0289ee652e41105e9299151a28d5718f22263346f197caaff036678018ba4b2b",
+          "BuildExternalDomain.java": "b92d682c88eaa1d1ac742abd80f7d18d7095c8e6c1983ac701398c752e8e51b5",
+          "BuildExternalFlowRegion.java": "55c1c9548b2b0b570bed954383f009e616feecaaf4d5e8745458c5670fefe96a",
+          "ConfigureExternalFlowPhysics.java": "d7c581eb00a72470bfc664e61ff8252cce422281e2c8389c6d4e2b9d568bf051",
+          "BuildExternalFlowMesh.java": "f7d0b133aba21affd8bc515dd6d275a146d7d9bb01aa4825510af456aeee53a0",
+          "AuditExternalFlowMesh.java": "598610a93f97b0df060806d148e984a40579905ba7b2fc436f0d5028ba142346",
+          "RunExternalFlowSolve.java": "10a4db85c8420ea76bbfffe0a9262f172455c0b8ec598848e26d925d74cf52a0",
+          "AuditExternalFlowConvergence.java": "467518f959b4c39ed1bb4ca33e52678abbbaa8c73b488c6a3a2fa6fd7be0d8c2"
+        },
+        "support_hashes": {
+          "scripts/production_catalog.py": "893c8360d46926a10eb07e8f7e9fc7fafbe3657695dfee39ef9ebeac4f58a16c",
+          "scripts/resource_contract.py": "586cf1a2bf63143d96bf55f29ccfae26ffc4805e464b6525e73d7d039330b3ea",
+          "scripts/stage_plan.py": "235bd5b740b804258b24480753ed231b410aef94f5c3c3f3f5c7195ff7c09e9d",
+          "scripts/run_record_gate.py": "fd7b0d03eb44edafe2678d0852989cb6fbb24931ed8773b6e7f7904fab14721b",
+          "scripts/progress_matrix.py": "822d1c336e4348008692076791729d525ab6b0555d8df54ed3afaff82c3ca1b7",
+          "scripts/backend.py": "cb401ca292d26113b53c0e0448675d103ffee901f9c62f59804f6a39435f153b",
+          "scripts/generate_run_report.py": "a5e66cb716a16689bab090d42f272e11dc322d0c0eb133226dac4c81edb855c3",
+          "scripts/run_static_external_flow_e2e.py": "f740953541f9099d3a9f6d51bb19949dd03aaa34cc7465760a783d2be793b775",
+          "cases/air-three-blade/air3b_summary.py": "28b166c31bb26147e2bc577ac7714d7cdcef56991bc9816a2174d65981a48ebe",
+          "scripts/air3b_convergence_gate.py": "f497b859c18625baf029d6c400902499147776077fac7244e4ad42946261e6a7",
+          "scripts/evaluate_convergence.py": "654de31856680a844415e58caa84f73184429738610959e81cfbaef015da5e6b",
+          "scripts/security/provision_restricted_worker.ps1": "c435332aa1480459eb26415edfea780341a83a87c1db18980ed1751c0eb9e9b3",
+          "scripts/security/grant_batch_logon.ps1": "a002191fa22fe8eeb43e62d6bcced8d21a8a0ecefd9783a5d79f7d782b79fcf0",
+          "test-evidence/restricted-worker-20261001/local-mesh-trial-config.json": "e1861433edc4aaaaaba727cdf0a4cf178e74d066214aaba7135a2f8b98c0bc31",
+          "scripts/formal_worker.py": "c3c9bc99fa38b360e9d707eeadfb15cea71b50e26d8117a9c20aa271f7ab9700",
+          "scripts/casespec.py": "98c4267a0e035a0b22aa4545482a2ae9cbf39d22a43ca08e3cef9941d3928235",
+          "scripts/part_classification.py": "d549e76cbb613b5e25d0624acb7415acbcc88afeaa328ec2e892e963b4f71bbe",
+          "scripts/formal_run_report.py": "0c17a9fc22e72edc28343bd4b1f23ec68ff328169b4691a2416c1e80b7bbd7fa",
+          "scripts/formal_study_reuse.py": "7730d6bf2ed0abbc811a2bbcddbdf284a670a2f64ccca7e461be00a2a1f16d0b",
+          "operations/catalog.json": "8ac57bb123a4c77b897ce8713d4b66ee93500191d8d453e5ae5e9002cc070882"
+        },
+        "resource_contract_sha256": "586cf1a2bf63143d96bf55f29ccfae26ffc4805e464b6525e73d7d039330b3ea",
+        "source_pipeline_sha256": "435768113bd89d6f60d987a045afdedf33d18daa53c5ecfd975101c9d8725843",
+        "runtime_digest": "5893c0c36ff1c2320b9f34725b6a9e2d795c2d120520de4ffd5b41aa2c0278a0",
+        "runtime_manifest_sha256": "7337822603794eb3e7fb206be917c3bd795b104b50580e7507fd3202779b998f",
+        "runtime_guard_sha256": "99079ce35a0ad7766e94e763e310c83ad65549f1c1f744a6c0a9f9117e84d8c7"
+      }
+    },
+    {
+      "id": "air3b-mrf-chain-v1",
+      "version": "2026-10-19b",
+      "pipeline": "cases/air-three-blade/pipeline-production-v1-20261018c.json",
+      "scope": "Exact reviewed AIR-3B geometry+STEP inputs, steady MRF 10000 rpm and 30 m/s; sample-specific only",
+      "release_channel": "v1",
+      "sample_specific": true,
+      "allowed_case_ids": [
+        "air-three-blade"
+      ],
+      "required_input_preflight": true,
+      "approved_for_autonomous_run": true,
+      "approved_hashes": {
+        "pipeline_sha256": "d083aaf223e11e0da3676515bf84702e8358c660d1e3ad34ffe30effb827a778",
+        "macro_hashes": {
+          "ImportAir3bBlockGeometry.java": "f785ad6767304fbd633baeebf4daf0d86fc79a7e044a878c2cf099badd3beb39",
+          "BuildAir3bMrfRegions.java": "c6987889cb4ffa9b8b04eb45985bd09834273f7b118bd4436b7db5bded2ec09e",
+          "BuildAir3bMrfMesh.java": "4b68375face5fd957b30b2ae01795809f1ac9c3aac87e0e67600ee8cf08b1d06",
+          "AuditMrfVolumeMeshQuality.java": "b4e308fa5bbba56a8cef5928dabb0825e51703d950ca72fcc369d99f330358a8",
+          "RunAir3bMrfSegment.java": "0f542f93b2daba041b2d3f9e062e1d13c67ec07b2018b9125b2fc288c6c761f6",
+          "AuditAir3bMassBalance.java": "3a14a6b2fdab9ecf3c031dfbe81d626aa540e5debcab7220fc46f670c7d62a81",
+          "AuditAir3bResidualProvenance.java": "d84f4f6570f76b893d1528a4131060e536a4f7ab0eea92dc8e04870361d8be67",
+          "ConfigureAir3bMrfPhysicsV2.java": "547713cbb91a5650a1aef8dbf62891ed88ec74da5fca6e8e564ee6005d629468"
+        },
+        "controller_sha256": "f4c5aeb805ed63edb3b505465d2f14df378e5cf24eb10c1808755165eb534418",
+        "runner_sha256": "5b0d8a3d02f3994272ff5f3540d650cfb30a0dd10ecc2fe5520aeaaa30ff5f46",
+        "support_hashes": {
+          "scripts/production_catalog.py": "893c8360d46926a10eb07e8f7e9fc7fafbe3657695dfee39ef9ebeac4f58a16c",
+          "scripts/resource_contract.py": "586cf1a2bf63143d96bf55f29ccfae26ffc4805e464b6525e73d7d039330b3ea",
+          "scripts/stage_plan.py": "235bd5b740b804258b24480753ed231b410aef94f5c3c3f3f5c7195ff7c09e9d",
+          "scripts/run_record_gate.py": "fd7b0d03eb44edafe2678d0852989cb6fbb24931ed8773b6e7f7904fab14721b",
+          "scripts/progress_matrix.py": "822d1c336e4348008692076791729d525ab6b0555d8df54ed3afaff82c3ca1b7",
+          "scripts/backend.py": "cb401ca292d26113b53c0e0448675d103ffee901f9c62f59804f6a39435f153b",
+          "scripts/generate_run_report.py": "a5e66cb716a16689bab090d42f272e11dc322d0c0eb133226dac4c81edb855c3",
+          "scripts/run_static_external_flow_e2e.py": "f740953541f9099d3a9f6d51bb19949dd03aaa34cc7465760a783d2be793b775",
+          "cases/air-three-blade/air3b_summary.py": "28b166c31bb26147e2bc577ac7714d7cdcef56991bc9816a2174d65981a48ebe",
+          "scripts/air3b_convergence_gate.py": "f497b859c18625baf029d6c400902499147776077fac7244e4ad42946261e6a7",
+          "scripts/evaluate_convergence.py": "654de31856680a844415e58caa84f73184429738610959e81cfbaef015da5e6b",
+          "scripts/security/provision_restricted_worker.ps1": "c435332aa1480459eb26415edfea780341a83a87c1db18980ed1751c0eb9e9b3",
+          "scripts/security/grant_batch_logon.ps1": "a002191fa22fe8eeb43e62d6bcced8d21a8a0ecefd9783a5d79f7d782b79fcf0",
+          "test-evidence/restricted-worker-20261001/local-mesh-trial-config.json": "e1861433edc4aaaaaba727cdf0a4cf178e74d066214aaba7135a2f8b98c0bc31"
+        },
+        "resource_contract_sha256": "586cf1a2bf63143d96bf55f29ccfae26ffc4805e464b6525e73d7d039330b3ea",
+        "admission_hashes": {
+          "scripts/production_catalog.py": "893c8360d46926a10eb07e8f7e9fc7fafbe3657695dfee39ef9ebeac4f58a16c",
+          "worker/run_pipeline.ps1": "88c9849de14347537ad741e099d9711d1f98b4381bcd2ba92953b38cec6a422f",
+          "worker/run_job.ps1": "61e7f436207255b304abcca62232e21f581158d0be9f38682552d7399a6687b7"
+        }
+      },
+      "review_record": "test-evidence/product-acceptance/deployed-20261018/semantic-v1-release-20261019/review/catalog-mrf.json",
+      "status": "APPROVED_EXACT_INPUT_VERSION",
+      "notes": "Exact prior reviewed CFD input/pipeline/macros retained. Only scoped runtime support bytes upgraded; formal installation readiness requires actual connection_health and deployment PAT, tracked separately. E remains unverified.",
+      "preflight_sha256": "3866649ae5dc3b586f314411aabc9f804818bc89a8bbe809e0a04dd3b67d1f9d"
+    },
+    {
+      "id": "air3b-transient-chain-beta",
+      "version": "0-pending",
+      "pipeline": "cases/air-three-blade/pipeline-transient-revolution.json",
+      "scope": "AIR-3B transient rotation beta only; no periodicity or time-step-sensitivity claim",
+      "release_channel": "beta",
+      "sample_specific": true,
+      "allowed_case_ids": [
+        "air-three-blade"
+      ],
+      "required_input_preflight": true,
+      "approved_for_autonomous_run": false,
+      "approved_hashes": {},
+      "review_record": null,
+      "status": "PENDING_INDEPENDENT_CATALOG_REVIEW",
+      "notes": "Candidate only. Beta does not block v1, but a beta false pass still blocks release."
+    },
+    {
+      "id": "benchmark-re100-s1c-one-shot",
+      "version": "2026-10-21a",
+      "pipeline": "test-evidence/benchmark-re100-s1-20261021c/SOURCE-PIPELINE.json",
+      "scope": "Only benchmark-re100-s1c-pilot-20261021a; exact Re100 calibration CaseSpec/input/six stages; no S2/Q/E assignment",
+      "release_channel": "v1",
+      "sample_specific": false,
+      "required_input_preflight": true,
+      "approved_for_autonomous_run": false,
+      "approved_hashes": {},
+      "review_record": "test-evidence/benchmark-re100-s1-20261021c/FORMAL-APPROVAL.json",
+      "status": "PENDING_INDEPENDENT_FORMAL_REVIEW",
+      "notes": "One-request formal catalog registration data only. sample_specific false is schema necessity because exact CaseSpec has case_name not case_id; exact digest/input/steps remain mandatory. Existing product entries preserved.",
+      "preflight_sha256": "cac486db5bd79b440df2a44e60c84570c19ccb0c7427ff61cf40c926fc626bb9",
+      "formal": {
+        "version": "2026-10-21-s1c-a",
+        "approved_for_autonomous_run": true,
+        "review_record": "test-evidence/benchmark-re100-s1-20261021c/FORMAL-APPROVAL.json",
+        "workflow_manifests": {
+          "static-external-flow-2502": "workflows/static-external-flow-2502/manifest.json",
+          "external-domain-2502": "workflows/external-domain-2502/manifest.json"
+        },
+        "pipeline_hashes": {
+          "static-external-flow-2502": "3492036a76d4170536a8ca771b68427df19ad3eb506ec822dd1a47f57e936505",
+          "external-domain-2502": "dd4d3bbc327b5fb57e761bf869d2c4c1af92edd737d7a9acf6663cb49abe43b6"
+        },
+        "input_ref_policy": "library/<sha256>.sim",
+        "input_sha256": "4150f8e1be38e255efb73e2c4347bf9ccd0035ea5086d72127973b6a096d72b1",
+        "input_source": "test-evidence/static-external-flow/build-body-positive/s1-static-sphere-body-20261003a/static_body_geometry.sim",
+        "case_spec_source": "cases/benchmark-laminar-sphere-re100/case_spec.json",
+        "case_spec_digest_algorithm": "legacy",
+        "case_spec_digest": "a8fae3cb0ec05ffcf1d932a72a11cf4b6a038fd02c773c57ee37a6ec29c54be0",
+        "steps": [
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "audit-body",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "external-domain-2502",
+            "stage": "build",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "region-physics-mesh",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "mesh-quality-audit",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "solve",
+            "parameters": {
+              "EXTERNAL_FLOW_CHUNK": "50",
+              "EXTERNAL_FLOW_MAX_ITERATIONS": "600"
+            }
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "validation",
+            "parameters": {}
+          }
+        ],
+        "plan_operations": [
+          "classify_parts",
+          "audit_static_body",
+          "build_external_domain",
+          "build_external_flow_region_physics_mesh",
+          "audit_external_flow_mesh",
+          "run_external_flow_solve",
+          "audit_external_flow_convergence",
+          "export_evidence",
+          "report"
+        ],
+        "preflight_record": "test-evidence/benchmark-re100-s1-20261021c/GEOMETRY-PREFLIGHT.json",
+        "controller_sha256": "cb401ca292d26113b53c0e0448675d103ffee901f9c62f59804f6a39435f153b",
+        "runner_sha256": "61e7f436207255b304abcca62232e21f581158d0be9f38682552d7399a6687b7",
+        "pipeline_runner_sha256": "88c9849de14347537ad741e099d9711d1f98b4381bcd2ba92953b38cec6a422f",
+        "macro_hashes": {
+          "AuditStaticBodyGeometry.java": "0289ee652e41105e9299151a28d5718f22263346f197caaff036678018ba4b2b",
+          "BuildExternalDomain.java": "b92d682c88eaa1d1ac742abd80f7d18d7095c8e6c1983ac701398c752e8e51b5",
+          "BuildExternalFlowRegion.java": "55c1c9548b2b0b570bed954383f009e616feecaaf4d5e8745458c5670fefe96a",
+          "ConfigureExternalFlowPhysics.java": "04c6db0e62f349ba3ffa8fa001d0604a65642044756ca064be3e6cd6cbc4b2b2",
+          "BuildExternalFlowMesh.java": "f7d0b133aba21affd8bc515dd6d275a146d7d9bb01aa4825510af456aeee53a0",
+          "AuditExternalFlowMesh.java": "598610a93f97b0df060806d148e984a40579905ba7b2fc436f0d5028ba142346",
+          "RunExternalFlowSolve.java": "ed543b78b3956e3f6e643ab5010395578c9f51f2436febb37b84a3682e7bfc14",
+          "AuditExternalFlowConvergence.java": "6748edb4ce018d0143a2687639ab9b00b43f0ebb6b2f03d37e1966f351fbbc1c"
+        },
+        "support_hashes": {
+          "scripts/production_catalog.py": "893c8360d46926a10eb07e8f7e9fc7fafbe3657695dfee39ef9ebeac4f58a16c",
+          "scripts/resource_contract.py": "586cf1a2bf63143d96bf55f29ccfae26ffc4805e464b6525e73d7d039330b3ea",
+          "scripts/stage_plan.py": "235bd5b740b804258b24480753ed231b410aef94f5c3c3f3f5c7195ff7c09e9d",
+          "scripts/run_record_gate.py": "fd7b0d03eb44edafe2678d0852989cb6fbb24931ed8773b6e7f7904fab14721b",
+          "scripts/progress_matrix.py": "822d1c336e4348008692076791729d525ab6b0555d8df54ed3afaff82c3ca1b7",
+          "scripts/backend.py": "cb401ca292d26113b53c0e0448675d103ffee901f9c62f59804f6a39435f153b",
+          "scripts/generate_run_report.py": "757240e7f85c0005305548939b79a9b79e2ece2964d9120e3900bd5fe6ff63ca",
+          "scripts/run_static_external_flow_e2e.py": "f740953541f9099d3a9f6d51bb19949dd03aaa34cc7465760a783d2be793b775",
+          "cases/air-three-blade/air3b_summary.py": "28b166c31bb26147e2bc577ac7714d7cdcef56991bc9816a2174d65981a48ebe",
+          "scripts/air3b_convergence_gate.py": "f497b859c18625baf029d6c400902499147776077fac7244e4ad42946261e6a7",
+          "scripts/evaluate_convergence.py": "654de31856680a844415e58caa84f73184429738610959e81cfbaef015da5e6b",
+          "scripts/security/provision_restricted_worker.ps1": "c435332aa1480459eb26415edfea780341a83a87c1db18980ed1751c0eb9e9b3",
+          "scripts/security/grant_batch_logon.ps1": "a002191fa22fe8eeb43e62d6bcced8d21a8a0ecefd9783a5d79f7d782b79fcf0",
+          "test-evidence/restricted-worker-20261001/local-mesh-trial-config.json": "e1861433edc4aaaaaba727cdf0a4cf178e74d066214aaba7135a2f8b98c0bc31",
+          "scripts/formal_worker.py": "c3c9bc99fa38b360e9d707eeadfb15cea71b50e26d8117a9c20aa271f7ab9700",
+          "scripts/casespec.py": "1440d69b3b90e0c1919e19c75d4fed240529ea50b38950a324660cd618094a55",
+          "scripts/part_classification.py": "d549e76cbb613b5e25d0624acb7415acbcc88afeaa328ec2e892e963b4f71bbe",
+          "scripts/formal_run_report.py": "48d0ca0b579b9e3f85006114570ca0077f329d72656fa8090fcf49219458b8d7",
+          "scripts/formal_study_reuse.py": "7730d6bf2ed0abbc811a2bbcddbdf284a670a2f64ccca7e461be00a2a1f16d0b",
+          "operations/catalog.json": "8ac57bb123a4c77b897ce8713d4b66ee93500191d8d453e5ae5e9002cc070882"
+        },
+        "resource_contract_sha256": "586cf1a2bf63143d96bf55f29ccfae26ffc4805e464b6525e73d7d039330b3ea",
+        "source_pipeline_sha256": "d52c105baf0ecbb1348aa6ab6df114dab3846a814de6707dd1fc3d075dbbf6e1",
+        "runtime_digest": "b593f7362b9a389285e68ffb28dc6ad0da936933c299a4681a0716484a9a2144",
+        "runtime_manifest_sha256": "c2811aac0e74f610089c992f6d7192e53ec35d3f5cebc825c9e23e9a9eca4109",
+        "runtime_guard_sha256": "99079ce35a0ad7766e94e763e310c83ad65549f1c1f744a6c0a9f9117e84d8c7",
+        "resource_contract": {
+          "schema_version": 1,
+          "logical_cores": 64,
+          "memory_gb": 8,
+          "memory_reserve_gb": 16,
+          "outer_timeout_seconds": 172800
+        },
+        "request_id": "benchmark-re100-s1c-pilot-20261021a",
+        "maximum_submissions": 1,
+        "retry_authorized": false,
+        "inspect_job_id": "formal-pat17-20261019c",
+        "sample_role": "independent_calibration",
+        "wall_clock_stop": false,
+        "s2_authorized": false
+      }
+    },
+    {
+      "id": "benchmark-re100-s1d-one-shot",
+      "version": "2026-10-21a",
+      "pipeline": "test-evidence/benchmark-re100-s1-20261021d/SOURCE-PIPELINE.json",
+      "scope": "Only benchmark-re100-s1d-pilot-20261021a; exact Re100 calibration CaseSpec/input/six stages; final fixed resource allocation; no S2/Q/E assignment",
+      "release_channel": "v1",
+      "sample_specific": false,
+      "required_input_preflight": true,
+      "approved_for_autonomous_run": false,
+      "approved_hashes": {},
+      "review_record": "test-evidence/benchmark-re100-s1-20261021d/FORMAL-APPROVAL.json",
+      "status": "PENDING_INDEPENDENT_FORMAL_REVIEW",
+      "notes": "S1d one-request review registration data only; all existing product/S1c entries remain unchanged; exact CaseSpec/input/steps binding, no code/manifest/deployment changes.",
+      "preflight_sha256": "7230483e10c1d7535286d5bc8abe32b8504406ebb0683d28d8ace8e026fbcf7f",
+      "formal": {
+        "version": "2026-10-21-s1d-a",
+        "approved_for_autonomous_run": true,
+        "review_record": "test-evidence/benchmark-re100-s1-20261021d/FORMAL-APPROVAL.json",
+        "workflow_manifests": {
+          "static-external-flow-2502": "workflows/static-external-flow-2502/manifest.json",
+          "external-domain-2502": "workflows/external-domain-2502/manifest.json"
+        },
+        "pipeline_hashes": {
+          "static-external-flow-2502": "3492036a76d4170536a8ca771b68427df19ad3eb506ec822dd1a47f57e936505",
+          "external-domain-2502": "dd4d3bbc327b5fb57e761bf869d2c4c1af92edd737d7a9acf6663cb49abe43b6"
+        },
+        "input_ref_policy": "library/<sha256>.sim",
+        "input_sha256": "4150f8e1be38e255efb73e2c4347bf9ccd0035ea5086d72127973b6a096d72b1",
+        "input_source": "test-evidence/static-external-flow/build-body-positive/s1-static-sphere-body-20261003a/static_body_geometry.sim",
+        "case_spec_source": "cases/benchmark-laminar-sphere-re100/case_spec.json",
+        "case_spec_digest_algorithm": "legacy",
+        "case_spec_digest": "0eda251e5b7853fca314802e3147c1fdd5cc6e7ae8d69718444794cbf83c544d",
+        "steps": [
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "audit-body",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "external-domain-2502",
+            "stage": "build",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "region-physics-mesh",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "mesh-quality-audit",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "solve",
+            "parameters": {
+              "EXTERNAL_FLOW_CHUNK": "50",
+              "EXTERNAL_FLOW_MAX_ITERATIONS": "600"
+            }
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "validation",
+            "parameters": {}
+          }
+        ],
+        "plan_operations": [
+          "classify_parts",
+          "audit_static_body",
+          "build_external_domain",
+          "build_external_flow_region_physics_mesh",
+          "audit_external_flow_mesh",
+          "run_external_flow_solve",
+          "audit_external_flow_convergence",
+          "export_evidence",
+          "report"
+        ],
+        "preflight_record": "test-evidence/benchmark-re100-s1-20261021d/GEOMETRY-PREFLIGHT.json",
+        "controller_sha256": "cb401ca292d26113b53c0e0448675d103ffee901f9c62f59804f6a39435f153b",
+        "runner_sha256": "61e7f436207255b304abcca62232e21f581158d0be9f38682552d7399a6687b7",
+        "pipeline_runner_sha256": "88c9849de14347537ad741e099d9711d1f98b4381bcd2ba92953b38cec6a422f",
+        "macro_hashes": {
+          "AuditStaticBodyGeometry.java": "0289ee652e41105e9299151a28d5718f22263346f197caaff036678018ba4b2b",
+          "BuildExternalDomain.java": "b92d682c88eaa1d1ac742abd80f7d18d7095c8e6c1983ac701398c752e8e51b5",
+          "BuildExternalFlowRegion.java": "55c1c9548b2b0b570bed954383f009e616feecaaf4d5e8745458c5670fefe96a",
+          "ConfigureExternalFlowPhysics.java": "04c6db0e62f349ba3ffa8fa001d0604a65642044756ca064be3e6cd6cbc4b2b2",
+          "BuildExternalFlowMesh.java": "f7d0b133aba21affd8bc515dd6d275a146d7d9bb01aa4825510af456aeee53a0",
+          "AuditExternalFlowMesh.java": "598610a93f97b0df060806d148e984a40579905ba7b2fc436f0d5028ba142346",
+          "RunExternalFlowSolve.java": "ed543b78b3956e3f6e643ab5010395578c9f51f2436febb37b84a3682e7bfc14",
+          "AuditExternalFlowConvergence.java": "6748edb4ce018d0143a2687639ab9b00b43f0ebb6b2f03d37e1966f351fbbc1c"
+        },
+        "support_hashes": {
+          "scripts/production_catalog.py": "893c8360d46926a10eb07e8f7e9fc7fafbe3657695dfee39ef9ebeac4f58a16c",
+          "scripts/resource_contract.py": "586cf1a2bf63143d96bf55f29ccfae26ffc4805e464b6525e73d7d039330b3ea",
+          "scripts/stage_plan.py": "235bd5b740b804258b24480753ed231b410aef94f5c3c3f3f5c7195ff7c09e9d",
+          "scripts/run_record_gate.py": "fd7b0d03eb44edafe2678d0852989cb6fbb24931ed8773b6e7f7904fab14721b",
+          "scripts/progress_matrix.py": "822d1c336e4348008692076791729d525ab6b0555d8df54ed3afaff82c3ca1b7",
+          "scripts/backend.py": "cb401ca292d26113b53c0e0448675d103ffee901f9c62f59804f6a39435f153b",
+          "scripts/generate_run_report.py": "757240e7f85c0005305548939b79a9b79e2ece2964d9120e3900bd5fe6ff63ca",
+          "scripts/run_static_external_flow_e2e.py": "f740953541f9099d3a9f6d51bb19949dd03aaa34cc7465760a783d2be793b775",
+          "cases/air-three-blade/air3b_summary.py": "28b166c31bb26147e2bc577ac7714d7cdcef56991bc9816a2174d65981a48ebe",
+          "scripts/air3b_convergence_gate.py": "f497b859c18625baf029d6c400902499147776077fac7244e4ad42946261e6a7",
+          "scripts/evaluate_convergence.py": "654de31856680a844415e58caa84f73184429738610959e81cfbaef015da5e6b",
+          "scripts/security/provision_restricted_worker.ps1": "c435332aa1480459eb26415edfea780341a83a87c1db18980ed1751c0eb9e9b3",
+          "scripts/security/grant_batch_logon.ps1": "a002191fa22fe8eeb43e62d6bcced8d21a8a0ecefd9783a5d79f7d782b79fcf0",
+          "test-evidence/restricted-worker-20261001/local-mesh-trial-config.json": "e1861433edc4aaaaaba727cdf0a4cf178e74d066214aaba7135a2f8b98c0bc31",
+          "scripts/formal_worker.py": "c3c9bc99fa38b360e9d707eeadfb15cea71b50e26d8117a9c20aa271f7ab9700",
+          "scripts/casespec.py": "1440d69b3b90e0c1919e19c75d4fed240529ea50b38950a324660cd618094a55",
+          "scripts/part_classification.py": "d549e76cbb613b5e25d0624acb7415acbcc88afeaa328ec2e892e963b4f71bbe",
+          "scripts/formal_run_report.py": "48d0ca0b579b9e3f85006114570ca0077f329d72656fa8090fcf49219458b8d7",
+          "scripts/formal_study_reuse.py": "7730d6bf2ed0abbc811a2bbcddbdf284a670a2f64ccca7e461be00a2a1f16d0b",
+          "operations/catalog.json": "8ac57bb123a4c77b897ce8713d4b66ee93500191d8d453e5ae5e9002cc070882"
+        },
+        "resource_contract_sha256": "586cf1a2bf63143d96bf55f29ccfae26ffc4805e464b6525e73d7d039330b3ea",
+        "source_pipeline_sha256": "427454d5bd7db685d4cb4d65768165be80852254ec422172c05c2d6acb9e332f",
+        "runtime_digest": "b593f7362b9a389285e68ffb28dc6ad0da936933c299a4681a0716484a9a2144",
+        "runtime_manifest_sha256": "c2811aac0e74f610089c992f6d7192e53ec35d3f5cebc825c9e23e9a9eca4109",
+        "runtime_guard_sha256": "99079ce35a0ad7766e94e763e310c83ad65549f1c1f744a6c0a9f9117e84d8c7",
+        "resource_contract": {
+          "schema_version": 1,
+          "logical_cores": 64,
+          "memory_gb": 128,
+          "memory_reserve_gb": 16,
+          "outer_timeout_seconds": 172800
+        },
+        "request_id": "benchmark-re100-s1d-pilot-20261021a",
+        "maximum_submissions": 1,
+        "retry_authorized": false,
+        "inspect_job_id": "formal-pat17-20261019c",
+        "sample_role": "independent_calibration",
+        "wall_clock_stop": false,
+        "s2_authorized": false
+      }
+    },
+    {
+      "id": "benchmark-re100-s2-measure-m2d2-one-shot",
+      "version": "2026-10-21a",
+      "pipeline": "test-evidence/benchmark-re100-s2-measure-20261021/REVIEWS/m2d2/SOURCE-PIPELINE.json",
+      "scope": "Exact one benchmark-re100-s2-m2d2-20261021a single-level measurement using unchanged M1 CaseSpec except mesh/domain; no study/Q2 approval",
+      "release_channel": "v1",
+      "sample_specific": false,
+      "required_input_preflight": true,
+      "approved_for_autonomous_run": false,
+      "approved_hashes": {},
+      "review_record": "test-evidence/benchmark-re100-s2-measure-20261021/REVIEWS/m2d2/FORMAL-APPROVAL.json",
+      "status": "PENDING_INDEPENDENT_LOW_REVIEW",
+      "notes": "New user authorization: measure single levels with mesh_levels1/domainfalse; no study POST. All physics/numerical gates/resource bytes identical to M1, old denied S2 research approvals not reused.",
+      "preflight_sha256": "3a90fc1be61b8f9c413fc1986f4bcd35abae7c8f8de54a4634df7815bc55dccb",
+      "formal": {
+        "version": "2026-10-21-s2-measure-m2d2",
+        "approved_for_autonomous_run": true,
+        "review_record": "test-evidence/benchmark-re100-s2-measure-20261021/REVIEWS/m2d2/FORMAL-APPROVAL.json",
+        "workflow_manifests": {
+          "static-external-flow-2502": "workflows/static-external-flow-2502/manifest.json",
+          "external-domain-2502": "workflows/external-domain-2502/manifest.json"
+        },
+        "pipeline_hashes": {
+          "static-external-flow-2502": "3492036a76d4170536a8ca771b68427df19ad3eb506ec822dd1a47f57e936505",
+          "external-domain-2502": "dd4d3bbc327b5fb57e761bf869d2c4c1af92edd737d7a9acf6663cb49abe43b6"
+        },
+        "input_ref_policy": "library/<sha256>.sim",
+        "input_sha256": "4150f8e1be38e255efb73e2c4347bf9ccd0035ea5086d72127973b6a096d72b1",
+        "input_source": "test-evidence/static-external-flow/build-body-positive/s1-static-sphere-body-20261003a/static_body_geometry.sim",
+        "case_spec_source": "test-evidence/benchmark-re100-s2-measure-20261021/CASESPECS/m2d2.json",
+        "case_spec_digest_algorithm": "legacy",
+        "case_spec_digest": "9e7476081b31a5d962837daec83fa0400dee73c9730822c909d788bae16b6bf9",
+        "steps": [
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "audit-body",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "external-domain-2502",
+            "stage": "build",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "region-physics-mesh",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "mesh-quality-audit",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "solve",
+            "parameters": {
+              "EXTERNAL_FLOW_CHUNK": "50",
+              "EXTERNAL_FLOW_MAX_ITERATIONS": "600"
+            }
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "validation",
+            "parameters": {}
+          }
+        ],
+        "plan_operations": [
+          "classify_parts",
+          "audit_static_body",
+          "build_external_domain",
+          "build_external_flow_region_physics_mesh",
+          "audit_external_flow_mesh",
+          "run_external_flow_solve",
+          "audit_external_flow_convergence",
+          "export_evidence",
+          "report"
+        ],
+        "preflight_record": "test-evidence/benchmark-re100-s2-measure-20261021/REVIEWS/m2d2/GEOMETRY-PREFLIGHT.json",
+        "controller_sha256": "cb401ca292d26113b53c0e0448675d103ffee901f9c62f59804f6a39435f153b",
+        "runner_sha256": "61e7f436207255b304abcca62232e21f581158d0be9f38682552d7399a6687b7",
+        "pipeline_runner_sha256": "88c9849de14347537ad741e099d9711d1f98b4381bcd2ba92953b38cec6a422f",
+        "macro_hashes": {
+          "AuditStaticBodyGeometry.java": "0289ee652e41105e9299151a28d5718f22263346f197caaff036678018ba4b2b",
+          "BuildExternalDomain.java": "b92d682c88eaa1d1ac742abd80f7d18d7095c8e6c1983ac701398c752e8e51b5",
+          "BuildExternalFlowRegion.java": "55c1c9548b2b0b570bed954383f009e616feecaaf4d5e8745458c5670fefe96a",
+          "ConfigureExternalFlowPhysics.java": "04c6db0e62f349ba3ffa8fa001d0604a65642044756ca064be3e6cd6cbc4b2b2",
+          "BuildExternalFlowMesh.java": "f7d0b133aba21affd8bc515dd6d275a146d7d9bb01aa4825510af456aeee53a0",
+          "AuditExternalFlowMesh.java": "598610a93f97b0df060806d148e984a40579905ba7b2fc436f0d5028ba142346",
+          "RunExternalFlowSolve.java": "ed543b78b3956e3f6e643ab5010395578c9f51f2436febb37b84a3682e7bfc14",
+          "AuditExternalFlowConvergence.java": "6748edb4ce018d0143a2687639ab9b00b43f0ebb6b2f03d37e1966f351fbbc1c"
+        },
+        "support_hashes": {
+          "scripts/production_catalog.py": "893c8360d46926a10eb07e8f7e9fc7fafbe3657695dfee39ef9ebeac4f58a16c",
+          "scripts/resource_contract.py": "586cf1a2bf63143d96bf55f29ccfae26ffc4805e464b6525e73d7d039330b3ea",
+          "scripts/stage_plan.py": "235bd5b740b804258b24480753ed231b410aef94f5c3c3f3f5c7195ff7c09e9d",
+          "scripts/run_record_gate.py": "fd7b0d03eb44edafe2678d0852989cb6fbb24931ed8773b6e7f7904fab14721b",
+          "scripts/progress_matrix.py": "822d1c336e4348008692076791729d525ab6b0555d8df54ed3afaff82c3ca1b7",
+          "scripts/backend.py": "cb401ca292d26113b53c0e0448675d103ffee901f9c62f59804f6a39435f153b",
+          "scripts/generate_run_report.py": "757240e7f85c0005305548939b79a9b79e2ece2964d9120e3900bd5fe6ff63ca",
+          "scripts/run_static_external_flow_e2e.py": "f740953541f9099d3a9f6d51bb19949dd03aaa34cc7465760a783d2be793b775",
+          "cases/air-three-blade/air3b_summary.py": "28b166c31bb26147e2bc577ac7714d7cdcef56991bc9816a2174d65981a48ebe",
+          "scripts/air3b_convergence_gate.py": "f497b859c18625baf029d6c400902499147776077fac7244e4ad42946261e6a7",
+          "scripts/evaluate_convergence.py": "654de31856680a844415e58caa84f73184429738610959e81cfbaef015da5e6b",
+          "scripts/security/provision_restricted_worker.ps1": "c435332aa1480459eb26415edfea780341a83a87c1db18980ed1751c0eb9e9b3",
+          "scripts/security/grant_batch_logon.ps1": "a002191fa22fe8eeb43e62d6bcced8d21a8a0ecefd9783a5d79f7d782b79fcf0",
+          "test-evidence/restricted-worker-20261001/local-mesh-trial-config.json": "e1861433edc4aaaaaba727cdf0a4cf178e74d066214aaba7135a2f8b98c0bc31",
+          "scripts/formal_worker.py": "c3c9bc99fa38b360e9d707eeadfb15cea71b50e26d8117a9c20aa271f7ab9700",
+          "scripts/casespec.py": "1440d69b3b90e0c1919e19c75d4fed240529ea50b38950a324660cd618094a55",
+          "scripts/part_classification.py": "d549e76cbb613b5e25d0624acb7415acbcc88afeaa328ec2e892e963b4f71bbe",
+          "scripts/formal_run_report.py": "48d0ca0b579b9e3f85006114570ca0077f329d72656fa8090fcf49219458b8d7",
+          "scripts/formal_study_reuse.py": "7730d6bf2ed0abbc811a2bbcddbdf284a670a2f64ccca7e461be00a2a1f16d0b",
+          "operations/catalog.json": "8ac57bb123a4c77b897ce8713d4b66ee93500191d8d453e5ae5e9002cc070882"
+        },
+        "resource_contract_sha256": "586cf1a2bf63143d96bf55f29ccfae26ffc4805e464b6525e73d7d039330b3ea",
+        "source_pipeline_sha256": "de077815863cd9dd9911d4f82d1edde48fd6438cea2e4dd43302780bb02653e9",
+        "runtime_digest": "b593f7362b9a389285e68ffb28dc6ad0da936933c299a4681a0716484a9a2144",
+        "runtime_manifest_sha256": "c2811aac0e74f610089c992f6d7192e53ec35d3f5cebc825c9e23e9a9eca4109",
+        "runtime_guard_sha256": "99079ce35a0ad7766e94e763e310c83ad65549f1c1f744a6c0a9f9117e84d8c7",
+        "resource_contract": {
+          "schema_version": 1,
+          "logical_cores": 64,
+          "memory_gb": 128,
+          "memory_reserve_gb": 16,
+          "outer_timeout_seconds": 172800
+        },
+        "request_id": "benchmark-re100-s2-m2d2-20261021a",
+        "maximum_submissions": 1,
+        "retry_authorized": false,
+        "inspect_job_id": "formal-pat17-20261019c",
+        "sample_role": "independent_calibration",
+        "wall_clock_stop": false,
+        "s2_authorized": false,
+        "measurement_scope": "S2_MEASURE_ONLY_NO_STUDY_IMPLEMENTATION_NO_Q2_CERTIFICATE"
+      }
+    },
+    {
+      "id": "benchmark-re100-s2-measure-m3d2-one-shot",
+      "version": "2026-10-21a",
+      "pipeline": "test-evidence/benchmark-re100-s2-measure-20261021/REVIEWS/m3d2/SOURCE-PIPELINE.json",
+      "scope": "Exact one benchmark-re100-s2-m3d2-20261021a single-level measurement using unchanged M1 CaseSpec except mesh/domain; no study/Q2 approval",
+      "release_channel": "v1",
+      "sample_specific": false,
+      "required_input_preflight": true,
+      "approved_for_autonomous_run": false,
+      "approved_hashes": {},
+      "review_record": "test-evidence/benchmark-re100-s2-measure-20261021/REVIEWS/m3d2/FORMAL-APPROVAL.json",
+      "status": "PENDING_INDEPENDENT_LOW_REVIEW",
+      "notes": "New user authorization: measure single levels with mesh_levels1/domainfalse; no study POST. All physics/numerical gates/resource bytes identical to M1, old denied S2 research approvals not reused.",
+      "preflight_sha256": "b839defabcf0ca42817fc076706c8667a8a92d223fc0c3ad8fd213dc205605e7",
+      "formal": {
+        "version": "2026-10-21-s2-measure-m3d2",
+        "approved_for_autonomous_run": true,
+        "review_record": "test-evidence/benchmark-re100-s2-measure-20261021/REVIEWS/m3d2/FORMAL-APPROVAL.json",
+        "workflow_manifests": {
+          "static-external-flow-2502": "workflows/static-external-flow-2502/manifest.json",
+          "external-domain-2502": "workflows/external-domain-2502/manifest.json"
+        },
+        "pipeline_hashes": {
+          "static-external-flow-2502": "3492036a76d4170536a8ca771b68427df19ad3eb506ec822dd1a47f57e936505",
+          "external-domain-2502": "dd4d3bbc327b5fb57e761bf869d2c4c1af92edd737d7a9acf6663cb49abe43b6"
+        },
+        "input_ref_policy": "library/<sha256>.sim",
+        "input_sha256": "4150f8e1be38e255efb73e2c4347bf9ccd0035ea5086d72127973b6a096d72b1",
+        "input_source": "test-evidence/static-external-flow/build-body-positive/s1-static-sphere-body-20261003a/static_body_geometry.sim",
+        "case_spec_source": "test-evidence/benchmark-re100-s2-measure-20261021/CASESPECS/m3d2.json",
+        "case_spec_digest_algorithm": "legacy",
+        "case_spec_digest": "75fa475b7e7a1245c6bade3c3fa809999d6a2f8de49f14b4302d3c05eba4aee8",
+        "steps": [
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "audit-body",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "external-domain-2502",
+            "stage": "build",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "region-physics-mesh",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "mesh-quality-audit",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "solve",
+            "parameters": {
+              "EXTERNAL_FLOW_CHUNK": "50",
+              "EXTERNAL_FLOW_MAX_ITERATIONS": "600"
+            }
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "validation",
+            "parameters": {}
+          }
+        ],
+        "plan_operations": [
+          "classify_parts",
+          "audit_static_body",
+          "build_external_domain",
+          "build_external_flow_region_physics_mesh",
+          "audit_external_flow_mesh",
+          "run_external_flow_solve",
+          "audit_external_flow_convergence",
+          "export_evidence",
+          "report"
+        ],
+        "preflight_record": "test-evidence/benchmark-re100-s2-measure-20261021/REVIEWS/m3d2/GEOMETRY-PREFLIGHT.json",
+        "controller_sha256": "cb401ca292d26113b53c0e0448675d103ffee901f9c62f59804f6a39435f153b",
+        "runner_sha256": "61e7f436207255b304abcca62232e21f581158d0be9f38682552d7399a6687b7",
+        "pipeline_runner_sha256": "88c9849de14347537ad741e099d9711d1f98b4381bcd2ba92953b38cec6a422f",
+        "macro_hashes": {
+          "AuditStaticBodyGeometry.java": "0289ee652e41105e9299151a28d5718f22263346f197caaff036678018ba4b2b",
+          "BuildExternalDomain.java": "b92d682c88eaa1d1ac742abd80f7d18d7095c8e6c1983ac701398c752e8e51b5",
+          "BuildExternalFlowRegion.java": "55c1c9548b2b0b570bed954383f009e616feecaaf4d5e8745458c5670fefe96a",
+          "ConfigureExternalFlowPhysics.java": "04c6db0e62f349ba3ffa8fa001d0604a65642044756ca064be3e6cd6cbc4b2b2",
+          "BuildExternalFlowMesh.java": "f7d0b133aba21affd8bc515dd6d275a146d7d9bb01aa4825510af456aeee53a0",
+          "AuditExternalFlowMesh.java": "598610a93f97b0df060806d148e984a40579905ba7b2fc436f0d5028ba142346",
+          "RunExternalFlowSolve.java": "ed543b78b3956e3f6e643ab5010395578c9f51f2436febb37b84a3682e7bfc14",
+          "AuditExternalFlowConvergence.java": "6748edb4ce018d0143a2687639ab9b00b43f0ebb6b2f03d37e1966f351fbbc1c"
+        },
+        "support_hashes": {
+          "scripts/production_catalog.py": "893c8360d46926a10eb07e8f7e9fc7fafbe3657695dfee39ef9ebeac4f58a16c",
+          "scripts/resource_contract.py": "586cf1a2bf63143d96bf55f29ccfae26ffc4805e464b6525e73d7d039330b3ea",
+          "scripts/stage_plan.py": "235bd5b740b804258b24480753ed231b410aef94f5c3c3f3f5c7195ff7c09e9d",
+          "scripts/run_record_gate.py": "fd7b0d03eb44edafe2678d0852989cb6fbb24931ed8773b6e7f7904fab14721b",
+          "scripts/progress_matrix.py": "822d1c336e4348008692076791729d525ab6b0555d8df54ed3afaff82c3ca1b7",
+          "scripts/backend.py": "cb401ca292d26113b53c0e0448675d103ffee901f9c62f59804f6a39435f153b",
+          "scripts/generate_run_report.py": "757240e7f85c0005305548939b79a9b79e2ece2964d9120e3900bd5fe6ff63ca",
+          "scripts/run_static_external_flow_e2e.py": "f740953541f9099d3a9f6d51bb19949dd03aaa34cc7465760a783d2be793b775",
+          "cases/air-three-blade/air3b_summary.py": "28b166c31bb26147e2bc577ac7714d7cdcef56991bc9816a2174d65981a48ebe",
+          "scripts/air3b_convergence_gate.py": "f497b859c18625baf029d6c400902499147776077fac7244e4ad42946261e6a7",
+          "scripts/evaluate_convergence.py": "654de31856680a844415e58caa84f73184429738610959e81cfbaef015da5e6b",
+          "scripts/security/provision_restricted_worker.ps1": "c435332aa1480459eb26415edfea780341a83a87c1db18980ed1751c0eb9e9b3",
+          "scripts/security/grant_batch_logon.ps1": "a002191fa22fe8eeb43e62d6bcced8d21a8a0ecefd9783a5d79f7d782b79fcf0",
+          "test-evidence/restricted-worker-20261001/local-mesh-trial-config.json": "e1861433edc4aaaaaba727cdf0a4cf178e74d066214aaba7135a2f8b98c0bc31",
+          "scripts/formal_worker.py": "c3c9bc99fa38b360e9d707eeadfb15cea71b50e26d8117a9c20aa271f7ab9700",
+          "scripts/casespec.py": "1440d69b3b90e0c1919e19c75d4fed240529ea50b38950a324660cd618094a55",
+          "scripts/part_classification.py": "d549e76cbb613b5e25d0624acb7415acbcc88afeaa328ec2e892e963b4f71bbe",
+          "scripts/formal_run_report.py": "48d0ca0b579b9e3f85006114570ca0077f329d72656fa8090fcf49219458b8d7",
+          "scripts/formal_study_reuse.py": "7730d6bf2ed0abbc811a2bbcddbdf284a670a2f64ccca7e461be00a2a1f16d0b",
+          "operations/catalog.json": "8ac57bb123a4c77b897ce8713d4b66ee93500191d8d453e5ae5e9002cc070882"
+        },
+        "resource_contract_sha256": "586cf1a2bf63143d96bf55f29ccfae26ffc4805e464b6525e73d7d039330b3ea",
+        "source_pipeline_sha256": "6415c5d5015ac3d423aad76fe2d0f10486b073be4987d92e990c14e41dc368cd",
+        "runtime_digest": "b593f7362b9a389285e68ffb28dc6ad0da936933c299a4681a0716484a9a2144",
+        "runtime_manifest_sha256": "c2811aac0e74f610089c992f6d7192e53ec35d3f5cebc825c9e23e9a9eca4109",
+        "runtime_guard_sha256": "99079ce35a0ad7766e94e763e310c83ad65549f1c1f744a6c0a9f9117e84d8c7",
+        "resource_contract": {
+          "schema_version": 1,
+          "logical_cores": 64,
+          "memory_gb": 128,
+          "memory_reserve_gb": 16,
+          "outer_timeout_seconds": 172800
+        },
+        "request_id": "benchmark-re100-s2-m3d2-20261021a",
+        "maximum_submissions": 1,
+        "retry_authorized": false,
+        "inspect_job_id": "formal-pat17-20261019c",
+        "sample_role": "independent_calibration",
+        "wall_clock_stop": false,
+        "s2_authorized": false,
+        "measurement_scope": "S2_MEASURE_ONLY_NO_STUDY_IMPLEMENTATION_NO_Q2_CERTIFICATE"
+      }
+    },
+    {
+      "id": "benchmark-re100-s2-measure-m2d1-one-shot",
+      "version": "2026-10-21a",
+      "pipeline": "test-evidence/benchmark-re100-s2-measure-20261021/REVIEWS/m2d1/SOURCE-PIPELINE.json",
+      "scope": "Exact one benchmark-re100-s2-m2d1-20261021a single-level measurement using unchanged M1 CaseSpec except mesh/domain; no study/Q2 approval",
+      "release_channel": "v1",
+      "sample_specific": false,
+      "required_input_preflight": true,
+      "approved_for_autonomous_run": false,
+      "approved_hashes": {},
+      "review_record": "test-evidence/benchmark-re100-s2-measure-20261021/REVIEWS/m2d1/FORMAL-APPROVAL.json",
+      "status": "PENDING_INDEPENDENT_LOW_REVIEW",
+      "notes": "New user authorization: measure single levels with mesh_levels1/domainfalse; no study POST. All physics/numerical gates/resource bytes identical to M1, old denied S2 research approvals not reused.",
+      "preflight_sha256": "e52b3276e4d02812274c832462f256b34f25ea422aea511448449c3e71d6b9c6",
+      "formal": {
+        "version": "2026-10-21-s2-measure-m2d1",
+        "approved_for_autonomous_run": true,
+        "review_record": "test-evidence/benchmark-re100-s2-measure-20261021/REVIEWS/m2d1/FORMAL-APPROVAL.json",
+        "workflow_manifests": {
+          "static-external-flow-2502": "workflows/static-external-flow-2502/manifest.json",
+          "external-domain-2502": "workflows/external-domain-2502/manifest.json"
+        },
+        "pipeline_hashes": {
+          "static-external-flow-2502": "3492036a76d4170536a8ca771b68427df19ad3eb506ec822dd1a47f57e936505",
+          "external-domain-2502": "dd4d3bbc327b5fb57e761bf869d2c4c1af92edd737d7a9acf6663cb49abe43b6"
+        },
+        "input_ref_policy": "library/<sha256>.sim",
+        "input_sha256": "4150f8e1be38e255efb73e2c4347bf9ccd0035ea5086d72127973b6a096d72b1",
+        "input_source": "test-evidence/static-external-flow/build-body-positive/s1-static-sphere-body-20261003a/static_body_geometry.sim",
+        "case_spec_source": "test-evidence/benchmark-re100-s2-measure-20261021/CASESPECS/m2d1.json",
+        "case_spec_digest_algorithm": "legacy",
+        "case_spec_digest": "89a50f1bda88fa106e6fe3a05ee7825633999860b592dcf06d9d3fa142791de3",
+        "steps": [
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "audit-body",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "external-domain-2502",
+            "stage": "build",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "region-physics-mesh",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "mesh-quality-audit",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "solve",
+            "parameters": {
+              "EXTERNAL_FLOW_CHUNK": "50",
+              "EXTERNAL_FLOW_MAX_ITERATIONS": "600"
+            }
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "validation",
+            "parameters": {}
+          }
+        ],
+        "plan_operations": [
+          "classify_parts",
+          "audit_static_body",
+          "build_external_domain",
+          "build_external_flow_region_physics_mesh",
+          "audit_external_flow_mesh",
+          "run_external_flow_solve",
+          "audit_external_flow_convergence",
+          "export_evidence",
+          "report"
+        ],
+        "preflight_record": "test-evidence/benchmark-re100-s2-measure-20261021/REVIEWS/m2d1/GEOMETRY-PREFLIGHT.json",
+        "controller_sha256": "cb401ca292d26113b53c0e0448675d103ffee901f9c62f59804f6a39435f153b",
+        "runner_sha256": "61e7f436207255b304abcca62232e21f581158d0be9f38682552d7399a6687b7",
+        "pipeline_runner_sha256": "88c9849de14347537ad741e099d9711d1f98b4381bcd2ba92953b38cec6a422f",
+        "macro_hashes": {
+          "AuditStaticBodyGeometry.java": "0289ee652e41105e9299151a28d5718f22263346f197caaff036678018ba4b2b",
+          "BuildExternalDomain.java": "b92d682c88eaa1d1ac742abd80f7d18d7095c8e6c1983ac701398c752e8e51b5",
+          "BuildExternalFlowRegion.java": "55c1c9548b2b0b570bed954383f009e616feecaaf4d5e8745458c5670fefe96a",
+          "ConfigureExternalFlowPhysics.java": "04c6db0e62f349ba3ffa8fa001d0604a65642044756ca064be3e6cd6cbc4b2b2",
+          "BuildExternalFlowMesh.java": "f7d0b133aba21affd8bc515dd6d275a146d7d9bb01aa4825510af456aeee53a0",
+          "AuditExternalFlowMesh.java": "598610a93f97b0df060806d148e984a40579905ba7b2fc436f0d5028ba142346",
+          "RunExternalFlowSolve.java": "ed543b78b3956e3f6e643ab5010395578c9f51f2436febb37b84a3682e7bfc14",
+          "AuditExternalFlowConvergence.java": "6748edb4ce018d0143a2687639ab9b00b43f0ebb6b2f03d37e1966f351fbbc1c"
+        },
+        "support_hashes": {
+          "scripts/production_catalog.py": "893c8360d46926a10eb07e8f7e9fc7fafbe3657695dfee39ef9ebeac4f58a16c",
+          "scripts/resource_contract.py": "586cf1a2bf63143d96bf55f29ccfae26ffc4805e464b6525e73d7d039330b3ea",
+          "scripts/stage_plan.py": "235bd5b740b804258b24480753ed231b410aef94f5c3c3f3f5c7195ff7c09e9d",
+          "scripts/run_record_gate.py": "fd7b0d03eb44edafe2678d0852989cb6fbb24931ed8773b6e7f7904fab14721b",
+          "scripts/progress_matrix.py": "822d1c336e4348008692076791729d525ab6b0555d8df54ed3afaff82c3ca1b7",
+          "scripts/backend.py": "cb401ca292d26113b53c0e0448675d103ffee901f9c62f59804f6a39435f153b",
+          "scripts/generate_run_report.py": "757240e7f85c0005305548939b79a9b79e2ece2964d9120e3900bd5fe6ff63ca",
+          "scripts/run_static_external_flow_e2e.py": "f740953541f9099d3a9f6d51bb19949dd03aaa34cc7465760a783d2be793b775",
+          "cases/air-three-blade/air3b_summary.py": "28b166c31bb26147e2bc577ac7714d7cdcef56991bc9816a2174d65981a48ebe",
+          "scripts/air3b_convergence_gate.py": "f497b859c18625baf029d6c400902499147776077fac7244e4ad42946261e6a7",
+          "scripts/evaluate_convergence.py": "654de31856680a844415e58caa84f73184429738610959e81cfbaef015da5e6b",
+          "scripts/security/provision_restricted_worker.ps1": "c435332aa1480459eb26415edfea780341a83a87c1db18980ed1751c0eb9e9b3",
+          "scripts/security/grant_batch_logon.ps1": "a002191fa22fe8eeb43e62d6bcced8d21a8a0ecefd9783a5d79f7d782b79fcf0",
+          "test-evidence/restricted-worker-20261001/local-mesh-trial-config.json": "e1861433edc4aaaaaba727cdf0a4cf178e74d066214aaba7135a2f8b98c0bc31",
+          "scripts/formal_worker.py": "c3c9bc99fa38b360e9d707eeadfb15cea71b50e26d8117a9c20aa271f7ab9700",
+          "scripts/casespec.py": "1440d69b3b90e0c1919e19c75d4fed240529ea50b38950a324660cd618094a55",
+          "scripts/part_classification.py": "d549e76cbb613b5e25d0624acb7415acbcc88afeaa328ec2e892e963b4f71bbe",
+          "scripts/formal_run_report.py": "48d0ca0b579b9e3f85006114570ca0077f329d72656fa8090fcf49219458b8d7",
+          "scripts/formal_study_reuse.py": "7730d6bf2ed0abbc811a2bbcddbdf284a670a2f64ccca7e461be00a2a1f16d0b",
+          "operations/catalog.json": "8ac57bb123a4c77b897ce8713d4b66ee93500191d8d453e5ae5e9002cc070882"
+        },
+        "resource_contract_sha256": "586cf1a2bf63143d96bf55f29ccfae26ffc4805e464b6525e73d7d039330b3ea",
+        "source_pipeline_sha256": "8d57d59b9a538ae4c64000a290f8dd9e5ecd0d501ae276c642ba9740cd49b684",
+        "runtime_digest": "b593f7362b9a389285e68ffb28dc6ad0da936933c299a4681a0716484a9a2144",
+        "runtime_manifest_sha256": "c2811aac0e74f610089c992f6d7192e53ec35d3f5cebc825c9e23e9a9eca4109",
+        "runtime_guard_sha256": "99079ce35a0ad7766e94e763e310c83ad65549f1c1f744a6c0a9f9117e84d8c7",
+        "resource_contract": {
+          "schema_version": 1,
+          "logical_cores": 64,
+          "memory_gb": 128,
+          "memory_reserve_gb": 16,
+          "outer_timeout_seconds": 172800
+        },
+        "request_id": "benchmark-re100-s2-m2d1-20261021a",
+        "maximum_submissions": 1,
+        "retry_authorized": false,
+        "inspect_job_id": "formal-pat17-20261019c",
+        "sample_role": "independent_calibration",
+        "wall_clock_stop": false,
+        "s2_authorized": false,
+        "measurement_scope": "S2_MEASURE_ONLY_NO_STUDY_IMPLEMENTATION_NO_Q2_CERTIFICATE"
+      }
+    },
+    {
+      "id": "benchmark-re100-s2-measure-m2d3-one-shot",
+      "version": "2026-10-21a",
+      "pipeline": "test-evidence/benchmark-re100-s2-measure-20261021/REVIEWS/m2d3/SOURCE-PIPELINE.json",
+      "scope": "Exact one benchmark-re100-s2-m2d3-20261021a single-level measurement using unchanged M1 CaseSpec except mesh/domain; no study/Q2 approval",
+      "release_channel": "v1",
+      "sample_specific": false,
+      "required_input_preflight": true,
+      "approved_for_autonomous_run": false,
+      "approved_hashes": {},
+      "review_record": "test-evidence/benchmark-re100-s2-measure-20261021/REVIEWS/m2d3/FORMAL-APPROVAL.json",
+      "status": "PENDING_INDEPENDENT_LOW_REVIEW",
+      "notes": "New user authorization: measure single levels with mesh_levels1/domainfalse; no study POST. All physics/numerical gates/resource bytes identical to M1, old denied S2 research approvals not reused.",
+      "preflight_sha256": "e4dae5545682cfb241eeebb189954dc259eaff68852b5fe45a4082d1d6cdc949",
+      "formal": {
+        "version": "2026-10-21-s2-measure-m2d3",
+        "approved_for_autonomous_run": true,
+        "review_record": "test-evidence/benchmark-re100-s2-measure-20261021/REVIEWS/m2d3/FORMAL-APPROVAL.json",
+        "workflow_manifests": {
+          "static-external-flow-2502": "workflows/static-external-flow-2502/manifest.json",
+          "external-domain-2502": "workflows/external-domain-2502/manifest.json"
+        },
+        "pipeline_hashes": {
+          "static-external-flow-2502": "3492036a76d4170536a8ca771b68427df19ad3eb506ec822dd1a47f57e936505",
+          "external-domain-2502": "dd4d3bbc327b5fb57e761bf869d2c4c1af92edd737d7a9acf6663cb49abe43b6"
+        },
+        "input_ref_policy": "library/<sha256>.sim",
+        "input_sha256": "4150f8e1be38e255efb73e2c4347bf9ccd0035ea5086d72127973b6a096d72b1",
+        "input_source": "test-evidence/static-external-flow/build-body-positive/s1-static-sphere-body-20261003a/static_body_geometry.sim",
+        "case_spec_source": "test-evidence/benchmark-re100-s2-measure-20261021/CASESPECS/m2d3.json",
+        "case_spec_digest_algorithm": "legacy",
+        "case_spec_digest": "16cbeae9cfae15493ea2e562de0f9aabe416d10a9b332d6449af49b3cb206630",
+        "steps": [
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "audit-body",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "external-domain-2502",
+            "stage": "build",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "region-physics-mesh",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "mesh-quality-audit",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "solve",
+            "parameters": {
+              "EXTERNAL_FLOW_CHUNK": "50",
+              "EXTERNAL_FLOW_MAX_ITERATIONS": "600"
+            }
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "validation",
+            "parameters": {}
+          }
+        ],
+        "plan_operations": [
+          "classify_parts",
+          "audit_static_body",
+          "build_external_domain",
+          "build_external_flow_region_physics_mesh",
+          "audit_external_flow_mesh",
+          "run_external_flow_solve",
+          "audit_external_flow_convergence",
+          "export_evidence",
+          "report"
+        ],
+        "preflight_record": "test-evidence/benchmark-re100-s2-measure-20261021/REVIEWS/m2d3/GEOMETRY-PREFLIGHT.json",
+        "controller_sha256": "cb401ca292d26113b53c0e0448675d103ffee901f9c62f59804f6a39435f153b",
+        "runner_sha256": "61e7f436207255b304abcca62232e21f581158d0be9f38682552d7399a6687b7",
+        "pipeline_runner_sha256": "88c9849de14347537ad741e099d9711d1f98b4381bcd2ba92953b38cec6a422f",
+        "macro_hashes": {
+          "AuditStaticBodyGeometry.java": "0289ee652e41105e9299151a28d5718f22263346f197caaff036678018ba4b2b",
+          "BuildExternalDomain.java": "b92d682c88eaa1d1ac742abd80f7d18d7095c8e6c1983ac701398c752e8e51b5",
+          "BuildExternalFlowRegion.java": "55c1c9548b2b0b570bed954383f009e616feecaaf4d5e8745458c5670fefe96a",
+          "ConfigureExternalFlowPhysics.java": "04c6db0e62f349ba3ffa8fa001d0604a65642044756ca064be3e6cd6cbc4b2b2",
+          "BuildExternalFlowMesh.java": "f7d0b133aba21affd8bc515dd6d275a146d7d9bb01aa4825510af456aeee53a0",
+          "AuditExternalFlowMesh.java": "598610a93f97b0df060806d148e984a40579905ba7b2fc436f0d5028ba142346",
+          "RunExternalFlowSolve.java": "ed543b78b3956e3f6e643ab5010395578c9f51f2436febb37b84a3682e7bfc14",
+          "AuditExternalFlowConvergence.java": "6748edb4ce018d0143a2687639ab9b00b43f0ebb6b2f03d37e1966f351fbbc1c"
+        },
+        "support_hashes": {
+          "scripts/production_catalog.py": "893c8360d46926a10eb07e8f7e9fc7fafbe3657695dfee39ef9ebeac4f58a16c",
+          "scripts/resource_contract.py": "586cf1a2bf63143d96bf55f29ccfae26ffc4805e464b6525e73d7d039330b3ea",
+          "scripts/stage_plan.py": "235bd5b740b804258b24480753ed231b410aef94f5c3c3f3f5c7195ff7c09e9d",
+          "scripts/run_record_gate.py": "fd7b0d03eb44edafe2678d0852989cb6fbb24931ed8773b6e7f7904fab14721b",
+          "scripts/progress_matrix.py": "822d1c336e4348008692076791729d525ab6b0555d8df54ed3afaff82c3ca1b7",
+          "scripts/backend.py": "cb401ca292d26113b53c0e0448675d103ffee901f9c62f59804f6a39435f153b",
+          "scripts/generate_run_report.py": "757240e7f85c0005305548939b79a9b79e2ece2964d9120e3900bd5fe6ff63ca",
+          "scripts/run_static_external_flow_e2e.py": "f740953541f9099d3a9f6d51bb19949dd03aaa34cc7465760a783d2be793b775",
+          "cases/air-three-blade/air3b_summary.py": "28b166c31bb26147e2bc577ac7714d7cdcef56991bc9816a2174d65981a48ebe",
+          "scripts/air3b_convergence_gate.py": "f497b859c18625baf029d6c400902499147776077fac7244e4ad42946261e6a7",
+          "scripts/evaluate_convergence.py": "654de31856680a844415e58caa84f73184429738610959e81cfbaef015da5e6b",
+          "scripts/security/provision_restricted_worker.ps1": "c435332aa1480459eb26415edfea780341a83a87c1db18980ed1751c0eb9e9b3",
+          "scripts/security/grant_batch_logon.ps1": "a002191fa22fe8eeb43e62d6bcced8d21a8a0ecefd9783a5d79f7d782b79fcf0",
+          "test-evidence/restricted-worker-20261001/local-mesh-trial-config.json": "e1861433edc4aaaaaba727cdf0a4cf178e74d066214aaba7135a2f8b98c0bc31",
+          "scripts/formal_worker.py": "c3c9bc99fa38b360e9d707eeadfb15cea71b50e26d8117a9c20aa271f7ab9700",
+          "scripts/casespec.py": "1440d69b3b90e0c1919e19c75d4fed240529ea50b38950a324660cd618094a55",
+          "scripts/part_classification.py": "d549e76cbb613b5e25d0624acb7415acbcc88afeaa328ec2e892e963b4f71bbe",
+          "scripts/formal_run_report.py": "48d0ca0b579b9e3f85006114570ca0077f329d72656fa8090fcf49219458b8d7",
+          "scripts/formal_study_reuse.py": "7730d6bf2ed0abbc811a2bbcddbdf284a670a2f64ccca7e461be00a2a1f16d0b",
+          "operations/catalog.json": "8ac57bb123a4c77b897ce8713d4b66ee93500191d8d453e5ae5e9002cc070882"
+        },
+        "resource_contract_sha256": "586cf1a2bf63143d96bf55f29ccfae26ffc4805e464b6525e73d7d039330b3ea",
+        "source_pipeline_sha256": "9fc5738f54f13656455ee96ff5ac842b8f95bb57d711c487ba717f3a6913927a",
+        "runtime_digest": "b593f7362b9a389285e68ffb28dc6ad0da936933c299a4681a0716484a9a2144",
+        "runtime_manifest_sha256": "c2811aac0e74f610089c992f6d7192e53ec35d3f5cebc825c9e23e9a9eca4109",
+        "runtime_guard_sha256": "99079ce35a0ad7766e94e763e310c83ad65549f1c1f744a6c0a9f9117e84d8c7",
+        "resource_contract": {
+          "schema_version": 1,
+          "logical_cores": 64,
+          "memory_gb": 128,
+          "memory_reserve_gb": 16,
+          "outer_timeout_seconds": 172800
+        },
+        "request_id": "benchmark-re100-s2-m2d3-20261021a",
+        "maximum_submissions": 1,
+        "retry_authorized": false,
+        "inspect_job_id": "formal-pat17-20261019c",
+        "sample_role": "independent_calibration",
+        "wall_clock_stop": false,
+        "s2_authorized": false,
+        "measurement_scope": "S2_MEASURE_ONLY_NO_STUDY_IMPLEMENTATION_NO_Q2_CERTIFICATE"
+      }
+    },
+    {
+      "id": "benchmark-re100-s3-a0p08-one-shot",
+      "version": "2026-10-22a",
+      "pipeline": "test-evidence/benchmark-re100-s3-a-20261022/REVIEWS/a0p08/SOURCE-PIPELINE.json",
+      "scope": "Exact benchmark-re100-s3-a0p08-20261022a A-family explicit-prism single-level six-stage measurement; no study/Q2 approval",
+      "release_channel": "v1",
+      "sample_specific": false,
+      "required_input_preflight": true,
+      "approved_for_autonomous_run": false,
+      "approved_hashes": {},
+      "review_record": "test-evidence/benchmark-re100-s3-a-20261022/REVIEWS/a0p08/FORMAL-APPROVAL.json",
+      "status": "PENDING_INDEPENDENT_LOW_REVIEW",
+      "notes": "User cancels mesh-only probes and authorizes three full six-stage measurements; previous S3 probe review not reused.",
+      "preflight_sha256": "cd60fb49222b1f8d2a7e1c0ffb2e4fc56e0c78b4cf2f7323f714d746d92a405f",
+      "formal": {
+        "version": "2026-10-22-s3-a0p08",
+        "approved_for_autonomous_run": true,
+        "review_record": "test-evidence/benchmark-re100-s3-a-20261022/REVIEWS/a0p08/FORMAL-APPROVAL.json",
+        "workflow_manifests": {
+          "static-external-flow-2502": "workflows/static-external-flow-2502/manifest.json",
+          "external-domain-2502": "workflows/external-domain-2502/manifest.json"
+        },
+        "pipeline_hashes": {
+          "static-external-flow-2502": "3492036a76d4170536a8ca771b68427df19ad3eb506ec822dd1a47f57e936505",
+          "external-domain-2502": "dd4d3bbc327b5fb57e761bf869d2c4c1af92edd737d7a9acf6663cb49abe43b6"
+        },
+        "input_ref_policy": "library/<sha256>.sim",
+        "input_sha256": "4150f8e1be38e255efb73e2c4347bf9ccd0035ea5086d72127973b6a096d72b1",
+        "input_source": "test-evidence/static-external-flow/build-body-positive/s1-static-sphere-body-20261003a/static_body_geometry.sim",
+        "case_spec_source": "test-evidence/benchmark-re100-s3-a-20261022/CASESPECS/a0p08.json",
+        "case_spec_digest_algorithm": "legacy",
+        "case_spec_digest": "c1c11fc2be6c563844760d78efa7498edf0b122255932024e52ac3dac8051c32",
+        "steps": [
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "audit-body",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "external-domain-2502",
+            "stage": "build",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "region-physics-mesh",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "mesh-quality-audit",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "solve",
+            "parameters": {
+              "EXTERNAL_FLOW_CHUNK": "50",
+              "EXTERNAL_FLOW_MAX_ITERATIONS": "600"
+            }
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "validation",
+            "parameters": {}
+          }
+        ],
+        "plan_operations": [
+          "classify_parts",
+          "audit_static_body",
+          "build_external_domain",
+          "build_external_flow_region_physics_mesh",
+          "audit_external_flow_mesh",
+          "run_external_flow_solve",
+          "audit_external_flow_convergence",
+          "export_evidence",
+          "report"
+        ],
+        "preflight_record": "test-evidence/benchmark-re100-s3-a-20261022/REVIEWS/a0p08/GEOMETRY-PREFLIGHT.json",
+        "controller_sha256": "cb401ca292d26113b53c0e0448675d103ffee901f9c62f59804f6a39435f153b",
+        "runner_sha256": "61e7f436207255b304abcca62232e21f581158d0be9f38682552d7399a6687b7",
+        "pipeline_runner_sha256": "88c9849de14347537ad741e099d9711d1f98b4381bcd2ba92953b38cec6a422f",
+        "macro_hashes": {
+          "AuditStaticBodyGeometry.java": "0289ee652e41105e9299151a28d5718f22263346f197caaff036678018ba4b2b",
+          "BuildExternalDomain.java": "b92d682c88eaa1d1ac742abd80f7d18d7095c8e6c1983ac701398c752e8e51b5",
+          "BuildExternalFlowRegion.java": "55c1c9548b2b0b570bed954383f009e616feecaaf4d5e8745458c5670fefe96a",
+          "ConfigureExternalFlowPhysics.java": "04c6db0e62f349ba3ffa8fa001d0604a65642044756ca064be3e6cd6cbc4b2b2",
+          "BuildExternalFlowMesh.java": "f7d0b133aba21affd8bc515dd6d275a146d7d9bb01aa4825510af456aeee53a0",
+          "AuditExternalFlowMesh.java": "598610a93f97b0df060806d148e984a40579905ba7b2fc436f0d5028ba142346",
+          "RunExternalFlowSolve.java": "ed543b78b3956e3f6e643ab5010395578c9f51f2436febb37b84a3682e7bfc14",
+          "AuditExternalFlowConvergence.java": "6748edb4ce018d0143a2687639ab9b00b43f0ebb6b2f03d37e1966f351fbbc1c"
+        },
+        "support_hashes": {
+          "scripts/production_catalog.py": "893c8360d46926a10eb07e8f7e9fc7fafbe3657695dfee39ef9ebeac4f58a16c",
+          "scripts/resource_contract.py": "586cf1a2bf63143d96bf55f29ccfae26ffc4805e464b6525e73d7d039330b3ea",
+          "scripts/stage_plan.py": "235bd5b740b804258b24480753ed231b410aef94f5c3c3f3f5c7195ff7c09e9d",
+          "scripts/run_record_gate.py": "fd7b0d03eb44edafe2678d0852989cb6fbb24931ed8773b6e7f7904fab14721b",
+          "scripts/progress_matrix.py": "822d1c336e4348008692076791729d525ab6b0555d8df54ed3afaff82c3ca1b7",
+          "scripts/backend.py": "cb401ca292d26113b53c0e0448675d103ffee901f9c62f59804f6a39435f153b",
+          "scripts/generate_run_report.py": "757240e7f85c0005305548939b79a9b79e2ece2964d9120e3900bd5fe6ff63ca",
+          "scripts/run_static_external_flow_e2e.py": "f740953541f9099d3a9f6d51bb19949dd03aaa34cc7465760a783d2be793b775",
+          "cases/air-three-blade/air3b_summary.py": "28b166c31bb26147e2bc577ac7714d7cdcef56991bc9816a2174d65981a48ebe",
+          "scripts/air3b_convergence_gate.py": "f497b859c18625baf029d6c400902499147776077fac7244e4ad42946261e6a7",
+          "scripts/evaluate_convergence.py": "654de31856680a844415e58caa84f73184429738610959e81cfbaef015da5e6b",
+          "scripts/security/provision_restricted_worker.ps1": "c435332aa1480459eb26415edfea780341a83a87c1db18980ed1751c0eb9e9b3",
+          "scripts/security/grant_batch_logon.ps1": "a002191fa22fe8eeb43e62d6bcced8d21a8a0ecefd9783a5d79f7d782b79fcf0",
+          "test-evidence/restricted-worker-20261001/local-mesh-trial-config.json": "e1861433edc4aaaaaba727cdf0a4cf178e74d066214aaba7135a2f8b98c0bc31",
+          "scripts/formal_worker.py": "c3c9bc99fa38b360e9d707eeadfb15cea71b50e26d8117a9c20aa271f7ab9700",
+          "scripts/casespec.py": "1440d69b3b90e0c1919e19c75d4fed240529ea50b38950a324660cd618094a55",
+          "scripts/part_classification.py": "d549e76cbb613b5e25d0624acb7415acbcc88afeaa328ec2e892e963b4f71bbe",
+          "scripts/formal_run_report.py": "48d0ca0b579b9e3f85006114570ca0077f329d72656fa8090fcf49219458b8d7",
+          "scripts/formal_study_reuse.py": "7730d6bf2ed0abbc811a2bbcddbdf284a670a2f64ccca7e461be00a2a1f16d0b",
+          "operations/catalog.json": "8ac57bb123a4c77b897ce8713d4b66ee93500191d8d453e5ae5e9002cc070882"
+        },
+        "resource_contract_sha256": "586cf1a2bf63143d96bf55f29ccfae26ffc4805e464b6525e73d7d039330b3ea",
+        "source_pipeline_sha256": "90a53d54d7b39da675c841cd459786508426a9693010380f3d8953d2f096fdcf",
+        "runtime_digest": "b593f7362b9a389285e68ffb28dc6ad0da936933c299a4681a0716484a9a2144",
+        "runtime_manifest_sha256": "c2811aac0e74f610089c992f6d7192e53ec35d3f5cebc825c9e23e9a9eca4109",
+        "runtime_guard_sha256": "99079ce35a0ad7766e94e763e310c83ad65549f1c1f744a6c0a9f9117e84d8c7",
+        "resource_contract": {
+          "schema_version": 1,
+          "logical_cores": 64,
+          "memory_gb": 128,
+          "memory_reserve_gb": 16,
+          "outer_timeout_seconds": 172800
+        },
+        "request_id": "benchmark-re100-s3-a0p08-20261022a",
+        "maximum_submissions": 1,
+        "retry_authorized": false,
+        "inspect_job_id": "formal-pat17-20261019c",
+        "sample_role": "independent_calibration",
+        "wall_clock_stop": false,
+        "s2_authorized": false,
+        "measurement_scope": "S3_A_FAMILY_MEASUREMENT_ONLY_NO_STUDY_IMPLEMENTATION_NO_Q2_CERTIFICATE"
+      }
+    },
+    {
+      "id": "benchmark-re100-s3-a0p04-one-shot",
+      "version": "2026-10-22a",
+      "pipeline": "test-evidence/benchmark-re100-s3-a-20261022/REVIEWS/a0p04/SOURCE-PIPELINE.json",
+      "scope": "Exact benchmark-re100-s3-a0p04-20261022a A-family explicit-prism single-level six-stage measurement; no study/Q2 approval",
+      "release_channel": "v1",
+      "sample_specific": false,
+      "required_input_preflight": true,
+      "approved_for_autonomous_run": false,
+      "approved_hashes": {},
+      "review_record": "test-evidence/benchmark-re100-s3-a-20261022/REVIEWS/a0p04/FORMAL-APPROVAL.json",
+      "status": "PENDING_INDEPENDENT_LOW_REVIEW",
+      "notes": "User cancels mesh-only probes and authorizes three full six-stage measurements; previous S3 probe review not reused.",
+      "preflight_sha256": "a22a40e08f32ee2bf1b2a78c92d4b557f76648282d673a151113b340d2d71c80",
+      "formal": {
+        "version": "2026-10-22-s3-a0p04",
+        "approved_for_autonomous_run": true,
+        "review_record": "test-evidence/benchmark-re100-s3-a-20261022/REVIEWS/a0p04/FORMAL-APPROVAL.json",
+        "workflow_manifests": {
+          "static-external-flow-2502": "workflows/static-external-flow-2502/manifest.json",
+          "external-domain-2502": "workflows/external-domain-2502/manifest.json"
+        },
+        "pipeline_hashes": {
+          "static-external-flow-2502": "3492036a76d4170536a8ca771b68427df19ad3eb506ec822dd1a47f57e936505",
+          "external-domain-2502": "dd4d3bbc327b5fb57e761bf869d2c4c1af92edd737d7a9acf6663cb49abe43b6"
+        },
+        "input_ref_policy": "library/<sha256>.sim",
+        "input_sha256": "4150f8e1be38e255efb73e2c4347bf9ccd0035ea5086d72127973b6a096d72b1",
+        "input_source": "test-evidence/static-external-flow/build-body-positive/s1-static-sphere-body-20261003a/static_body_geometry.sim",
+        "case_spec_source": "test-evidence/benchmark-re100-s3-a-20261022/CASESPECS/a0p04.json",
+        "case_spec_digest_algorithm": "legacy",
+        "case_spec_digest": "34ce0af1648cc810ef88359ca72ad9baf302c3166a7bb208dc651edee3afa4ee",
+        "steps": [
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "audit-body",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "external-domain-2502",
+            "stage": "build",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "region-physics-mesh",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "mesh-quality-audit",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "solve",
+            "parameters": {
+              "EXTERNAL_FLOW_CHUNK": "50",
+              "EXTERNAL_FLOW_MAX_ITERATIONS": "600"
+            }
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "validation",
+            "parameters": {}
+          }
+        ],
+        "plan_operations": [
+          "classify_parts",
+          "audit_static_body",
+          "build_external_domain",
+          "build_external_flow_region_physics_mesh",
+          "audit_external_flow_mesh",
+          "run_external_flow_solve",
+          "audit_external_flow_convergence",
+          "export_evidence",
+          "report"
+        ],
+        "preflight_record": "test-evidence/benchmark-re100-s3-a-20261022/REVIEWS/a0p04/GEOMETRY-PREFLIGHT.json",
+        "controller_sha256": "cb401ca292d26113b53c0e0448675d103ffee901f9c62f59804f6a39435f153b",
+        "runner_sha256": "61e7f436207255b304abcca62232e21f581158d0be9f38682552d7399a6687b7",
+        "pipeline_runner_sha256": "88c9849de14347537ad741e099d9711d1f98b4381bcd2ba92953b38cec6a422f",
+        "macro_hashes": {
+          "AuditStaticBodyGeometry.java": "0289ee652e41105e9299151a28d5718f22263346f197caaff036678018ba4b2b",
+          "BuildExternalDomain.java": "b92d682c88eaa1d1ac742abd80f7d18d7095c8e6c1983ac701398c752e8e51b5",
+          "BuildExternalFlowRegion.java": "55c1c9548b2b0b570bed954383f009e616feecaaf4d5e8745458c5670fefe96a",
+          "ConfigureExternalFlowPhysics.java": "04c6db0e62f349ba3ffa8fa001d0604a65642044756ca064be3e6cd6cbc4b2b2",
+          "BuildExternalFlowMesh.java": "f7d0b133aba21affd8bc515dd6d275a146d7d9bb01aa4825510af456aeee53a0",
+          "AuditExternalFlowMesh.java": "598610a93f97b0df060806d148e984a40579905ba7b2fc436f0d5028ba142346",
+          "RunExternalFlowSolve.java": "ed543b78b3956e3f6e643ab5010395578c9f51f2436febb37b84a3682e7bfc14",
+          "AuditExternalFlowConvergence.java": "6748edb4ce018d0143a2687639ab9b00b43f0ebb6b2f03d37e1966f351fbbc1c"
+        },
+        "support_hashes": {
+          "scripts/production_catalog.py": "893c8360d46926a10eb07e8f7e9fc7fafbe3657695dfee39ef9ebeac4f58a16c",
+          "scripts/resource_contract.py": "586cf1a2bf63143d96bf55f29ccfae26ffc4805e464b6525e73d7d039330b3ea",
+          "scripts/stage_plan.py": "235bd5b740b804258b24480753ed231b410aef94f5c3c3f3f5c7195ff7c09e9d",
+          "scripts/run_record_gate.py": "fd7b0d03eb44edafe2678d0852989cb6fbb24931ed8773b6e7f7904fab14721b",
+          "scripts/progress_matrix.py": "822d1c336e4348008692076791729d525ab6b0555d8df54ed3afaff82c3ca1b7",
+          "scripts/backend.py": "cb401ca292d26113b53c0e0448675d103ffee901f9c62f59804f6a39435f153b",
+          "scripts/generate_run_report.py": "757240e7f85c0005305548939b79a9b79e2ece2964d9120e3900bd5fe6ff63ca",
+          "scripts/run_static_external_flow_e2e.py": "f740953541f9099d3a9f6d51bb19949dd03aaa34cc7465760a783d2be793b775",
+          "cases/air-three-blade/air3b_summary.py": "28b166c31bb26147e2bc577ac7714d7cdcef56991bc9816a2174d65981a48ebe",
+          "scripts/air3b_convergence_gate.py": "f497b859c18625baf029d6c400902499147776077fac7244e4ad42946261e6a7",
+          "scripts/evaluate_convergence.py": "654de31856680a844415e58caa84f73184429738610959e81cfbaef015da5e6b",
+          "scripts/security/provision_restricted_worker.ps1": "c435332aa1480459eb26415edfea780341a83a87c1db18980ed1751c0eb9e9b3",
+          "scripts/security/grant_batch_logon.ps1": "a002191fa22fe8eeb43e62d6bcced8d21a8a0ecefd9783a5d79f7d782b79fcf0",
+          "test-evidence/restricted-worker-20261001/local-mesh-trial-config.json": "e1861433edc4aaaaaba727cdf0a4cf178e74d066214aaba7135a2f8b98c0bc31",
+          "scripts/formal_worker.py": "c3c9bc99fa38b360e9d707eeadfb15cea71b50e26d8117a9c20aa271f7ab9700",
+          "scripts/casespec.py": "1440d69b3b90e0c1919e19c75d4fed240529ea50b38950a324660cd618094a55",
+          "scripts/part_classification.py": "d549e76cbb613b5e25d0624acb7415acbcc88afeaa328ec2e892e963b4f71bbe",
+          "scripts/formal_run_report.py": "48d0ca0b579b9e3f85006114570ca0077f329d72656fa8090fcf49219458b8d7",
+          "scripts/formal_study_reuse.py": "7730d6bf2ed0abbc811a2bbcddbdf284a670a2f64ccca7e461be00a2a1f16d0b",
+          "operations/catalog.json": "8ac57bb123a4c77b897ce8713d4b66ee93500191d8d453e5ae5e9002cc070882"
+        },
+        "resource_contract_sha256": "586cf1a2bf63143d96bf55f29ccfae26ffc4805e464b6525e73d7d039330b3ea",
+        "source_pipeline_sha256": "aa09cb2c886dc59f96dcea2f260c05fd2baf866fabe48f32752c1a82876a099e",
+        "runtime_digest": "b593f7362b9a389285e68ffb28dc6ad0da936933c299a4681a0716484a9a2144",
+        "runtime_manifest_sha256": "c2811aac0e74f610089c992f6d7192e53ec35d3f5cebc825c9e23e9a9eca4109",
+        "runtime_guard_sha256": "99079ce35a0ad7766e94e763e310c83ad65549f1c1f744a6c0a9f9117e84d8c7",
+        "resource_contract": {
+          "schema_version": 1,
+          "logical_cores": 64,
+          "memory_gb": 128,
+          "memory_reserve_gb": 16,
+          "outer_timeout_seconds": 172800
+        },
+        "request_id": "benchmark-re100-s3-a0p04-20261022a",
+        "maximum_submissions": 1,
+        "retry_authorized": false,
+        "inspect_job_id": "formal-pat17-20261019c",
+        "sample_role": "independent_calibration",
+        "wall_clock_stop": false,
+        "s2_authorized": false,
+        "measurement_scope": "S3_A_FAMILY_MEASUREMENT_ONLY_NO_STUDY_IMPLEMENTATION_NO_Q2_CERTIFICATE"
+      }
+    },
+    {
+      "id": "benchmark-re100-s3-a0p02-one-shot",
+      "version": "2026-10-22a",
+      "pipeline": "test-evidence/benchmark-re100-s3-a-20261022/REVIEWS/a0p02/SOURCE-PIPELINE.json",
+      "scope": "Exact benchmark-re100-s3-a0p02-20261022a A-family explicit-prism single-level six-stage measurement; no study/Q2 approval",
+      "release_channel": "v1",
+      "sample_specific": false,
+      "required_input_preflight": true,
+      "approved_for_autonomous_run": false,
+      "approved_hashes": {},
+      "review_record": "test-evidence/benchmark-re100-s3-a-20261022/REVIEWS/a0p02/FORMAL-APPROVAL.json",
+      "status": "PENDING_INDEPENDENT_LOW_REVIEW",
+      "notes": "User cancels mesh-only probes and authorizes three full six-stage measurements; previous S3 probe review not reused.",
+      "preflight_sha256": "2b116a7404a6c45c0e957e9dd9e51d58fbffdc84c5dff656cf842bc42ce4b53f",
+      "formal": {
+        "version": "2026-10-22-s3-a0p02",
+        "approved_for_autonomous_run": true,
+        "review_record": "test-evidence/benchmark-re100-s3-a-20261022/REVIEWS/a0p02/FORMAL-APPROVAL.json",
+        "workflow_manifests": {
+          "static-external-flow-2502": "workflows/static-external-flow-2502/manifest.json",
+          "external-domain-2502": "workflows/external-domain-2502/manifest.json"
+        },
+        "pipeline_hashes": {
+          "static-external-flow-2502": "3492036a76d4170536a8ca771b68427df19ad3eb506ec822dd1a47f57e936505",
+          "external-domain-2502": "dd4d3bbc327b5fb57e761bf869d2c4c1af92edd737d7a9acf6663cb49abe43b6"
+        },
+        "input_ref_policy": "library/<sha256>.sim",
+        "input_sha256": "4150f8e1be38e255efb73e2c4347bf9ccd0035ea5086d72127973b6a096d72b1",
+        "input_source": "test-evidence/static-external-flow/build-body-positive/s1-static-sphere-body-20261003a/static_body_geometry.sim",
+        "case_spec_source": "test-evidence/benchmark-re100-s3-a-20261022/CASESPECS/a0p02.json",
+        "case_spec_digest_algorithm": "legacy",
+        "case_spec_digest": "3b92e80196becd087ad55bb703a1fe5d55bbe1e73543914d3dbc56a23a7134c2",
+        "steps": [
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "audit-body",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "external-domain-2502",
+            "stage": "build",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "region-physics-mesh",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "mesh-quality-audit",
+            "parameters": {}
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "solve",
+            "parameters": {
+              "EXTERNAL_FLOW_CHUNK": "50",
+              "EXTERNAL_FLOW_MAX_ITERATIONS": "600"
+            }
+          },
+          {
+            "workflow_id": "static-external-flow-2502",
+            "stage": "validation",
+            "parameters": {}
+          }
+        ],
+        "plan_operations": [
+          "classify_parts",
+          "audit_static_body",
+          "build_external_domain",
+          "build_external_flow_region_physics_mesh",
+          "audit_external_flow_mesh",
+          "run_external_flow_solve",
+          "audit_external_flow_convergence",
+          "export_evidence",
+          "report"
+        ],
+        "preflight_record": "test-evidence/benchmark-re100-s3-a-20261022/REVIEWS/a0p02/GEOMETRY-PREFLIGHT.json",
+        "controller_sha256": "cb401ca292d26113b53c0e0448675d103ffee901f9c62f59804f6a39435f153b",
+        "runner_sha256": "61e7f436207255b304abcca62232e21f581158d0be9f38682552d7399a6687b7",
+        "pipeline_runner_sha256": "88c9849de14347537ad741e099d9711d1f98b4381bcd2ba92953b38cec6a422f",
+        "macro_hashes": {
+          "AuditStaticBodyGeometry.java": "0289ee652e41105e9299151a28d5718f22263346f197caaff036678018ba4b2b",
+          "BuildExternalDomain.java": "b92d682c88eaa1d1ac742abd80f7d18d7095c8e6c1983ac701398c752e8e51b5",
+          "BuildExternalFlowRegion.java": "55c1c9548b2b0b570bed954383f009e616feecaaf4d5e8745458c5670fefe96a",
+          "ConfigureExternalFlowPhysics.java": "04c6db0e62f349ba3ffa8fa001d0604a65642044756ca064be3e6cd6cbc4b2b2",
+          "BuildExternalFlowMesh.java": "f7d0b133aba21affd8bc515dd6d275a146d7d9bb01aa4825510af456aeee53a0",
+          "AuditExternalFlowMesh.java": "598610a93f97b0df060806d148e984a40579905ba7b2fc436f0d5028ba142346",
+          "RunExternalFlowSolve.java": "ed543b78b3956e3f6e643ab5010395578c9f51f2436febb37b84a3682e7bfc14",
+          "AuditExternalFlowConvergence.java": "6748edb4ce018d0143a2687639ab9b00b43f0ebb6b2f03d37e1966f351fbbc1c"
+        },
+        "support_hashes": {
+          "scripts/production_catalog.py": "893c8360d46926a10eb07e8f7e9fc7fafbe3657695dfee39ef9ebeac4f58a16c",
+          "scripts/resource_contract.py": "586cf1a2bf63143d96bf55f29ccfae26ffc4805e464b6525e73d7d039330b3ea",
+          "scripts/stage_plan.py": "235bd5b740b804258b24480753ed231b410aef94f5c3c3f3f5c7195ff7c09e9d",
+          "scripts/run_record_gate.py": "fd7b0d03eb44edafe2678d0852989cb6fbb24931ed8773b6e7f7904fab14721b",
+          "scripts/progress_matrix.py": "822d1c336e4348008692076791729d525ab6b0555d8df54ed3afaff82c3ca1b7",
+          "scripts/backend.py": "cb401ca292d26113b53c0e0448675d103ffee901f9c62f59804f6a39435f153b",
+          "scripts/generate_run_report.py": "757240e7f85c0005305548939b79a9b79e2ece2964d9120e3900bd5fe6ff63ca",
+          "scripts/run_static_external_flow_e2e.py": "f740953541f9099d3a9f6d51bb19949dd03aaa34cc7465760a783d2be793b775",
+          "cases/air-three-blade/air3b_summary.py": "28b166c31bb26147e2bc577ac7714d7cdcef56991bc9816a2174d65981a48ebe",
+          "scripts/air3b_convergence_gate.py": "f497b859c18625baf029d6c400902499147776077fac7244e4ad42946261e6a7",
+          "scripts/evaluate_convergence.py": "654de31856680a844415e58caa84f73184429738610959e81cfbaef015da5e6b",
+          "scripts/security/provision_restricted_worker.ps1": "c435332aa1480459eb26415edfea780341a83a87c1db18980ed1751c0eb9e9b3",
+          "scripts/security/grant_batch_logon.ps1": "a002191fa22fe8eeb43e62d6bcced8d21a8a0ecefd9783a5d79f7d782b79fcf0",
+          "test-evidence/restricted-worker-20261001/local-mesh-trial-config.json": "e1861433edc4aaaaaba727cdf0a4cf178e74d066214aaba7135a2f8b98c0bc31",
+          "scripts/formal_worker.py": "c3c9bc99fa38b360e9d707eeadfb15cea71b50e26d8117a9c20aa271f7ab9700",
+          "scripts/casespec.py": "1440d69b3b90e0c1919e19c75d4fed240529ea50b38950a324660cd618094a55",
+          "scripts/part_classification.py": "d549e76cbb613b5e25d0624acb7415acbcc88afeaa328ec2e892e963b4f71bbe",
+          "scripts/formal_run_report.py": "48d0ca0b579b9e3f85006114570ca0077f329d72656fa8090fcf49219458b8d7",
+          "scripts/formal_study_reuse.py": "7730d6bf2ed0abbc811a2bbcddbdf284a670a2f64ccca7e461be00a2a1f16d0b",
+          "operations/catalog.json": "8ac57bb123a4c77b897ce8713d4b66ee93500191d8d453e5ae5e9002cc070882"
+        },
+        "resource_contract_sha256": "586cf1a2bf63143d96bf55f29ccfae26ffc4805e464b6525e73d7d039330b3ea",
+        "source_pipeline_sha256": "b5ea6641ed8a115d24c1d50164cce49552da1c4e9f989a1b5123ef501d45438b",
+        "runtime_digest": "b593f7362b9a389285e68ffb28dc6ad0da936933c299a4681a0716484a9a2144",
+        "runtime_manifest_sha256": "c2811aac0e74f610089c992f6d7192e53ec35d3f5cebc825c9e23e9a9eca4109",
+        "runtime_guard_sha256": "99079ce35a0ad7766e94e763e310c83ad65549f1c1f744a6c0a9f9117e84d8c7",
+        "resource_contract": {
+          "schema_version": 1,
+          "logical_cores": 64,
+          "memory_gb": 128,
+          "memory_reserve_gb": 16,
+          "outer_timeout_seconds": 172800
+        },
+        "request_id": "benchmark-re100-s3-a0p02-20261022a",
+        "maximum_submissions": 1,
+        "retry_authorized": false,
+        "inspect_job_id": "formal-pat17-20261019c",
+        "sample_role": "independent_calibration",
+        "wall_clock_stop": false,
+        "s2_authorized": false,
+        "measurement_scope": "S3_A_FAMILY_MEASUREMENT_ONLY_NO_STUDY_IMPLEMENTATION_NO_Q2_CERTIFICATE"
+      }
+    }
+  ,
+    {
+      "pipeline": "test-evidence/benchmark-re100-s1-20261021c/SOURCE-PIPELINE.json",
+      "release_channel": "v1",
+      "sample_specific": false,
+      "required_input_preflight": true,
+      "id": "benchmark-re100-s1c-one-shot-status-20261021",
+      "version": "2026-10-21-status-1",
+      "scope": "Historical independent-review status index only; no execution or current runtime approval",
+      "approved_for_autonomous_run": false,
+      "approved_hashes": {},
+      "review_record": "docs/catalog-status-20261021/REGISTRATION-APPROVAL.json",
+      "status": "HISTORICAL_REVIEW_APPROVED_CURRENT_RUNTIME_NOT_APPROVED",
+      "source_entry_id": "benchmark-re100-s1c-one-shot",
+      "source_entry_version": "2026-10-21a",
+      "source_review_ref": "test-evidence/benchmark-re100-s1-20261021c/FORMAL-APPROVAL.json",
+      "source_review_sha256": "a1c49a545ff8cceaf82ca8037d60ba42ad9cd0d0dc973a9de84e8fd0869b3353",
+      "historical_runtime_digest": "b593f7362b9a389285e68ffb28dc6ad0da936933c299a4681a0716484a9a2144",
+      "observed_current_runtime_digest": "4d579f3c78b8af7377f4b7d74e3f7ea43a1272b21f7926a1c1025f8217393e6f",
+      "registered_request_ids": [],
+      "maximum_submissions": 0,
+      "engineering_verified": false,
+      "previous_catalog_sha256": "48963e552b1c1ecee50234d806be5403795258489e347880f31dc50a24f87999"
+    },
+    {
+      "pipeline": "test-evidence/benchmark-re100-s1-20261021d/SOURCE-PIPELINE.json",
+      "release_channel": "v1",
+      "sample_specific": false,
+      "required_input_preflight": true,
+      "id": "benchmark-re100-s1d-one-shot-status-20261021",
+      "version": "2026-10-21-status-1",
+      "scope": "Historical independent-review status index only; no execution or current runtime approval",
+      "approved_for_autonomous_run": false,
+      "approved_hashes": {},
+      "review_record": "docs/catalog-status-20261021/REGISTRATION-APPROVAL.json",
+      "status": "HISTORICAL_REVIEW_APPROVED_CURRENT_RUNTIME_NOT_APPROVED",
+      "source_entry_id": "benchmark-re100-s1d-one-shot",
+      "source_entry_version": "2026-10-21a",
+      "source_review_ref": "test-evidence/benchmark-re100-s1-20261021d/FORMAL-APPROVAL.json",
+      "source_review_sha256": "f3182d1f3cbae6d19b0bbd4958b8319c1b98e8f83be0a0b470e7f4ed43d9eb7d",
+      "historical_runtime_digest": "b593f7362b9a389285e68ffb28dc6ad0da936933c299a4681a0716484a9a2144",
+      "observed_current_runtime_digest": "4d579f3c78b8af7377f4b7d74e3f7ea43a1272b21f7926a1c1025f8217393e6f",
+      "registered_request_ids": [],
+      "maximum_submissions": 0,
+      "engineering_verified": false,
+      "previous_catalog_sha256": "48963e552b1c1ecee50234d806be5403795258489e347880f31dc50a24f87999"
+    },
+    {
+      "pipeline": "test-evidence/benchmark-re100-s2-measure-20261021/REVIEWS/m2d2/SOURCE-PIPELINE.json",
+      "release_channel": "v1",
+      "sample_specific": false,
+      "required_input_preflight": true,
+      "id": "benchmark-re100-s2-measure-m2d2-one-shot-status-20261021",
+      "version": "2026-10-21-status-1",
+      "scope": "Historical independent-review status index only; no execution or current runtime approval",
+      "approved_for_autonomous_run": false,
+      "approved_hashes": {},
+      "review_record": "docs/catalog-status-20261021/REGISTRATION-APPROVAL.json",
+      "status": "HISTORICAL_REVIEW_APPROVED_CURRENT_RUNTIME_NOT_APPROVED",
+      "source_entry_id": "benchmark-re100-s2-measure-m2d2-one-shot",
+      "source_entry_version": "2026-10-21a",
+      "source_review_ref": "test-evidence/benchmark-re100-s2-measure-20261021/REVIEWS/m2d2/FORMAL-APPROVAL.json",
+      "source_review_sha256": "b1dd21c1c668de5bdd1307fa67c7818a9d3b96d9a2e4b8c4505f2c5b2d0ef574",
+      "historical_runtime_digest": "b593f7362b9a389285e68ffb28dc6ad0da936933c299a4681a0716484a9a2144",
+      "observed_current_runtime_digest": "4d579f3c78b8af7377f4b7d74e3f7ea43a1272b21f7926a1c1025f8217393e6f",
+      "registered_request_ids": [],
+      "maximum_submissions": 0,
+      "engineering_verified": false,
+      "previous_catalog_sha256": "48963e552b1c1ecee50234d806be5403795258489e347880f31dc50a24f87999"
+    },
+    {
+      "pipeline": "test-evidence/benchmark-re100-s2-measure-20261021/REVIEWS/m3d2/SOURCE-PIPELINE.json",
+      "release_channel": "v1",
+      "sample_specific": false,
+      "required_input_preflight": true,
+      "id": "benchmark-re100-s2-measure-m3d2-one-shot-status-20261021",
+      "version": "2026-10-21-status-1",
+      "scope": "Historical independent-review status index only; no execution or current runtime approval",
+      "approved_for_autonomous_run": false,
+      "approved_hashes": {},
+      "review_record": "docs/catalog-status-20261021/REGISTRATION-APPROVAL.json",
+      "status": "HISTORICAL_REVIEW_APPROVED_CURRENT_RUNTIME_NOT_APPROVED",
+      "source_entry_id": "benchmark-re100-s2-measure-m3d2-one-shot",
+      "source_entry_version": "2026-10-21a",
+      "source_review_ref": "test-evidence/benchmark-re100-s2-measure-20261021/REVIEWS/m3d2/FORMAL-APPROVAL.json",
+      "source_review_sha256": "4cc141b4afd7c3b2fdc697e66e03d419bf886e60e73052d00c49e113e9450f0e",
+      "historical_runtime_digest": "b593f7362b9a389285e68ffb28dc6ad0da936933c299a4681a0716484a9a2144",
+      "observed_current_runtime_digest": "4d579f3c78b8af7377f4b7d74e3f7ea43a1272b21f7926a1c1025f8217393e6f",
+      "registered_request_ids": [],
+      "maximum_submissions": 0,
+      "engineering_verified": false,
+      "previous_catalog_sha256": "48963e552b1c1ecee50234d806be5403795258489e347880f31dc50a24f87999"
+    },
+    {
+      "pipeline": "test-evidence/benchmark-re100-s2-measure-20261021/REVIEWS/m2d1/SOURCE-PIPELINE.json",
+      "release_channel": "v1",
+      "sample_specific": false,
+      "required_input_preflight": true,
+      "id": "benchmark-re100-s2-measure-m2d1-one-shot-status-20261021",
+      "version": "2026-10-21-status-1",
+      "scope": "Historical independent-review status index only; no execution or current runtime approval",
+      "approved_for_autonomous_run": false,
+      "approved_hashes": {},
+      "review_record": "docs/catalog-status-20261021/REGISTRATION-APPROVAL.json",
+      "status": "HISTORICAL_REVIEW_APPROVED_CURRENT_RUNTIME_NOT_APPROVED",
+      "source_entry_id": "benchmark-re100-s2-measure-m2d1-one-shot",
+      "source_entry_version": "2026-10-21a",
+      "source_review_ref": "test-evidence/benchmark-re100-s2-measure-20261021/REVIEWS/m2d1/FORMAL-APPROVAL.json",
+      "source_review_sha256": "25f8f647fd567b198583a1b8915d141324cadd6943fa541fc58d5ac52de05308",
+      "historical_runtime_digest": "b593f7362b9a389285e68ffb28dc6ad0da936933c299a4681a0716484a9a2144",
+      "observed_current_runtime_digest": "4d579f3c78b8af7377f4b7d74e3f7ea43a1272b21f7926a1c1025f8217393e6f",
+      "registered_request_ids": [],
+      "maximum_submissions": 0,
+      "engineering_verified": false,
+      "previous_catalog_sha256": "48963e552b1c1ecee50234d806be5403795258489e347880f31dc50a24f87999"
+    },
+    {
+      "pipeline": "test-evidence/benchmark-re100-s2-measure-20261021/REVIEWS/m2d3/SOURCE-PIPELINE.json",
+      "release_channel": "v1",
+      "sample_specific": false,
+      "required_input_preflight": true,
+      "id": "benchmark-re100-s2-measure-m2d3-one-shot-status-20261021",
+      "version": "2026-10-21-status-1",
+      "scope": "Historical independent-review status index only; no execution or current runtime approval",
+      "approved_for_autonomous_run": false,
+      "approved_hashes": {},
+      "review_record": "docs/catalog-status-20261021/REGISTRATION-APPROVAL.json",
+      "status": "HISTORICAL_REVIEW_APPROVED_CURRENT_RUNTIME_NOT_APPROVED",
+      "source_entry_id": "benchmark-re100-s2-measure-m2d3-one-shot",
+      "source_entry_version": "2026-10-21a",
+      "source_review_ref": "test-evidence/benchmark-re100-s2-measure-20261021/REVIEWS/m2d3/FORMAL-APPROVAL.json",
+      "source_review_sha256": "d1c37c0216d31ef66f80619002c16f18fa61d3904b44e473d9a8c7a868c82d02",
+      "historical_runtime_digest": "b593f7362b9a389285e68ffb28dc6ad0da936933c299a4681a0716484a9a2144",
+      "observed_current_runtime_digest": "4d579f3c78b8af7377f4b7d74e3f7ea43a1272b21f7926a1c1025f8217393e6f",
+      "registered_request_ids": [],
+      "maximum_submissions": 0,
+      "engineering_verified": false,
+      "previous_catalog_sha256": "48963e552b1c1ecee50234d806be5403795258489e347880f31dc50a24f87999"
+    },
+    {
+      "pipeline": "test-evidence/benchmark-re100-s3-a-20261022/REVIEWS/a0p08/SOURCE-PIPELINE.json",
+      "release_channel": "v1",
+      "sample_specific": false,
+      "required_input_preflight": true,
+      "id": "benchmark-re100-s3-a0p08-one-shot-status-20261021",
+      "version": "2026-10-21-status-1",
+      "scope": "Historical independent-review status index only; no execution or current runtime approval",
+      "approved_for_autonomous_run": false,
+      "approved_hashes": {},
+      "review_record": "docs/catalog-status-20261021/REGISTRATION-APPROVAL.json",
+      "status": "HISTORICAL_REVIEW_APPROVED_CURRENT_RUNTIME_NOT_APPROVED",
+      "source_entry_id": "benchmark-re100-s3-a0p08-one-shot",
+      "source_entry_version": "2026-10-22a",
+      "source_review_ref": "test-evidence/benchmark-re100-s3-a-20261022/REVIEWS/a0p08/FORMAL-APPROVAL.json",
+      "source_review_sha256": "c2803062fb7e0351a545a1716757ba101a597998a20ab6f061563e087c6598f3",
+      "historical_runtime_digest": "b593f7362b9a389285e68ffb28dc6ad0da936933c299a4681a0716484a9a2144",
+      "observed_current_runtime_digest": "4d579f3c78b8af7377f4b7d74e3f7ea43a1272b21f7926a1c1025f8217393e6f",
+      "registered_request_ids": [],
+      "maximum_submissions": 0,
+      "engineering_verified": false,
+      "previous_catalog_sha256": "48963e552b1c1ecee50234d806be5403795258489e347880f31dc50a24f87999"
+    },
+    {
+      "pipeline": "test-evidence/benchmark-re100-s3-a-20261022/REVIEWS/a0p04/SOURCE-PIPELINE.json",
+      "release_channel": "v1",
+      "sample_specific": false,
+      "required_input_preflight": true,
+      "id": "benchmark-re100-s3-a0p04-one-shot-status-20261021",
+      "version": "2026-10-21-status-1",
+      "scope": "Historical independent-review status index only; no execution or current runtime approval",
+      "approved_for_autonomous_run": false,
+      "approved_hashes": {},
+      "review_record": "docs/catalog-status-20261021/REGISTRATION-APPROVAL.json",
+      "status": "HISTORICAL_REVIEW_APPROVED_CURRENT_RUNTIME_NOT_APPROVED",
+      "source_entry_id": "benchmark-re100-s3-a0p04-one-shot",
+      "source_entry_version": "2026-10-22a",
+      "source_review_ref": "test-evidence/benchmark-re100-s3-a-20261022/REVIEWS/a0p04/FORMAL-APPROVAL.json",
+      "source_review_sha256": "ea55972639367e24345924e419bebf5b5be6fc07c41be364a6300ce39d00979f",
+      "historical_runtime_digest": "b593f7362b9a389285e68ffb28dc6ad0da936933c299a4681a0716484a9a2144",
+      "observed_current_runtime_digest": "4d579f3c78b8af7377f4b7d74e3f7ea43a1272b21f7926a1c1025f8217393e6f",
+      "registered_request_ids": [],
+      "maximum_submissions": 0,
+      "engineering_verified": false,
+      "previous_catalog_sha256": "48963e552b1c1ecee50234d806be5403795258489e347880f31dc50a24f87999"
+    },
+    {
+      "pipeline": "test-evidence/benchmark-re100-s3-a-20261022/REVIEWS/a0p02/SOURCE-PIPELINE.json",
+      "release_channel": "v1",
+      "sample_specific": false,
+      "required_input_preflight": true,
+      "id": "benchmark-re100-s3-a0p02-one-shot-status-20261021",
+      "version": "2026-10-21-status-1",
+      "scope": "Historical independent-review status index only; no execution or current runtime approval",
+      "approved_for_autonomous_run": false,
+      "approved_hashes": {},
+      "review_record": "docs/catalog-status-20261021/REGISTRATION-APPROVAL.json",
+      "status": "HISTORICAL_REVIEW_APPROVED_CURRENT_RUNTIME_NOT_APPROVED",
+      "source_entry_id": "benchmark-re100-s3-a0p02-one-shot",
+      "source_entry_version": "2026-10-22a",
+      "source_review_ref": "test-evidence/benchmark-re100-s3-a-20261022/REVIEWS/a0p02/FORMAL-APPROVAL.json",
+      "source_review_sha256": "8e140e40556429c731d48f697e6275f076dd8654bcad0625fc2db10db85c688b",
+      "historical_runtime_digest": "b593f7362b9a389285e68ffb28dc6ad0da936933c299a4681a0716484a9a2144",
+      "observed_current_runtime_digest": "4d579f3c78b8af7377f4b7d74e3f7ea43a1272b21f7926a1c1025f8217393e6f",
+      "registered_request_ids": [],
+      "maximum_submissions": 0,
+      "engineering_verified": false,
+      "previous_catalog_sha256": "48963e552b1c1ecee50234d806be5403795258489e347880f31dc50a24f87999"
+    }
+  ],
+  "_open_items": [
+    "PAT15 beta restart recovery remains NOT_RUN; controlled checkpoint/billing path unavailable.",
+    "Historical zero-byte POLL and test_stage_handover StructuralPins failure preserved.",
+    "Old reviews/inputs/refusals and MRF b failure are immutable; E=0/3.",
+    "Business release unchanged 30ab9bc558f64442029463036b300beed9e1fd3ee12e9186bf2c84763bbf0596; current runtime 5893c0c36ff1c2320b9f34725b6a9e2d795c2d120520de4ffd5b41aa2c0278a0; PAT18d=PASS; release_gate=0"
+  ],
+  "_contract": {
+    "id": "stable kebab-case identifier",
+    "version": "monotonic version, e.g. 1 or 2026-10-18a",
+    "pipeline": "repository-relative path to the reviewed pipeline JSON",
+    "scope": "human-readable applicability statement",
+    "release_channel": "v1 or beta",
+    "sample_specific": "true when the entry is limited to named case ids; then allowed_case_ids is required",
+    "allowed_case_ids": "case ids this entry may run; omitted for general entries",
+    "required_input_preflight": "true when a status=ok geometry/unit/role preflight record must exist before materialization",
+    "approved_for_autonomous_run": "false until an independent catalog review approves the exact bytes",
+    "approved_hashes": {
+      "pipeline_sha256": "sha256 of the pipeline JSON",
+      "macro_hashes": "file name -> sha256 for every macro the pipeline runs",
+      "controller_sha256": "sha256 of scripts/air3b_pipeline_trial.py",
+      "runner_sha256": "sha256 of scripts/security/trial_air3b_pipeline.ps1",
+      "support_hashes": "the 13 support files checked by air3b_pipeline_trial.check_review",
+      "resource_contract_sha256": "sha256 of scripts/resource_contract.py"
+    },
+    "review_record": "repository-relative path to the independent catalog approval record",
+    "notes": "what was reviewed, what remains open"
+  }
+}

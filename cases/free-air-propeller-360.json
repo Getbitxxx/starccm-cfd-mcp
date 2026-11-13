@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "scenario": "propeller_mrf",
+  "case_ref": "jobs/full360-cleanup-20260925a/full_flow_sector_cleaned.sim",
+  "objective": "Full-circle free-air propeller MRF preparation at 30 m/s and 10000 rpm",
+  "model_length_unit": "m",
+  "medium": "air",
+  "geometry": {
+    "body_parts": ["PROPELLER"],
+    "rotor_parts": ["PROPELLER", "AUTO_FULL_ROTOR_BLADE_120", "AUTO_FULL_ROTOR_BLADE_240"]
+  },
+  "domain": {
+    "shape": "cylinder",
+    "outer_bounds_m": [-2.05, -2.05, -6.15, 2.05, 2.05, 2.05],
+    "cylinder_center_xy_m": [0.0, 0.0],
+    "cylinder_radius_m": 2.05,
+    "cylinder_z_min_m": -6.15,
+    "cylinder_z_max_m": 2.05
+  },
+  "boundary_roles": {
+    "region": "AUTO_FULL360_FLOW",
+    "inlet": "AUTO_INLET",
+    "outlet": "AUTO_OUTLET",
+    "radial_farfield": "AUTO_RADIAL_FARFIELD"
+  },
+  "flow": {
+    "velocity_m_s": [0.0, 0.0, -30.0],
+    "pressure_pa": 101325.0,
+    "temperature_k": 300.0,
+    "turbulence_intensity": 0.01,
+    "turbulent_viscosity_ratio": 10.0
+  },
+  "rotation": {
+    "axis": [0.0, 0.0, 1.0],
+    "center_m": [0.0, 0.0, 0.0],
+    "rpm": 10000.0
+  },
+  "assumptions": [
+    "Turbulence intensity 0.01 and turbulent viscosity ratio 10.0 match the audited existing continuum defaults; sensitivity remains to be checked.",
+    "The cylinder domain dimensions are provisional until domain sensitivity passes."
+  ]
+}

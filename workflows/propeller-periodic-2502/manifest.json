@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "propeller-periodic-2502",
+  "title": "Audited 120-degree periodic propeller baseline",
+  "description": "Inspect, prepare, continue 100 iterations and export QA for the audited periodic propeller case. This is not a free-air workflow.",
+  "input": "audited_periodic_propeller_sim",
+  "validated_on": "STAR-CCM+ 2502.0001",
+  "stages": {
+    "inspect": {
+      "description": "Export licensed case inventory and physical evidence.",
+      "macros": ["InspectCaseLicensed.java", "InspectEvidence.java"], "macro_outputs": [null, null],
+      "markers": ["INVENTORY_COMPLETE", "EVIDENCE_COMPLETE"],
+      "required": ["case_inventory_licensed.txt", "case_evidence.txt"],
+      "postcheck": "artifacts_v1",
+      "output_sim": null
+    },
+    "prepare": {
+      "description": "Check audited baseline assumptions and add reports and monitors.",
+      "macros": ["PrepareBaseline.java"],
+      "markers": ["PREPARE_COMPLETE"],
+      "required": ["baseline_prepared.sim", "baseline_preflight.txt"],
+      "postcheck": "artifacts_v1",
+      "output_sim": "baseline_prepared.sim"
+    },
+    "smoke": {
+      "description": "Continue the saved solution for exactly 100 iterations.",
+      "macros": ["RunBaselineSmoke.java"],
+      "markers": ["SMOKE_COMPLETED"],
+      "required": ["baseline_after_smoke.sim", "smoke_status.json", "smoke_reports.csv", "monitor_index.csv", "monitor_csv"],
+      "postcheck": "smoke_100_v1",
+      "output_sim": "baseline_after_smoke.sim"
+    },
+    "qa": {
+      "description": "Export residual, mesh and outer-boundary evidence.",
+      "macros": ["ExportBaselineQA.java", "ExportMeshQuality.java", "AuditOuterBoundary.java"], "macro_outputs": [null, null, null],
+      "markers": ["RESIDUAL_QA_COMPLETE", "MESH_QA_COMPLETE", "OUTER_BOUNDARY_AUDIT_COMPLETE"],
+      "required": ["residual_raw_csv", "residual_normalization.txt", "outer_boundary_audit.txt"],
+      "postcheck": "artifacts_v1",
+      "output_sim": null
+    }
+  }
+}

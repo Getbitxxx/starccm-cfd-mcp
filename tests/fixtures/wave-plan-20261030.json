@@ -1,0 +1,52 @@
+{
+ "schema_version": 1,
+ "campaign": "uav-2026",
+ "subject": "F6 wave plan: per-wave cost/benefit (estimated STAR hours, rounds) + the stop-loss condition",
+ "policy": {
+  "consecutive_fail_closed": 2,
+  "on_stop": "stop the sample, keep the failure evidence fail-closed, and write a root-cause diagnosis before the next attempt",
+  "cost_benefit_required_per_wave": true,
+  "note": "a wave is admitted only with an estimate and a stated benefit; the stop rule is checked by scripts/kpi_ledger.py::consecutive_fail_closed"
+ },
+ "waves": [
+  {
+   "wave": "P3.0+P3.1 Round A",
+   "status": "CLOSED",
+   "scope": "P3.0 process presets F1-F6 + P3.1 fixed-wing full-configuration selection research",
+   "cost_benefit": {
+    "estimated_star_hours": 0.0,
+    "actual_star_hours": 0.0,
+    "estimated_rounds": 1,
+    "actual_rounds": 1,
+    "benefit": "process gates that remove the P2 failure modes (plans-as-data with 87/87 identity, spike gate, hash-pinned mesh regime, claim lint, single-writer STATUS, ledger/KPI) and an honest P3.1 verdict (NOT_FOUND_WITH_REASONS) with a conditional candidate; zero STAR spent"
+   },
+   "stop_condition": {
+    "consecutive_fail_closed": 2,
+    "on_stop": "stop and write the diagnosis before another attempt"
+   },
+   "evidence": "campaigns/uav-2026/evidence/phase3-p30-20261030/README.md"
+  },
+  {
+   "wave": "P3.2 fixed-wing full configuration",
+   "status": "NOT_ADMITTED",
+   "scope": "geometry/domain/mesh family/physics/solve for the signed P3.1 selection",
+   "cost_benefit": {
+    "estimated_star_hours": 20.0,
+    "actual_star_hours": 0.0,
+    "estimated_rounds": 3,
+    "actual_rounds": 0,
+    "basis": "user-facing recommendation D3 (<=20 h including the spike and 2 stop-loss rounds), informed by the measured P2 ledger (17.75197225525 h over 84 unique runs for a much smaller case); NOT a signed budget"
+   },
+   "stop_condition": {
+    "consecutive_fail_closed": 2,
+    "on_stop": "stop the sample and write a root-cause diagnosis before the next attempt"
+   },
+   "blocked_by": [
+    "D1 geometry+data and full-configuration scope signature",
+    "D2 Q3 target vs Q2 downgrade wording",
+    "D3 Phase 3 STAR budget cap"
+   ],
+   "evidence": "campaigns/uav-2026/STATUS.json (phase3_round_a_20261030.signatures_pending)"
+  }
+ ]
+}

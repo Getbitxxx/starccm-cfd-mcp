@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "scenario": "geometry_mesh_probe_only",
+  "case_ref": "jobs/clean-gmsh-tip-host-20260929a/clean_imported_mrf_probe.sim",
+  "objective": "Read-only post-cleanup stator mesh quality audit",
+  "mesh_region_name": "three_blade_stator_pilot_Part0",
+  "expected_fluid_volume_m3": 108.1760306373841,
+  "expected_tetra_count": 86638
+}

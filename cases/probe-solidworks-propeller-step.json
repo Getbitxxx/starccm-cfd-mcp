@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "scenario": "geometry_probe_only",
+  "case_ref": "library/517cfd27aa4cf69519470d301d9088d060ec1cbb85aff7e8b848207d8bd065d8.sim",
+  "objective": "Check whether an independent SolidWorks STEP is an importable, closed two-blade solid; do not inherit the old sector simulation's physics or boundaries",
+  "candidate_cad_ref": "library/cad_candidates/solidworks_propeller.step",
+  "candidate_cad_sha256": "04efd82e2ac97c70f32c6b461f00a23032fb81d30473b3181e3fdec545627b01",
+  "candidate_length_unit": "mm",
+  "candidate_rotation_axis": [0, 1, 0],
+  "candidate_diameter_m": 0.38629831513612198,
+  "assumptions": [
+    "The source .sim is only an isolated import host for this read-only probe.",
+    "The SolidWorks STEP represents a separate two-blade geometry; no CFD setup from the old three-blade sector case is reused."
+  ]
+}

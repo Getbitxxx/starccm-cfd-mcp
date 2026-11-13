@@ -1,0 +1,30 @@
+{
+ "schema_version": 1,
+ "reason": "Ad-hoc spike drivers and one-off gmsh/diagnostic experiments live in scripts/ but are not part of the MCP business path: nothing in the published set imports them and no tool invokes them. Publishing them made every release a full-tree blessing, so a reviewer had to sign ~30 files that this change never touched. Held files stay in the work tree, are named in manifest.scope.held, and a hold fails the build if published code imports them or refers to them by file name.",
+ "hold": [
+  "scripts/build_te_variant_fc.py",
+  "scripts/compare_gmsh_interfaces.py",
+  "scripts/diagnose_gmsh_interface_cells.py",
+  "scripts/diagnose_gmsh_neighbor_volume.py",
+  "scripts/gmsh_cad_rotor_pilot.py",
+  "scripts/gmsh_conformal_mrf.py",
+  "scripts/gmsh_rotating_trial.py",
+  "scripts/gmsh_stator_pilot.py",
+  "scripts/gmsh_step_rotor_pilot.py",
+  "scripts/map_face_validity_to_gmsh.py",
+  "scripts/run_convergence_audit.py",
+  "scripts/run_crmhl_geom_audit.py",
+  "scripts/run_crmhl_mesh_spike.py",
+  "scripts/run_prop_geom_audit.py",
+  "scripts/run_solve_default_1200.py",
+  "scripts/run_trapwing_core005_bl8mm.py",
+  "scripts/run_trapwing_first_layer6e5.py",
+  "scripts/run_trapwing_geom_audit.py",
+  "scripts/run_trapwing_mesh_spike.py",
+  "scripts/run_trapwing_named_region_spike.py",
+  "scripts/run_trapwing_no_local_boxes.py",
+  "scripts/run_trapwing_te_prism.py",
+  "scripts/run_trapwing_volume_fix.py",
+  "scripts/split_gmsh_conformal_cgns.py"
+ ]
+}

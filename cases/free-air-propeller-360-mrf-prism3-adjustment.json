@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "scenario": "propeller_mrf",
+  "case_ref": "jobs/full360-mrf-mesh-split-20260925a/mrf_mesh_split.sim",
+  "objective": "Test a three-layer rotating prism mesh against Siemens 2502 mesh quality guidance on an isolated copy",
+  "model_length_unit": "m",
+  "medium": "air",
+  "geometry": {
+    "body_parts": [
+      "PROPELLER"
+    ],
+    "rotor_parts": [
+      "PROPELLER",
+      "AUTO_FULL_ROTOR_BLADE_120",
+      "AUTO_FULL_ROTOR_BLADE_240"
+    ]
+  },
+  "domain": {
+    "shape": "cylinder",
+    "outer_bounds_m": [
+      -2.05,
+      -2.05,
+      -6.15,
+      2.05,
+      2.05,
+      2.05
+    ],
+    "cylinder_center_xy_m": [
+      0.0,
+      0.0
+    ],
+    "cylinder_radius_m": 2.05,
+    "cylinder_z_min_m": -6.15,
+    "cylinder_z_max_m": 2.05
+  },
+  "boundary_roles": {
+    "region": "AUTO_FULL360_FLOW",
+    "inlet": "AUTO_INLET",
+    "outlet": "AUTO_OUTLET",
+    "radial_farfield": "AUTO_RADIAL_FARFIELD"
+  },
+  "flow": {
+    "velocity_m_s": [
+      0.0,
+      0.0,
+      -30.0
+    ],
+    "pressure_pa": 101325.0,
+    "temperature_k": 300.0,
+    "turbulence_intensity": 0.01,
+    "turbulent_viscosity_ratio": 10.0
+  },
+  "rotation": {
+    "axis": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "center_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "rpm": 10000.0
+  },
+  "assumptions": [
+    "Turbulence intensity 0.01 and turbulent viscosity ratio 10.0 match the audited existing continuum defaults; sensitivity remains to be checked.",
+    "The cylinder domain dimensions are provisional until domain sensitivity passes.",
+    "Provisional MRF envelope has radius 0.30 m, 0.10 m upstream cap and 0.20 m downstream cap; it encloses all audited blade bounds and requires sensitivity testing."
+  ],
+  "rotation_zone": {
+    "shape": "cylinder",
+    "center_xy_m": [
+      0.0,
+      0.0
+    ],
+    "radius_m": 0.3,
+    "z_min_m": -0.2,
+    "z_max_m": 0.1
+  },
+  "mrf_regions": {
+    "stationary": "AUTO_MRF_STATIONARY",
+    "rotating": "AUTO_MRF_ROTATING"
+  },
+  "surface_map": {
+    "outer_inlet": "AUTO_MRF_OUTER_CYLINDER.Cylinder Surface 3",
+    "outer_outlet": "AUTO_MRF_OUTER_CYLINDER.Cylinder Surface 2",
+    "outer_side": "AUTO_MRF_OUTER_CYLINDER.Cylinder Surface",
+    "inner_upstream": "AUTO_MRF_ENVELOPE.Cylinder Surface 3",
+    "inner_downstream": "AUTO_MRF_ENVELOPE.Cylinder Surface 2",
+    "inner_side": "AUTO_MRF_ENVELOPE.Cylinder Surface"
+  },
+  "surface_map_audit_job_id": "full360-mrf-surface-map-20260925a",
+  "reference_frame_name": "Rotating",
+  "reference_frame_audit_job_id": "full360-mrf-frames-audit-20260925a",
+  "mrf_interface_audit_job_id": "full360-mrf-interfaces-audit-20260925d",
+  "mesh": {
+    "base_size_m": 0.08,
+    "blade_target_size_m": 0.0041,
+    "blade_min_size_m": 0.00205,
+    "interface_target_size_m": 0.015,
+    "interface_min_size_m": 0.0075,
+    "prism_layers": 8,
+    "rotating_prism_layers": 3
+  },
+  "boundary_physics_audit_job_id": "full360-mrf-interface-bc-audit-20260925d",
+  "mesh_config_audit_job_id": "full360-mrf-mesh-config-audit-20260925a",
+  "split_mesh_audit_job_id": "full360-mrf-mesh-split-audit-20260925a",
+  "quality": {
+    "mesh_min_volume_change": 0.01,
+    "mesh_min_cell_quality": 1e-05,
+    "mesh_min_face_validity": 1.0
+  }
+}

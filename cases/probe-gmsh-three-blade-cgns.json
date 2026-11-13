@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "scenario": "geometry_mesh_probe_only",
+  "case_ref": "library/517cfd27aa4cf69519470d301d9088d060ec1cbb85aff7e8b848207d8bd065d8.sim",
+  "objective": "Isolated STAR 2502 readback of the Gmsh pilot mesh around an invented three-blade test rotor; old sim serves only as import host",
+  "mesh_ref": "library/cgns_candidates/three_blade_rotor_pilot.cgns",
+  "mesh_sha256": "8ec56f17021567bf110931c05e0908ffac14416404b3fc0cfac76e906de57272",
+  "mesh_length_unit": "m",
+  "source_step_ref": "cad/STEP/three_blade_test_rotor.step",
+  "source_step_length_unit": "mm",
+  "rotation_axis": [
+    0,
+    0,
+    1
+  ],
+  "assumptions": [
+    "This pilot rotor and CGNS are independent from the old three-blade fluid-sector simulation.",
+    "No physical models or boundary values from the host sim are reused for CFD acceptance."
+  ]
+}

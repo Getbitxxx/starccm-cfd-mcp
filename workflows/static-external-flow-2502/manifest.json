@@ -1,0 +1,247 @@
+{
+  "schema_version": 1,
+  "id": "static-external-flow-2502",
+  "title": "Static-body free-air external flow construction",
+  "description": "Scenario-1 static-body free-air external flow, registered stage by stage so the formal MCP path can drive the SAME macro chain the verified restricted-trial pipeline ran (cases/static-sphere-external-flow/pipeline-e2e-geometry-to-validation.json). build-body creates the geometry; audit-body, build-domain, region-physics-mesh, mesh-quality-audit, solve and validation are the six stages of that verified chain, with the identical macros, the identical per-macro handoff and the identical required artifacts. IMPORTANT: the six stage declarations below have NOT themselves been executed or reviewed as formal stages - the evidence is macro-chain level (the trial ran these macros in this order through a reviewed runner). A formal run requires its own review record pinning the runner, the macros and the input. Nothing here creates a region, sets physics or solves except the stages that say so.",
+  "input": "audited_sim_with_case_spec",
+  "validated_on": "STAR-CCM+ 2502.0001",
+  "stages": {
+    "build-body": {
+      "description": "Create one closed static body part (sphere) with explicit CaseSpec SI origin and radius in a simulation that has no parts and no regions; verify the STAR read-back, then save a geometry-only .sim.",
+      "macros": [
+        "BuildStaticBodyGeometry.java"
+      ],
+      "markers": [
+        "STATIC_BODY_GEOMETRY_BUILT"
+      ],
+      "required": [
+        "static_body_geometry.json",
+        "static_body_geometry.sim"
+      ],
+      "postcheck": "artifacts_v1",
+      "output_sim": "static_body_geometry.sim"
+    },
+    "audit-body": {
+      "description": "Read-only audit of the geometry-only static-body .sim: part identity, closed/manifold/tessellation and measured raw-coordinate extents. Creates no region and never initializes.",
+      "macros": [
+        "AuditStaticBodyGeometry.java"
+      ],
+      "markers": [
+        "STATIC_BODY_GEOMETRY_AUDITED"
+      ],
+      "required": [
+        "static_body_audit.json",
+        "static_body_tessellation.stl"
+      ],
+      "postcheck": "artifacts_v1",
+      "output_sim": null,
+      "parameters": {
+        "source": "case_spec",
+        "requires": [
+          "geometry.body_parts"
+        ],
+        "env": [],
+        "evidence": "test-evidence/static-external-flow/round10-e2e/s1-static-sphere-e2e-20261003a/stage-audit-body.json"
+      }
+    },
+    "region-physics-mesh": {
+      "description": "THREE macros in one stage, one STAR process each with its own exit code, chained by macro_outputs: BuildExternalFlowRegion (region + boundary roles from CaseSpec boundary_roles) -> ConfigureExternalFlowPhysics (continuum and boundary values from the CaseSpec) -> BuildExternalFlowMesh (volume mesh from the CaseSpec mesh sizes).",
+      "macros": [
+        "BuildExternalFlowRegion.java",
+        "ConfigureExternalFlowPhysics.java",
+        "BuildExternalFlowMesh.java"
+      ],
+      "macro_outputs": [
+        "external_flow_region.sim",
+        "external_flow_physics.sim",
+        "external_flow_meshed.sim"
+      ],
+      "inherited_inputs": {
+        "stage": "build",
+        "files": [
+          "external_domain_build.json"
+        ],
+        "why": "BuildExternalFlowRegion reads external_domain_build.json to bind body-boundary ownership to the audited single subtracted part; without the file it throws after writing a probe. Measured in formal-pat18-full-chain-20261019c: the upstream external-domain-2502/build stage succeeded and its record stayed in its own stage directory, so the region stage must inherit it by declaration. external_domain_built.sim is already carried as the next stage's input .sim and is not duplicated here.",
+        "enforced_by": "worker/run_pipeline.ps1 (source stage must be an earlier SUCCEEDED step of THIS run) + worker/run_job.ps1 (hash re-verified and refused before STAR starts)"
+      },
+      "markers": [
+        "EXTERNAL_FLOW_MESH_BUILT"
+      ],
+      "required": [
+        "external_flow_region_probe.json",
+        "external_flow_region.json",
+        "external_flow_physics.json",
+        "external_flow_mesh.json",
+        "external_flow_region.sim",
+        "external_flow_physics.sim",
+        "external_flow_meshed.sim"
+      ],
+      "postcheck": "artifacts_v1",
+      "output_sim": "external_flow_meshed.sim",
+      "parameters": {
+        "source": "case_spec",
+        "requires": [
+          "boundary_roles",
+          "velocity_m_s",
+          "pressure_pa",
+          "temperature_k",
+          "turbulence_intensity",
+          "turbulent_viscosity_ratio",
+          "mesh.base_size_m"
+        ],
+        "env": [],
+        "evidence": "test-evidence/static-external-flow/round10-e2e/s1-static-sphere-e2e-20261003a/stage-region-physics-mesh.json"
+      }
+    },
+    "mesh-quality-audit": {
+      "description": "Read-only measured mesh quality on the SAVED mesh (Cell Quality, Face Validity, Volume Change, prism layers), gated against the CaseSpec thresholds. It does not export y+ and does not repair the mesh.",
+      "macros": [
+        "AuditExternalFlowMesh.java"
+      ],
+      "markers": [
+        "EXTERNAL_FLOW_MESH_QUALITY_AUDITED"
+      ],
+      "required": [
+        "external_flow_mesh_quality.json"
+      ],
+      "postcheck": "artifacts_v1",
+      "output_sim": null,
+      "parameters": {
+        "source": "case_spec",
+        "requires": [
+          "mesh_min_cell_quality",
+          "mesh_min_face_validity",
+          "mesh_min_volume_change"
+        ],
+        "env": [],
+        "evidence": "test-evidence/static-external-flow/round10-e2e/s1-static-sphere-e2e-20261003a/external_flow_mesh_quality.json"
+      }
+    },
+    "solve": {
+      "description": "Bounded, chunked steady solve on an isolated copy: finite state, residual and monitor history exported, checkpoint saved, honest convergence verdict. It does NOT claim convergence.",
+      "macros": [
+        "RunExternalFlowSolve.java"
+      ],
+      "markers": [
+        "EXTERNAL_FLOW_SOLVE_COMPLETE"
+      ],
+      "required": [
+        "external_flow_solve.json",
+        "external_flow_solve_history.csv",
+        "external_flow_residuals.tsv",
+        "external_flow_solved.sim"
+      ],
+      "postcheck": "artifacts_v1",
+      "output_sim": "external_flow_solved.sim",
+      "parameters": {
+        "source": "case_spec",
+        "requires": [
+          "velocity_m_s",
+          "body_wall_boundary_name",
+          "reference_area_m2"
+        ],
+        "env": [
+          {
+            "name": "EXTERNAL_FLOW_CHUNK",
+            "required": false,
+            "verified_value": "50",
+            "macro_default": "50"
+          },
+          {
+            "name": "EXTERNAL_FLOW_MAX_ITERATIONS",
+            "required": false,
+            "verified_value": "1200",
+            "macro_default": "1200"
+          }
+        ],
+        "evidence": "test-evidence/static-external-flow/solve-default-1200-20261104.json"
+      },
+      "_time_budget_note": "2026-10-14 用户撤销全部时间预算；本轮执行层落地。求解阶段的 env 不再声明 EXTERNAL_FLOW_BUDGET_SECONDS：不传该键时宏缺省 0，表示不以墙钟停止，停止依据为数值门/迭代上限/诊断。历史运行记录的 480 s 只描述当时的请求。"
+    },
+    "validation": {
+      "description": "Read-only convergence verdict against the CaseSpec gates on the SAVED solution. It CHECKS convergence; it does not make a solution converge and it establishes no engineering validity (the round-10 verdict is NOT_VALIDATED_NO_REFERENCE).",
+      "macros": [
+        "AuditExternalFlowConvergence.java"
+      ],
+      "inherited_inputs": {
+        "stage": "solve",
+        "files": [
+          "external_flow_solve.json",
+          "external_flow_solve_history.csv",
+          "stage-solve.json"
+        ],
+        "why": "the audit reads external_flow_solve.json for the stage-1 force/imbalance/finite_state cross-check, external_flow_solve_history.csv for the chunk_history drag window (the only drag series that exists on this install) and stage-solve.json for the read-only hash proof. Without them it can only report NOT_CONVERGED_UNMEASURED - measured in round 14 (round14-formal-layout-finding.json).",
+        "enforced_by": "worker/run_pipeline.ps1 (source stage must be an earlier SUCCEEDED step of THIS run) + worker/run_job.ps1 (hash re-verified and refused before STAR starts)"
+      },
+      "markers": [
+        "EXTERNAL_FLOW_VALIDATION_COMPLETE"
+      ],
+      "required": [
+        "external_flow_validation.json",
+        "external_flow_validation_residuals.tsv"
+      ],
+      "postcheck": "artifacts_v1",
+      "output_sim": null,
+      "parameters": {
+        "source": "case_spec",
+        "requires": [
+          "acceptance.residuals"
+        ],
+        "env": [],
+        "evidence": "test-evidence/static-external-flow/round10-e2e/s1-static-sphere-e2e-20261003a/external_flow_validation.json"
+      }
+    },
+    "solve-transient": {
+      "description": "Fresh-clock URANS in an isolated copy; all inner residuals and physical-step loads exported, segmented checkpoint. Execution success is not E. No steady residual gates or wall-clock stopping.",
+      "macros": [
+        "RunExternalFlowTransient.java"
+      ],
+      "macro_outputs": [
+        "external_flow_transient.sim"
+      ],
+      "markers": [
+        "EXTERNAL_FLOW_TRANSIENT_COMPLETE"
+      ],
+      "required": [
+        "external_flow_transient.json",
+        "external_flow_transient_history.csv",
+        "external_flow_transient_inner.csv",
+        "external_flow_transient_checkpoint.json",
+        "external_flow_transient.sim"
+      ],
+      "postcheck": "artifacts_v1",
+      "output_sim": "external_flow_transient.sim",
+      "parameters": {
+        "source": "case_spec",
+        "requires": [
+          "transient",
+          "quality.time_step_sensitivity",
+          "geometry.reference_area_m2",
+          "flow.velocity_m_s",
+          "body_wall_boundary_name"
+        ],
+        "env": [
+          {
+            "name": "EXTERNAL_FLOW_DT_S",
+            "required": true
+          },
+          {
+            "name": "EXTERNAL_FLOW_STEPS",
+            "required": true
+          },
+          {
+            "name": "EXTERNAL_FLOW_INNER_ITER",
+            "required": true
+          },
+          {
+            "name": "EXTERNAL_FLOW_CHECKPOINT_EVERY",
+            "required": true
+          }
+        ]
+      }
+    }
+  },
+  "lead": "workflows/external-domain-2502/build",
+  "_registered_chain": "build-body -> external-domain-2502/build -> audit-body -> region-physics-mesh -> mesh-quality-audit -> solve -> validation. The domain stage lives in external-domain-2502 because it is shared with the rotating cases; a run names it as a second step with its own workflow_id.",
+  "_not_registered_on_purpose": "domain_study / mesh_study are NOT stages here: window-1 is implementing them (test-evidence/static-external-flow/round13-*) and they are declared in operations/catalog.json as reserved interfaces. time_step_study has no implementation and is not registered anywhere."
+}

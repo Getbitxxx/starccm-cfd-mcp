@@ -1,0 +1,1732 @@
+{
+  "schema_version": 2,
+  "_purpose": "The operation registry: what can actually be CALLED, with the call path, the parameters, the inputs/outputs, the applicable scope and the evidence for each. The four capability levels are deliberately separate (AGENTS.md section 1 and the R11 instruction): a real call path, verification on the CURRENT case, general acceptance, and engineering validity. Nothing here claims the last one.",
+  "_availability_rule": "`implementation` is NEVER read from this file: scripts/casespec.py resolves every entry against the live workflow catalog and the files on disk, and an entry whose stage, macro or script is missing is reported as UNRESOLVED and can never make a plan executable.",
+  "capability_levels": {
+    "implementation": "a real call path resolves: stage in workflows/<id>/manifest.json with its macros on disk, or a named tool/script that exists",
+    "verified_on_current_case": "the evidence below names this case AND the record is certified by scripts/run_record_gate.py; a record from a FAILED run never counts",
+    "general_acceptance": "GENERAL_OPERATION (representative positive AND negative), TRIALED_POSITIVE_AND_NEGATIVE, TRIALED_POSITIVE, COMPILED_ONLY, or NOT_ACCEPTED (sample-specific)",
+    "engineering": "ALWAYS NOT_CLAIMED_BY_WIRING: wiring an operation proves it runs, never that the physics is valid"
+  },
+  "mechanisms": {
+    "workflow_stage": {
+      "description": "one STAR stage of an installed workflow manifest, submitted through the formal MCP path",
+      "entry": "mcp submit_run(operations=[...]) / submit_job(workflow_id, stage, parameters)",
+      "runner": "worker/run_pipeline.ps1 -> worker/run_job.ps1 (one STAR process per macro, macro_outputs chaining)",
+      "runner_hash_layers": "TWO layers, TWO reviewed hashes (R12): `pipeline_runner_sha256` is verified by worker/run_pipeline.ps1 against its own $PSCommandPath, and `runner_sha256` by worker/run_job.ps1 against its own. Passing one hash for both layers is the defect that refused every formal stage; backend.RUNNER_REVIEW_FIELDS holds the mapping and a record must pin both for submit_run.",
+      "parameter_channel": "each step carries `env`; the runner sets only the declared names for its own child processes and records them in the stage record",
+      "verified_output": "mcp report_run(run_id, evidence, case_label) / scripts/formal_run_report.py: retrieves the run, re-hashes every artifact against the runner's recorded sha256 and calls scripts/generate_run_report.py unchanged",
+      "review": "scripts/backend.py::load_review_record compares pipeline/controller/each runner layer/macro/input hashes before submission, and worker/run_job.ps1 recomputes its own on Windows"
+    },
+    "offline_tool": {
+      "description": "a Mac-side tool or the runner records; no STAR process of its own",
+      "entry": "the named MCP tool or script",
+      "runner": null,
+      "plan_coverage_rule": "R12: an offline tool completes a plan step only through an `invoked_by` entry whose file and symbol really exist on disk (casespec._code_bindings). `applies_to_run_mechanisms` is display-only: a declaration that nothing calls must not complete a plan."
+    },
+    "restricted_trial": {
+      "description": "a whole reviewed pipeline driven by the branch-1 trial entry; the verified execution mechanism for scenarios 1-3",
+      "entry": "scripts/run_static_external_flow_e2e.py --pipeline <json> --inputs <json> --trial-id <id> --evidence <dir>",
+      "controller": "scripts/air3b_pipeline_trial.py",
+      "runner": "scripts/security/trial_air3b_pipeline.ps1"
+    }
+  },
+  "operations": [
+    {
+      "id": "audit_geometry",
+      "title": "Generic case audit (inventory)",
+      "mechanism": "workflow_stage",
+      "granularity": "stage",
+      "workflow_id": "core",
+      "stage": "preflight",
+      "entry": {
+        "mcp_tool": "submit_run(operations=[...]) or submit_job(stage=...)",
+        "workflow": "workflows/core/manifest.json",
+        "stage": "preflight",
+        "runner": "worker/run_pipeline.ps1 -> worker/run_job.ps1 (one STAR process per macro)",
+        "review": "scripts/backend.py::load_review_record + worker/run_job.ps1 re-verification"
+      },
+      "provides": [
+        "audit_geometry"
+      ],
+      "inputs": "existing_sim",
+      "outputs": [
+        "automation_preflight.json"
+      ],
+      "parameters": {
+        "source": "none",
+        "requires": [],
+        "env": []
+      },
+      "scope": "Read-only simulation inventory: parts with closed/manifold flags, triangle counts, raw-coordinate bounding boxes, regions, boundaries, interfaces, physics and reports. Overlap and gap checks are NOT implemented.",
+      "applicable_when": "any existing .sim that STAR can open",
+      "preconditions": [],
+      "evidence": [
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-static-sphere-e2e-20261003a",
+          "record": "test-evidence/static-external-flow/round10-e2e/s1-static-sphere-e2e-20261003a/stage-audit-body.json",
+          "kind": "stage",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        },
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-static-sphere-e2e-20261003a",
+          "record": "test-evidence/static-external-flow/round10-e2e/s1-static-sphere-e2e-20261003a/static_body_audit.json",
+          "kind": "measurement",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        }
+      ],
+      "positive": "round-10 stage audit-body ok (18.11 s); the same macro also produced preflight-sphere-audit.json with status ok and 0 warnings",
+      "negative": "an audit payload with geometryParts [] plus SECTION_UNREADABLE is refused as AMBIGUOUS_EMPTY by scripts/validate_preflight_audit.py (tests/test_boundaries.py)",
+      "scope_class": "generic",
+      "depends_on_fixed_names": false,
+      "fixed_names": [],
+      "general_acceptance": "TRIALED_POSITIVE_AND_NEGATIVE",
+      "engineering": "NOT_CLAIMED_BY_WIRING"
+    },
+    {
+      "id": "audit_static_body",
+      "title": "Scenario-1 geometry-only body audit",
+      "mechanism": "workflow_stage",
+      "granularity": "stage",
+      "workflow_id": "static-external-flow-2502",
+      "stage": "audit-body",
+      "entry": {
+        "mcp_tool": "submit_run(operations=[...]) or submit_job(stage=...)",
+        "workflow": "workflows/static-external-flow-2502/manifest.json",
+        "stage": "audit-body",
+        "runner": "worker/run_pipeline.ps1 -> worker/run_job.ps1 (one STAR process per macro)",
+        "review": "scripts/backend.py::load_review_record + worker/run_job.ps1 re-verification"
+      },
+      "provides": [
+        "audit_geometry"
+      ],
+      "inputs": "static_body_geometry.sim",
+      "outputs": [
+        "static_body_audit.json",
+        "static_body_tessellation.stl"
+      ],
+      "parameters": {
+        "source": "case_spec",
+        "requires": [],
+        "env": []
+      },
+      "scope": "Read-only audit of the geometry-only static-body .sim: part identity, closed/manifold/tessellation and raw-coordinate extents, measured in-session. Creates no region and never initializes.",
+      "applicable_when": "a geometry-only .sim produced by build_static_body (or an equivalent one-part session)",
+      "preconditions": [],
+      "evidence": [
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-static-sphere-e2e-20261003a",
+          "record": "test-evidence/static-external-flow/round10-e2e/s1-static-sphere-e2e-20261003a/stage-audit-body.json",
+          "kind": "stage",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        },
+        {
+          "case": "static-sphere-mm",
+          "trial_id": "s1-static-sphere-mm-e2e-20261003a",
+          "record": "test-evidence/static-external-flow/round12-mm-e2e/s1-static-sphere-mm-e2e-20261003a/stage-audit-body.json",
+          "kind": "stage",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        }
+      ],
+      "positive": "round-10 (m units) and round-12 (mm units) both passed the audit stage from the same macro bytes",
+      "negative": "None recorded for this stage; the CASE11 rename variant (test-evidence/static-external-flow/round11-rename) audits a renamed part and is a positive generality case, not a counter-example.",
+      "scope_class": "generic",
+      "depends_on_fixed_names": false,
+      "fixed_names": [],
+      "general_acceptance": "TRIALED_POSITIVE",
+      "engineering": "NOT_CLAIMED_BY_WIRING",
+      "candidate_admission_scope": {
+        "entry": "prepare_registered_workflow_candidate",
+        "source_kinds": [
+          "step_cad",
+          "generated_sphere"
+        ],
+        "model_length_units": [
+          "m",
+          "mm"
+        ],
+        "geometry_dimensions": "SI quantities independent of declared preferred units; mm needs actual preferred-unit readback, conversion and SI geometry evidence",
+        "axes": "Individual trusted historical sphere size/position/name/unit inputs; current candidate admission separate from historical full chain",
+        "evidence": "test-evidence/static-reusable-entry/four-axis-entry",
+        "new_execution_acceptance": false,
+        "engineering_promoted": false,
+        "combined_axes_or_arbitrary_geometry": false
+      }
+    },
+    {
+      "id": "build_static_body",
+      "title": "Build one static body part from the CaseSpec",
+      "mechanism": "workflow_stage",
+      "granularity": "stage",
+      "workflow_id": "static-external-flow-2502",
+      "stage": "build-body",
+      "entry": {
+        "mcp_tool": "submit_run(operations=[...]) or submit_job(stage=...)",
+        "workflow": "workflows/static-external-flow-2502/manifest.json",
+        "stage": "build-body",
+        "runner": "worker/run_pipeline.ps1 -> worker/run_job.ps1 (one STAR process per macro)",
+        "review": "scripts/backend.py::load_review_record + worker/run_job.ps1 re-verification"
+      },
+      "provides": [],
+      "inputs": "empty_2502_session_plus_a_valid_CaseSpec",
+      "outputs": [
+        "static_body_geometry.json",
+        "static_body_geometry.sim"
+      ],
+      "parameters": {
+        "source": "case_spec",
+        "requires": [
+          "geometry.body_parts",
+          "model_length_unit",
+          "geometry.body_shape.radius_m",
+          "geometry.body_shape.origin_m"
+        ],
+        "env": []
+      },
+      "scope": "Create exactly one closed body part (sphere) from explicit CaseSpec SI origin and radius, verify closed/manifold and that the STAR read-back matches the CaseSpec within 1e-12, then save a geometry-only .sim. Every selector and dimension comes from the CaseSpec; a shape other than sphere fails closed. It does not create regions, boundaries, mesh, physics or reports.",
+      "applicable_when": "an EMPTY 2502 session plus a CaseSpec whose geometry.body_shape is a sphere",
+      "preconditions": [],
+      "evidence": [
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-static-sphere-body-20261003a",
+          "record": "test-evidence/static-external-flow/build-body-positive/s1-static-sphere-body-20261003a/stage-build-body.json",
+          "kind": "stage",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        },
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-static-sphere-body-neg-20261003a",
+          "record": "test-evidence/static-external-flow/build-body-negative/s1-static-sphere-body-neg-20261003a/case-probe.json",
+          "kind": "run",
+          "verdict": "FAILED",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        }
+      ],
+      "positive": "build-body-positive/s1-static-sphere-body-20261003a: stage ok and the CaseSpec/read-back agreement record evidence-agreement.json",
+      "negative": "build-body-negative/s1-static-sphere-body-neg-20261003a: the negative control (a CaseSpec the macro must refuse) ended FAILED, so it is evidence FOR the refusal and must never be cited as a success",
+      "scope_class": "generic",
+      "depends_on_fixed_names": false,
+      "fixed_names": [],
+      "general_acceptance": "TRIALED_POSITIVE_AND_NEGATIVE",
+      "engineering": "NOT_CLAIMED_BY_WIRING"
+    },
+    {
+      "id": "build_external_domain",
+      "title": "Build the explicit outer fluid domain",
+      "mechanism": "workflow_stage",
+      "granularity": "stage",
+      "workflow_id": "external-domain-2502",
+      "stage": "build",
+      "entry": {
+        "mcp_tool": "submit_run(operations=[...]) or submit_job(stage=...)",
+        "workflow": "workflows/external-domain-2502/manifest.json",
+        "stage": "build",
+        "runner": "worker/run_pipeline.ps1 -> worker/run_job.ps1 (one STAR process per macro)",
+        "review": "scripts/backend.py::load_review_record + worker/run_job.ps1 re-verification"
+      },
+      "provides": [
+        "build_external_domain"
+      ],
+      "inputs": "audited_sim_with_case_spec",
+      "outputs": [
+        "external_domain_build.json",
+        "external_domain_built.sim"
+      ],
+      "parameters": {
+        "source": "case_spec",
+        "requires": [
+          "domain.outer_bounds_m",
+          "geometry.body_parts",
+          "geometry.rotor_parts",
+          "model_length_unit"
+        ],
+        "env": []
+      },
+      "scope": "On an isolated copy, create a rectangular SimpleBlockPart from explicit domain.outer_bounds_m in SI, convert to model_length_unit, subtract the selected audited parts, save a separate .sim, and verify structured evidence. Creates no region, sets no boundary values, does not mesh or solve. Outer-domain adequacy is NOT physically validated.",
+      "applicable_when": "a successful core audit of the same input plus a CaseSpec that contains the selected parts",
+      "preconditions": [
+        "a successful core/preflight job for the same case_ref",
+        "every selected part closed and manifold in that audit",
+        "domain.outer_bounds_m contains the audited geometry"
+      ],
+      "evidence": [
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-static-sphere-e2e-20261003a",
+          "record": "test-evidence/static-external-flow/round10-e2e/s1-static-sphere-e2e-20261003a/stage-build-domain.json",
+          "kind": "stage",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        },
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-static-sphere-e2e-20261003a",
+          "record": "test-evidence/static-external-flow/round10-e2e/s1-static-sphere-e2e-20261003a/external_domain_build.json",
+          "kind": "measurement",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        },
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-static-sphere-e2e-20261003b",
+          "record": "test-evidence/static-external-flow/round10-e2e-repro/s1-static-sphere-e2e-20261003b/stage-build-domain.json",
+          "kind": "stage",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        }
+      ],
+      "positive": "round-10 runs A and B: stage ok (18.42 s), box [-0.5,-0.5,-0.5,1.5,0.5,0.5] minus the audited body; round-11 reruns it on a RENAMED_BODY",
+      "negative": "test-evidence/static-external-flow/box-domain-region-blocker.json records an earlier blocker instead of a pass (round-12 correction: no counter-example reached this operation)",
+      "scope_class": "generic",
+      "depends_on_fixed_names": false,
+      "fixed_names": [],
+      "general_acceptance": "TRIALED_POSITIVE",
+      "engineering": "NOT_CLAIMED_BY_WIRING"
+    },
+    {
+      "id": "build_cylindrical_domain",
+      "title": "Build a Z-axis cylindrical outer domain",
+      "mechanism": "workflow_stage",
+      "granularity": "stage",
+      "workflow_id": "external-domain-2502",
+      "stage": "build-cylinder",
+      "entry": {
+        "mcp_tool": "submit_run(operations=[...]) or submit_job(stage=...)",
+        "workflow": "workflows/external-domain-2502/manifest.json",
+        "stage": "build-cylinder",
+        "runner": "worker/run_pipeline.ps1 -> worker/run_job.ps1 (one STAR process per macro)",
+        "review": "scripts/backend.py::load_review_record + worker/run_job.ps1 re-verification"
+      },
+      "provides": [],
+      "inputs": "audited_sim_with_case_spec",
+      "outputs": [
+        "cylindrical_domain_build.json",
+        "cylindrical_domain_built.sim"
+      ],
+      "parameters": {
+        "source": "case_spec",
+        "requires": [
+          "domain.shape",
+          "domain.cylinder_radius_m",
+          "domain.cylinder_center_xy_m",
+          "domain.cylinder_z_min_m",
+          "domain.cylinder_z_max_m",
+          "domain.outer_bounds_m"
+        ],
+        "env": []
+      },
+      "scope": "Create a Z-axis cylindrical outer domain from explicit SI dimensions, subtract the audited solids, and save an isolated geometry-only .sim. Verified once on a three-blade copy; not re-run in this round.",
+      "applicable_when": "a CaseSpec with domain.shape=cylinder and an audited input",
+      "preconditions": [],
+      "evidence": [
+        {
+          "case": "three-blade-sector-copy",
+          "trial_id": "full-360-cylinder-domain",
+          "record": "test-evidence/full-360-cylinder-domain.json",
+          "kind": "record",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        }
+      ],
+      "positive": "test-evidence/full-360-cylinder-domain.json: cylinder created, subtracted, read back closed and manifold",
+      "negative": null,
+      "scope_class": "generic",
+      "depends_on_fixed_names": false,
+      "fixed_names": [],
+      "general_acceptance": "TRIALED_POSITIVE",
+      "engineering": "NOT_CLAIMED_BY_WIRING"
+    },
+    {
+      "id": "build_external_flow_region_physics_mesh",
+      "title": "Build the flow region, physics and volume mesh",
+      "mechanism": "workflow_stage",
+      "granularity": "stage",
+      "workflow_id": "static-external-flow-2502",
+      "stage": "region-physics-mesh",
+      "entry": {
+        "mcp_tool": "submit_run(operations=[...]) or submit_job(stage=...)",
+        "workflow": "workflows/static-external-flow-2502/manifest.json",
+        "stage": "region-physics-mesh",
+        "runner": "worker/run_pipeline.ps1 -> worker/run_job.ps1 (one STAR process per macro)",
+        "review": "scripts/backend.py::load_review_record + worker/run_job.ps1 re-verification"
+      },
+      "provides": [
+        "assign_boundaries",
+        "configure_physics",
+        "mesh"
+      ],
+      "inputs": "external_domain_built.sim",
+      "outputs": [
+        "external_flow_region_probe.json",
+        "external_flow_region.json",
+        "external_flow_physics.json",
+        "external_flow_mesh.json",
+        "external_flow_region.sim",
+        "external_flow_physics.sim",
+        "external_flow_meshed.sim"
+      ],
+      "parameters": {
+        "source": "case_spec",
+        "requires": [
+          "boundary_roles",
+          "velocity_m_s",
+          "pressure_pa",
+          "temperature_k",
+          "turbulence_intensity",
+          "turbulent_viscosity_ratio",
+          "mesh.base_size_m"
+        ],
+        "env": []
+      },
+      "scope": "THREE macros in ONE stage, each in its own STAR process with its own exit code (BuildExternalFlowRegion -> ConfigureExternalFlowPhysics -> BuildExternalFlowMesh), chained by macro_outputs. Builds the region and classifies every boundary from CaseSpec boundary_roles, sets the continuum/boundary values from the CaseSpec, then meshes with the CaseSpec mesh sizes. Mesh sensitivity (3 levels) is NOT part of this operation.",
+      "applicable_when": "the audited domain .sim for the same CaseSpec",
+      "preconditions": [],
+      "evidence": [
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-static-sphere-e2e-20261003a",
+          "record": "test-evidence/static-external-flow/round10-e2e/s1-static-sphere-e2e-20261003a/stage-region-physics-mesh.json",
+          "kind": "stage",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        },
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-static-sphere-e2e-20261003a",
+          "record": "test-evidence/static-external-flow/round10-e2e/s1-static-sphere-e2e-20261003a/external_flow_mesh.json",
+          "kind": "measurement",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        },
+        {
+          "case": "static-sphere-mm",
+          "trial_id": "s1-static-sphere-mm-e2e-20261003a",
+          "record": "test-evidence/static-external-flow/round12-mm-e2e/s1-static-sphere-mm-e2e-20261003a/stage-region-physics-mesh.json",
+          "kind": "stage",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        }
+      ],
+      "positive": "round-10/11: 7 boundaries with 7 declared roles, ideal-gas + energy + SST k-omega, All y+ wall treatment, 58,724 cells, 6 prism layers configured; round-12 repeats it with model_length_unit=mm",
+      "negative": "test-evidence/static-external-flow/round7-region-physics-mesh/ holds the earlier FAILED BATCHED-stage run (one STAR process for three macros) that motivated one-process-per-macro; that failure is the reason this stage declares macro_outputs",
+      "scope_class": "generic",
+      "depends_on_fixed_names": false,
+      "fixed_names": [],
+      "general_acceptance": "TRIALED_POSITIVE_AND_NEGATIVE",
+      "engineering": "NOT_CLAIMED_BY_WIRING"
+    },
+    {
+      "id": "audit_external_flow_mesh",
+      "title": "Read-only mesh quality audit",
+      "mechanism": "workflow_stage",
+      "granularity": "stage",
+      "workflow_id": "static-external-flow-2502",
+      "stage": "mesh-quality-audit",
+      "entry": {
+        "mcp_tool": "submit_run(operations=[...]) or submit_job(stage=...)",
+        "workflow": "workflows/static-external-flow-2502/manifest.json",
+        "stage": "mesh-quality-audit",
+        "runner": "worker/run_pipeline.ps1 -> worker/run_job.ps1 (one STAR process per macro)",
+        "review": "scripts/backend.py::load_review_record + worker/run_job.ps1 re-verification"
+      },
+      "provides": [
+        "mesh_qa"
+      ],
+      "inputs": "external_flow_meshed.sim",
+      "outputs": [
+        "external_flow_mesh_quality.json"
+      ],
+      "parameters": {
+        "source": "case_spec",
+        "requires": [
+          "mesh_min_cell_quality",
+          "mesh_min_face_validity",
+          "mesh_min_volume_change"
+        ],
+        "env": []
+      },
+      "scope": "Read-only measured quality on the SAVED mesh (Cell Quality, Face Validity, Volume Change, prism layers), gated against the CaseSpec thresholds. It does not export y+ and does not repair the mesh.",
+      "applicable_when": "a saved mesh for the same CaseSpec",
+      "preconditions": [],
+      "evidence": [
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-static-sphere-e2e-20261003a",
+          "record": "test-evidence/static-external-flow/round10-e2e/s1-static-sphere-e2e-20261003a/external_flow_mesh_quality.json",
+          "kind": "measurement",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        }
+      ],
+      "positive": "round-10/11: min Cell Quality 0.3287, min Face Validity 1.0, min Volume Change 0.02256, worst wall prism layers 6",
+      "negative": null,
+      "scope_class": "generic",
+      "depends_on_fixed_names": false,
+      "fixed_names": [],
+      "general_acceptance": "TRIALED_POSITIVE",
+      "engineering": "NOT_CLAIMED_BY_WIRING"
+    },
+    {
+      "id": "run_external_flow_solve",
+      "title": "Bounded steady solve with an honest verdict",
+      "mechanism": "workflow_stage",
+      "granularity": "stage",
+      "workflow_id": "static-external-flow-2502",
+      "stage": "solve",
+      "entry": {
+        "mcp_tool": "submit_run(operations=[...]) or submit_job(stage=...)",
+        "workflow": "workflows/static-external-flow-2502/manifest.json",
+        "stage": "solve",
+        "runner": "worker/run_pipeline.ps1 -> worker/run_job.ps1 (one STAR process per macro)",
+        "review": "scripts/backend.py::load_review_record + worker/run_job.ps1 re-verification"
+      },
+      "provides": [
+        "solve_pilot"
+      ],
+      "inputs": "external_flow_meshed.sim",
+      "outputs": [
+        "external_flow_solve.json",
+        "external_flow_solve_history.csv",
+        "external_flow_residuals.tsv",
+        "external_flow_solved.sim"
+      ],
+      "parameters": {
+        "source": "case_spec",
+        "requires": [
+          "velocity_m_s",
+          "body_wall_boundary_name",
+          "reference_area_m2"
+        ],
+        "env": [
+          {
+            "name": "EXTERNAL_FLOW_CHUNK",
+            "required": false,
+            "verified_value": "50",
+            "macro_default": "50"
+          },
+          {
+            "name": "EXTERNAL_FLOW_MAX_ITERATIONS",
+            "required": false,
+            "verified_value": "1200",
+            "macro_default": "1200"
+          }
+        ]
+      },
+      "scope": "Bounded, chunked steady solve on an isolated copy: finite state, residual/monitor history exported, checkpoint saved, and an honest convergence verdict. It does NOT claim convergence; the CaseSpec residual gates are evaluated by audit_external_flow_convergence.",
+      "applicable_when": "a saved mesh plus a CaseSpec with the inflow and the wall boundary name",
+      "preconditions": [],
+      "evidence": [
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-static-sphere-e2e-20261003a",
+          "record": "test-evidence/static-external-flow/round10-e2e/s1-static-sphere-e2e-20261003a/stage-solve.json",
+          "kind": "stage",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        },
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-static-sphere-e2e-20261003a",
+          "record": "test-evidence/static-external-flow/round10-e2e/s1-static-sphere-e2e-20261003a/external_flow_solve.json",
+          "kind": "measurement",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        }
+      ],
+      "positive": "round-10/11: 600 iterations, finite state, residual history exported, checkpoint saved, budget 480 s not exhausted",
+      "negative": null,
+      "scope_class": "generic",
+      "depends_on_fixed_names": false,
+      "fixed_names": [],
+      "general_acceptance": "TRIALED_POSITIVE",
+      "engineering": "NOT_CLAIMED_BY_WIRING"
+    },
+    {
+      "id": "audit_external_flow_convergence",
+      "title": "Convergence verdict against the CaseSpec gates",
+      "mechanism": "workflow_stage",
+      "granularity": "stage",
+      "workflow_id": "static-external-flow-2502",
+      "stage": "validation",
+      "entry": {
+        "mcp_tool": "submit_run(operations=[...]) or submit_job(stage=...)",
+        "workflow": "workflows/static-external-flow-2502/manifest.json",
+        "stage": "validation",
+        "runner": "worker/run_pipeline.ps1 -> worker/run_job.ps1 (one STAR process per macro)",
+        "review": "scripts/backend.py::load_review_record + worker/run_job.ps1 re-verification"
+      },
+      "provides": [
+        "solve_converged"
+      ],
+      "inputs": "external_flow_solved.sim",
+      "outputs": [
+        "external_flow_validation.json",
+        "external_flow_validation_residuals.tsv"
+      ],
+      "parameters": {
+        "source": "case_spec",
+        "requires": [
+          "acceptance.residuals"
+        ],
+        "env": []
+      },
+      "scope": "Read-only convergence verdict: it CHECKS the saved solution against the CaseSpec residual/target gates and reports the process verdict honestly. It does not make a solution converge, and it establishes NO engineering validity: the round-10 verdict is NOT_VALIDATED_NO_REFERENCE because the CaseSpec has no reference value for the drag coefficient.",
+      "applicable_when": "a saved solution for the same CaseSpec",
+      "preconditions": [],
+      "evidence": [
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-static-sphere-e2e-20261003a",
+          "record": "test-evidence/static-external-flow/round10-e2e/s1-static-sphere-e2e-20261003a/external_flow_validation.json",
+          "kind": "measurement",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        }
+      ],
+      "positive": "round-10/11: residuals_met true, target stable, stage1_agrees true, read_only_verified true, verdict NOT_VALIDATED_NO_REFERENCE",
+      "negative": "test-evidence/static-external-flow/round8-solve-validation/ is the FAILED/GATE_FAILED run kept as the regression fixture: the solve macro failed while creating the drag report, so AuditExternalFlowConvergence never ran there (round-12 correction). It is cited as a failed-run fixture, never as evidence about this operation.",
+      "scope_class": "generic",
+      "depends_on_fixed_names": false,
+      "fixed_names": [],
+      "general_acceptance": "TRIALED_POSITIVE",
+      "engineering": "NOT_CLAIMED_BY_WIRING"
+    },
+    {
+      "id": "audit_volume_mesh_quality",
+      "title": "Multi-region volume mesh quality audit",
+      "mechanism": "workflow_stage",
+      "granularity": "stage",
+      "workflow_id": "core",
+      "stage": "audit-mrf-volume-mesh-quality",
+      "entry": {
+        "mcp_tool": "submit_run(operations=[...]) or submit_job(stage=...)",
+        "workflow": "workflows/core/manifest.json",
+        "stage": "audit-mrf-volume-mesh-quality",
+        "runner": "worker/run_pipeline.ps1 -> worker/run_job.ps1 (one STAR process per macro)",
+        "review": "scripts/backend.py::load_review_record + worker/run_job.ps1 re-verification"
+      },
+      "provides": [],
+      "inputs": "saved_sim_with_volume_mesh",
+      "outputs": [
+        "mrf_volume_mesh_quality.csv",
+        "mrf_volume_mesh_quality.json"
+      ],
+      "parameters": {
+        "source": "case_spec",
+        "requires": [],
+        "env": []
+      },
+      "scope": "Read-only counts and Cell Quality, Face Validity and Volume Change for every meshed Region; writes a measurement-level certificate. Applies no CaseSpec quality gate and validates no CFD physics.",
+      "applicable_when": "any saved .sim that already contains a volume mesh",
+      "preconditions": [],
+      "evidence": [
+        {
+          "case": "air-three-blade",
+          "trial_id": "air3b-mrf-e2e-20261004a",
+          "record": "test-evidence/air-three-blade/p-e2e/run-a/air3b-mrf-e2e-20261004a/mrf_volume_mesh_quality.json",
+          "kind": "measurement",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        },
+        {
+          "case": "air-three-blade",
+          "trial_id": "air3b-transient-e2e-20261004a",
+          "record": "test-evidence/air-three-blade/p-e2e/r10-transient-main/air3b-transient-e2e-20261004a/mrf_volume_mesh_quality.json",
+          "kind": "measurement",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        }
+      ],
+      "positive": "verified on a two-Region synthetic MRF pilot, a four-Region Siemens 2502 tutorial copy, and both R10 air-three-blade chains",
+      "negative": null,
+      "scope_class": "generic",
+      "depends_on_fixed_names": false,
+      "fixed_names": [],
+      "general_acceptance": "TRIALED_POSITIVE",
+      "engineering": "NOT_CLAIMED_BY_WIRING"
+    },
+    {
+      "id": "diagnose_face_validity_cell",
+      "title": "Locate a single bad Face Validity cell",
+      "mechanism": "workflow_stage",
+      "granularity": "stage",
+      "workflow_id": "core",
+      "stage": "diagnose-imported-mrf-face-validity",
+      "entry": {
+        "mcp_tool": "submit_run(operations=[...]) or submit_job(stage=...)",
+        "workflow": "workflows/core/manifest.json",
+        "stage": "diagnose-imported-mrf-face-validity",
+        "runner": "worker/run_pipeline.ps1 -> worker/run_job.ps1 (one STAR process per macro)",
+        "review": "scripts/backend.py::load_review_record + worker/run_job.ps1 re-verification"
+      },
+      "provides": [],
+      "inputs": "saved_sim_with_volume_mesh_and_region_name",
+      "outputs": [
+        "mrf_low_face_validity.txt"
+      ],
+      "parameters": {
+        "source": "case_spec",
+        "requires": [],
+        "env": []
+      },
+      "scope": "Isolated, unsaved STAR diagnostic: initializes the solution, compares the selected Region preview with the mesh-wide CellSet count, and brackets Position components when exactly one bad cell exists. Does not expose a STAR cell ID, repair the mesh, or validate physics.",
+      "applicable_when": "a saved mesh whose bad-cell count is exactly one",
+      "preconditions": [],
+      "evidence": [
+        {
+          "case": "three-blade-sector-copy",
+          "trial_id": "three-blade-face-validity-localization",
+          "record": "test-evidence/three-blade-face-validity-localization.json",
+          "kind": "record",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        }
+      ],
+      "positive": "synthetic two-Region pilot and the four-Region Siemens tutorial both bracketed the single bad cell",
+      "negative": "test-evidence/three-blade-interface-local-refine-a-postinit.json records SIX bad cells, where this macro cannot bracket a location - it reports the count instead of a location",
+      "scope_class": "generic",
+      "depends_on_fixed_names": false,
+      "fixed_names": [],
+      "general_acceptance": "TRIALED_POSITIVE_AND_NEGATIVE",
+      "engineering": "NOT_CLAIMED_BY_WIRING"
+    },
+    {
+      "id": "expand_rotor_360",
+      "title": "Rotate an audited 120-degree rotor sector to 360 degrees",
+      "mechanism": "workflow_stage",
+      "granularity": "stage",
+      "workflow_id": "external-domain-2502",
+      "stage": "expand-rotor-360",
+      "entry": {
+        "mcp_tool": "submit_run(operations=[...]) or submit_job(stage=...)",
+        "workflow": "workflows/external-domain-2502/manifest.json",
+        "stage": "expand-rotor-360",
+        "runner": "worker/run_pipeline.ps1 -> worker/run_job.ps1 (one STAR process per macro)",
+        "review": "scripts/backend.py::load_review_record + worker/run_job.ps1 re-verification"
+      },
+      "provides": [],
+      "inputs": "audited_three_blade_120_degree_sector_sim",
+      "outputs": [
+        "full_rotor_360_build.json",
+        "full_rotor_360_built.sim"
+      ],
+      "parameters": {
+        "source": "case_spec",
+        "requires": [],
+        "env": []
+      },
+      "scope": "Task-specific operation for the audited PROPELLER sector: create two isolated rotated geometry parts at 120 and 240 degrees about +Z through the origin. It does not mesh, create regions, set physics or solve, and the retained sector regions/interfaces still require rebuilding.",
+      "applicable_when": "that specific audited sector input; the operation selects by the fixed name PROPELLER",
+      "preconditions": [],
+      "evidence": [
+        {
+          "case": "propeller-sector",
+          "trial_id": "full-360-geometry-build",
+          "record": "test-evidence/full-360-geometry-build.json",
+          "kind": "record",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        }
+      ],
+      "positive": "isolated geometry build and read-only audit: all three parts closed and manifold",
+      "negative": "test-evidence/propeller-sector-role-correction.json: the same name PROPELLER was later shown to be a 120-degree FLUID SECTOR, not the blade solid, which is why this operation is scope_class sample_specific and depends on a fixed name",
+      "scope_class": "sample_specific",
+      "depends_on_fixed_names": true,
+      "fixed_names": [
+        "PROPELLER"
+      ],
+      "general_acceptance": "NOT_ACCEPTED",
+      "engineering": "NOT_CLAIMED_BY_WIRING"
+    },
+    {
+      "id": "classify_parts",
+      "title": "Offline part-role classification",
+      "mechanism": "offline_tool",
+      "plan_role": "pre",
+      "invoked_by": [
+        {
+          "mechanism": "workflow_stage",
+          "file": "scripts/backend.py",
+          "symbol": "classify_case_parts"
+        },
+        {
+          "mechanism": "workflow_stage",
+          "file": "scripts/backend.py",
+          "symbol": "validate_plan"
+        }
+      ],
+      "invocation_note": "R12 measured the difference between a declaration and an invocation: `applies_to_run_mechanisms` used to be enough to complete a plan step, and NO restricted-trial entry ever calls part classification (the operator calls the MCP tool before submitting). Only `invoked_by` entries, whose file AND symbol are checked on disk by casespec._code_bindings, count towards a mechanism's plan coverage.",
+      "granularity": "tool",
+      "workflow_id": null,
+      "stage": null,
+      "entry": {
+        "mcp_tool": "mcp classify_case_parts(case_ref, inspect_job_id, geometry, model_length_unit)",
+        "script": "scripts/part_classification.py",
+        "applies_to_run_mechanisms": [
+          "workflow_stage",
+          "restricted_trial"
+        ],
+        "review": "pinned in scripts/air3b_pipeline_trial.py::SUPPORT_FILES",
+        "files": [
+          "scripts/part_classification.py"
+        ]
+      },
+      "provides": [
+        "classify_parts"
+      ],
+      "inputs": "a successful core preflight payload plus the CaseSpec geometry selectors",
+      "outputs": [
+        "classification report (in the MCP response)"
+      ],
+      "parameters": {
+        "source": "case_spec",
+        "requires": [
+          "geometry.body_parts"
+        ],
+        "env": []
+      },
+      "scope": "Offline screen of part roles from the audit payload and the CaseSpec selectors. It has NO STAR entry point of its own: it can only reject or accept roles that the audit already measured, and names alone never establish a role.",
+      "applicable_when": "a successful core/preflight job for the same case_ref",
+      "preconditions": [],
+      "evidence": [
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-static-sphere-body-20261003a",
+          "record": "test-evidence/static-external-flow/build-body-positive/casespec-with-audit-validation.json",
+          "kind": "record",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        },
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-rename-body-20261003a",
+          "record": "test-evidence/static-external-flow/round11-rename/classification.json",
+          "kind": "record",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        }
+      ],
+      "positive": "part_classification.errors == [] on the sphere CaseSpec and on the renamed-body variant",
+      "negative": "test-evidence/static-external-flow/round11-rename-negative/ : a mismatched selector is refused (tests/test_part_classification.py)",
+      "scope_class": "generic",
+      "depends_on_fixed_names": false,
+      "fixed_names": [],
+      "general_acceptance": "TRIALED_POSITIVE_AND_NEGATIVE",
+      "engineering": "NOT_CLAIMED_BY_WIRING"
+    },
+    {
+      "id": "export_evidence",
+      "title": "Stage records and artifact retrieval",
+      "mechanism": "offline_tool",
+      "plan_role": "post",
+      "invoked_by": [
+        {
+          "mechanism": "workflow_stage",
+          "file": "scripts/backend.py",
+          "symbol": "fetch_run_results"
+        },
+        {
+          "mechanism": "workflow_stage",
+          "file": "scripts/formal_run_report.py",
+          "symbol": "report_run"
+        },
+        {
+          "mechanism": "restricted_trial",
+          "file": "scripts/run_static_external_flow_e2e.py",
+          "symbol": "retrieve_checkpoints"
+        }
+      ],
+      "invocation_note": "`fetch_run_results` downloads the records; on the formal path scripts/formal_run_report.py::report_run then re-hashes every artifact against the sha256 the Windows runner recorded (a file with no recorded hash is reported as NO_RECORDED_HASH, never as verified).",
+      "granularity": "tool",
+      "workflow_id": null,
+      "stage": null,
+      "entry": {
+        "mcp_tool": "mcp get_run / fetch_run_results",
+        "script": "worker/run_pipeline.ps1 + worker/run_job.ps1 stage records; scripts/run_static_external_flow_e2e.py retrieval",
+        "applies_to_run_mechanisms": [
+          "workflow_stage",
+          "restricted_trial"
+        ],
+        "review": "pinned in scripts/air3b_pipeline_trial.py::SUPPORT_FILES",
+        "files": [
+          "worker/run_job.ps1",
+          "worker/run_pipeline.ps1"
+        ]
+      },
+      "provides": [
+        "export_evidence"
+      ],
+      "inputs": "a submitted run",
+      "outputs": [
+        "stage-<name>.json per stage",
+        "evidence index with sha256",
+        "downloaded .sim with hash verification"
+      ],
+      "parameters": {
+        "source": "case_spec",
+        "requires": [],
+        "env": []
+      },
+      "scope": "The runner writes a stage record on success AND failure, and retrieval verifies each transferred file against the hash the runner recorded. It is not a STAR operation and adds no threshold of its own.",
+      "applicable_when": "any submitted run",
+      "preconditions": [],
+      "evidence": [
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-static-sphere-e2e-20261003a",
+          "record": "test-evidence/static-external-flow/round10-e2e/s1-static-sphere-e2e-20261003a/stage-validation.json",
+          "kind": "stage",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        },
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-static-sphere-e2e-20261003a",
+          "record": "test-evidence/static-external-flow/round10-e2e/s1-static-sphere-e2e-20261003a-evidence-index.json",
+          "kind": "index",
+          "verdict": null,
+          "citation": "checked_by_scripts/run_record_gate.py"
+        }
+      ],
+      "positive": "every round-10/11/12 run produced one stage record per stage plus a full evidence index, and both R10 air-three-blade chains delivered every .sim hash-verified",
+      "negative": "test-evidence/static-external-flow/round12-download-validation/ holds a deliberately tampered-hash counter-example that the retrieval path refuses",
+      "scope_class": "generic",
+      "depends_on_fixed_names": false,
+      "fixed_names": [],
+      "general_acceptance": "TRIALED_POSITIVE_AND_NEGATIVE",
+      "engineering": "NOT_CLAIMED_BY_WIRING"
+    },
+    {
+      "id": "report",
+      "title": "Offline Chinese run report",
+      "mechanism": "offline_tool",
+      "plan_role": "post",
+      "invoked_by": [
+        {
+          "mechanism": "workflow_stage",
+          "file": "scripts/formal_run_report.py",
+          "symbol": "report_run"
+        },
+        {
+          "mechanism": "restricted_trial",
+          "file": "scripts/run_static_external_flow_e2e.py",
+          "symbol": "write_report"
+        }
+      ],
+      "invocation_note": "R12 added the formal step. scripts/formal_run_report.py retrieves the run, verifies every artifact against the runner's recorded sha256 and then CALLS scripts/generate_run_report.py (unchanged) as a subprocess; the reporter's own criteria are not re-implemented. `applies_to_run_mechanisms` is now display-only: coverage comes from the checked `invoked_by` entries.",
+      "granularity": "tool",
+      "workflow_id": null,
+      "stage": null,
+      "entry": {
+        "mcp_tool": "mcp report_run(run_id, evidence, case_label) / invoked by scripts/run_static_external_flow_e2e.py as its last step",
+        "script": "scripts/generate_run_report.py",
+        "applies_to_run_mechanisms": [
+          "workflow_stage",
+          "restricted_trial"
+        ],
+        "review": "pinned in scripts/air3b_pipeline_trial.py::SUPPORT_FILES",
+        "files": [
+          "scripts/generate_run_report.py",
+          "scripts/run_record_gate.py",
+          "scripts/formal_run_report.py"
+        ]
+      },
+      "provides": [
+        "report"
+      ],
+      "inputs": "the downloaded evidence of a finished run",
+      "outputs": [
+        "<trial>-report.md",
+        "<trial>-report.json",
+        "<trial>-evidence-index.json"
+      ],
+      "parameters": {
+        "source": "case_spec",
+        "requires": [],
+        "env": []
+      },
+      "scope": "Offline report from the evidence plus the shared citation gate (scripts/run_record_gate.py). It adds no threshold of its own and reports P, E and delivery as separate fields. Wired into BOTH run mechanisms: the restricted-trial entry calls it as its last step, and on the formal path scripts/formal_run_report.py (mcp report_run) retrieves the run, verifies the transferred bytes against the runner's recorded sha256 and calls this reporter unchanged. A FAILED formal run still gets an honest report: the result record passes the runner's own state through unless the run really reached EXECUTION_COMPLETED with every stage record ok.",
+      "applicable_when": "a run whose evidence has been downloaded",
+      "preconditions": [],
+      "evidence": [
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-static-sphere-e2e-20261003a",
+          "record": "test-evidence/static-external-flow/round10-e2e/s1-static-sphere-e2e-20261003a-report.json",
+          "kind": "report",
+          "verdict": "REPORT_OK",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        },
+        {
+          "case": "air-three-blade",
+          "trial_id": "air3b-transient-e2e-20261004a",
+          "record": "test-evidence/air-three-blade/p-e2e/r10-transient-main/air3b-transient-e2e-20261004a/../air3b-transient-e2e-20261004a-report.json",
+          "kind": "report",
+          "verdict": "REPORT_OK",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        }
+      ],
+      "positive": "round-10 both runs and round-11: REPORT_OK; the R10 air-three-blade chains: REPORT_OK",
+      "negative": "failed runs produce REPORT_RUN_FAILED / REPORT_GATE_FAILED rather than being summarised as passing (see the r10-sim-entry-b measured-defect record)",
+      "scope_class": "generic",
+      "depends_on_fixed_names": false,
+      "fixed_names": [],
+      "general_acceptance": "TRIALED_POSITIVE_AND_NEGATIVE",
+      "engineering": "NOT_CLAIMED_BY_WIRING"
+    },
+    {
+      "id": "static_external_flow_chain",
+      "title": "Scenario-1 static-body chain, geometry-only .sim to validation (the P-verified mechanism)",
+      "mechanism": "restricted_trial",
+      "granularity": "pipeline",
+      "entry": {
+        "mcp_tool": "resolve_operations() returns this command; the trial entry is the reviewed executor",
+        "command": "python3 scripts/run_static_external_flow_e2e.py --pipeline cases/static-sphere-external-flow/pipeline-e2e-geometry-to-validation.json --inputs cases/static-sphere-external-flow/e2e-inputs.json --trial-id <id> --evidence <dir>",
+        "pipeline": "cases/static-sphere-external-flow/pipeline-e2e-geometry-to-validation.json",
+        "inputs": "cases/static-sphere-external-flow/e2e-inputs.json",
+        "controller": "scripts/air3b_pipeline_trial.py",
+        "runner": "scripts/security/trial_air3b_pipeline.ps1",
+        "label": "six stages: audit geometry -> build domain -> region+physics+mesh -> mesh quality audit -> bounded solve -> convergence verdict"
+      },
+      "provides": [
+        "audit_geometry",
+        "build_external_domain",
+        "assign_boundaries",
+        "configure_physics",
+        "mesh",
+        "mesh_qa",
+        "solve_pilot",
+        "solve_converged",
+        "export_evidence",
+        "report"
+      ],
+      "inputs": "a geometry-only static_body_geometry.sim (hash-registered) plus a valid CaseSpec",
+      "outputs": "external_flow_solved.sim and every stage record, the evidence index and the Chinese report",
+      "parameters": {
+        "source": "pipeline_json_env + case_spec",
+        "requires": [
+          "geometry.body_parts",
+          "domain.outer_bounds_m",
+          "flow.velocity_m_s",
+          "boundary_roles",
+          "mesh.base_size_m"
+        ],
+        "env": [
+          {
+            "name": "EXTERNAL_FLOW_BUDGET_SECONDS",
+            "verified_value": "480",
+            "macro_default": "540",
+            "note": "the pipeline JSON sets it; without it the macro default 540 s applies"
+          }
+        ]
+      },
+      "scope": "The whole scenario-1 chain driven by the single reviewed entry command: geometry audit, explicit outer domain, region + boundary roles + physics + volume mesh, read-only mesh-quality audit, a BOUNDED solve that reports its convergence verdict honestly, and the offline report. It is CaseSpec-driven (proven with a renamed body and with mm model units), which is why it is scope_class generic - unlike the AIR-3B chains, whose macros select by fixed names.",
+      "applicable_when": "a registered geometry-only .sim plus a valid CaseSpec and a signed review record for that attempt",
+      "preconditions": [
+        "a valid CaseSpec",
+        "a review record matching pipeline/controller/runner/macro/input hashes"
+      ],
+      "evidence": [
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-static-sphere-e2e-20261003a",
+          "record": "test-evidence/static-external-flow/round10-e2e/s1-static-sphere-e2e-20261003a/stage-validation.json",
+          "kind": "stage",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        },
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-static-sphere-e2e-20261003b",
+          "record": "test-evidence/static-external-flow/round10-e2e-repro/s1-static-sphere-e2e-20261003b/stage-validation.json",
+          "kind": "stage",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        },
+        {
+          "case": "static-sphere-rename-variant",
+          "trial_id": "s1-static-sphere-rename-20261003a",
+          "record": "test-evidence/static-external-flow/round11-rename/s1-static-sphere-rename-20261003a/stage-validation.json",
+          "kind": "stage",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        },
+        {
+          "case": "static-sphere-mm",
+          "trial_id": "s1-static-sphere-mm-e2e-20261003a",
+          "record": "test-evidence/static-external-flow/round12-mm-e2e/s1-static-sphere-mm-e2e-20261003a/stage-validation.json",
+          "kind": "stage",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        }
+      ],
+      "positive": "two same-bytes runs (A and B) plus a renamed-body variant and an mm-unit variant: six stages ok, gate passed, every checkpoint hash-verified, REPORT_OK, and the engineering verdict reported as NOT_VALIDATED_NO_REFERENCE rather than as a pass",
+      "negative": "test-evidence/static-external-flow/build-body-negative and test-evidence/static-external-flow/round8-solve-validation are the refusal fixtures; test-evidence/static-external-flow/round12-mm-negative carries the paired audit counter-example",
+      "scope_class": "generic",
+      "depends_on_fixed_names": false,
+      "fixed_names": [],
+      "general_acceptance": "TRIALED_POSITIVE_AND_NEGATIVE",
+      "engineering": "NOT_CLAIMED_BY_WIRING"
+    },
+    {
+      "id": "air3b_steady_mrf_chain",
+      "title": "AIR-3B steady MRF chain (sample-specific)",
+      "mechanism": "restricted_trial",
+      "granularity": "pipeline",
+      "workflow_id": null,
+      "stage": null,
+      "entry": {
+        "mcp_tool": "resolve_operations() returns this command; the trial entry is the reviewed executor",
+        "command": "python3 scripts/run_static_external_flow_e2e.py --pipeline cases/air-three-blade/pipeline-e2e-geometry-to-validation.json --inputs cases/air-three-blade/e2e-inputs.json --trial-id <id> --evidence <dir>",
+        "pipeline": "cases/air-three-blade/pipeline-e2e-geometry-to-validation.json",
+        "inputs": "cases/air-three-blade/e2e-inputs.json",
+        "controller": "scripts/air3b_pipeline_trial.py",
+        "runner": "scripts/security/trial_air3b_pipeline.ps1",
+        "label": "six stages: geometry audit -> regions -> mesh -> physics -> bounded solve -> read-only validation"
+      },
+      "provides": [],
+      "inputs": "the registered geometry-only .sim block_geometry.sim (6c81b376...) plus the two hash-pinned STEP files",
+      "outputs": [
+        "mrf_segment_e2e.sim",
+        "air3b_massbalance.json",
+        "air3b_residual_provenance.json",
+        "mrf_volume_mesh_quality.json",
+        "block_geometry_audit.json"
+      ],
+      "parameters": {
+        "source": "pipeline_json_env",
+        "requires": [],
+        "env": [
+          {
+            "name": "AIR3B_*",
+            "note": "the pipeline JSON sets every parameter; a run is the whole pipeline, not a stage"
+          }
+        ]
+      },
+      "scope": "The verified steady-MRF chain for the AIR-3B propeller sample, driven by the reviewed trial entry. It selects by FIXED NAMES (AIR3B_ROTATING / AIR3B_STATIONARY / AIR3B_MRF / BLADE), so it is sample_specific: it can never satisfy a generic plan requirement, and it is NOT registered as a generic workflow stage. Track E remains unvalidated for it (residual limits are not met and the load window has too few samples).",
+      "applicable_when": "the AIR-3B registered inputs and a signed review record for that attempt",
+      "preconditions": [],
+      "evidence": [
+        {
+          "case": "air-three-blade",
+          "trial_id": "air3b-mrf-sim-entry-20261004c",
+          "record": "test-evidence/air-three-blade/p-e2e/r10-sim-entry-c/air3b-mrf-sim-entry-20261004c/stage-validation.json",
+          "kind": "stage",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        },
+        {
+          "case": "air-three-blade",
+          "trial_id": "air3b-mrf-e2e-20261004a",
+          "record": "test-evidence/air-three-blade/p-e2e/run-a/air3b-mrf-e2e-20261004a/stage-validation.json",
+          "kind": "stage",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        }
+      ],
+      "positive": "R8 runs A and B and the R10 direct-.sim-entry run: six stages ok, five measurement certificates citable, every checkpoint hash-verified, REPORT_OK, convergence reported false",
+      "negative": "test-evidence/air-three-blade/p-e2e/r10-sim-entry-b/ : six stages ok but the controller numeric gate refused an unparseable certificate and downgraded the run to GATE_FAILED (the measured defect kept as the fixture)",
+      "scope_class": "sample_specific",
+      "depends_on_fixed_names": true,
+      "fixed_names": [
+        "AIR3B_ROTATING",
+        "AIR3B_STATIONARY",
+        "AIR3B_MRF",
+        "AIR3B_RBM",
+        "BLADE"
+      ],
+      "general_acceptance": "NOT_ACCEPTED",
+      "engineering": "NOT_CLAIMED_BY_WIRING",
+      "provides_on_own_case": [
+        "audit_geometry",
+        "assign_boundaries",
+        "mesh",
+        "mesh_qa",
+        "configure_physics",
+        "solve_pilot"
+      ]
+    },
+    {
+      "id": "air3b_transient_chain",
+      "title": "AIR-3B transient rotation chain (sample-specific)",
+      "mechanism": "restricted_trial",
+      "granularity": "pipeline",
+      "workflow_id": null,
+      "stage": null,
+      "entry": {
+        "mcp_tool": "resolve_operations() returns this command; the trial entry is the reviewed executor",
+        "command": "python3 scripts/run_static_external_flow_e2e.py --pipeline cases/air-three-blade/pipeline-transient-revolution.json --inputs cases/air-three-blade/e2e-inputs.json --trial-id <id> --evidence <dir>",
+        "pipeline": "cases/air-three-blade/pipeline-transient-revolution.json",
+        "inputs": "cases/air-three-blade/e2e-inputs.json",
+        "controller": "scripts/air3b_pipeline_trial.py",
+        "runner": "scripts/security/trial_air3b_pipeline.ps1",
+        "label": "six stages: geometry audit -> regions -> mesh -> physics -> transient (the same macro twice, s1 -> s2 checkpoint handoff) -> two read-only validations"
+      },
+      "provides": [],
+      "inputs": "the same registered geometry-only .sim plus the two hash-pinned STEP files",
+      "outputs": [
+        "mrf_transient_s2.sim",
+        "air3b_transient_s1_measurements.json",
+        "air3b_transient_s2_measurements.json",
+        "air3b_massbalance.json"
+      ],
+      "parameters": {
+        "source": "pipeline_json_env",
+        "requires": [
+          "AIR3B_TRANSIENT_DT_S",
+          "AIR3B_TRANSIENT_STEPS",
+          "AIR3B_INNER_ITERATIONS",
+          "AIR3B_TRANSIENT_CHUNK"
+        ],
+        "env": [
+          {
+            "name": "AIR3B_TRANSIENT_DT_S",
+            "verified_value": "3.3333333333333335e-05"
+          },
+          {
+            "name": "AIR3B_TRANSIENT_STEPS",
+            "verified_value": "2"
+          },
+          {
+            "name": "AIR3B_INNER_ITERATIONS",
+            "verified_value": "10"
+          },
+          {
+            "name": "AIR3B_TRANSIENT_CHUNK",
+            "verified_value": "1"
+          }
+        ]
+      },
+      "scope": "The verified transient-rotation chain for the AIR-3B sample: two segments of two 2-degree time steps, the second consuming the first checkpoint, with the rotation MEASURED (lab-frame area-weighted centroid of the surface with the largest measured off-axis distance) and the final checkpoint verified by two read-only sessions. Sample-specific by fixed names. Four time steps prove nothing about periodicity, unsteadiness or time-step sensitivity, and this operation does NOT implement time_step_study.",
+      "applicable_when": "the AIR-3B registered inputs and a signed review record for that attempt",
+      "preconditions": [],
+      "evidence": [
+        {
+          "case": "air-three-blade",
+          "trial_id": "air3b-transient-e2e-20261004a",
+          "record": "test-evidence/air-three-blade/p-e2e/r10-transient-main/air3b-transient-e2e-20261004a/stage-transient.json",
+          "kind": "stage",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        },
+        {
+          "case": "air-three-blade",
+          "trial_id": "air3b-transient-e2e-20261004a",
+          "record": "test-evidence/air-three-blade/p-e2e/r10-transient-main/air3b-transient-e2e-20261004a/air3b_transient_s2_measurements.json",
+          "kind": "measurement",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        },
+        {
+          "case": "air-three-blade",
+          "trial_id": "air3b-transient-e2e-20261004b",
+          "record": "test-evidence/air-three-blade/p-e2e/r10-transient-repro/air3b-transient-e2e-20261004b/stage-transient.json",
+          "kind": "stage",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        }
+      ],
+      "positive": "R10 main trial and same-bytes reproduction: six stages ok, both segments report measured 4.000 deg against expected 4.000 deg, 52 compared items identical, every checkpoint hash-verified, REPORT_OK",
+      "negative": null,
+      "scope_class": "sample_specific",
+      "depends_on_fixed_names": true,
+      "fixed_names": [
+        "AIR3B_ROTATING",
+        "AIR3B_RBM",
+        "AIR3B_MRF",
+        "BLADE"
+      ],
+      "general_acceptance": "NOT_ACCEPTED",
+      "engineering": "NOT_CLAIMED_BY_WIRING",
+      "provides_on_own_case": [
+        "audit_geometry",
+        "assign_boundaries",
+        "mesh",
+        "mesh_qa",
+        "configure_physics",
+        "validation"
+      ]
+    },
+    {
+      "id": "mesh_study",
+      "title": "Mesh sensitivity study: summary and reuse of the existing level evidence",
+      "mechanism": "offline_tool",
+      "plan_role": "post",
+      "invoked_by": [
+        {
+          "mechanism": "workflow_stage",
+          "file": "scripts/formal_study_reuse.py",
+          "symbol": "summarize_study"
+        }
+      ],
+      "invocation_note": "scripts/formal_run_report.py::report_run calls scripts/formal_study_reuse.py::summarize_study for every study named as a POST step of the submitted plan, writes stage-mesh_study.json plus the summary artifact, and the shared reporter prints them. It READS and RE-VERIFIES existing study evidence; it never recomputes a level.",
+      "granularity": "tool",
+      "workflow_id": null,
+      "stage": null,
+      "entry": {
+        "mcp_tool": "mcp report_run(run_id, evidence) / scripts/formal_run_entry.py",
+        "script": "scripts/formal_study_reuse.py",
+        "producer_interface": "python scripts/run_sensitivity_study.py --kind mesh --all --evidence <dir>  (window-1 driver that RAN the levels; unchanged by this round)",
+        "applies_to_run_mechanisms": [
+          "workflow_stage"
+        ],
+        "review": "the producer is pinned in scripts/air3b_pipeline_trial.py::SUPPORT_FILES; the formal-side consumer is pinned by review/<record>.json support_hashes",
+        "files": [
+          "scripts/formal_study_reuse.py",
+          "scripts/run_sensitivity_study.py",
+          "scripts/evaluate_sensitivity.py"
+        ],
+        "levels_manifest": "test-evidence/static-external-flow/round13-mesh-study/mesh-levels.json",
+        "study_report": "test-evidence/static-external-flow/round13-mesh-study/mesh-study-report.json"
+      },
+      "provides": [
+        "mesh_study"
+      ],
+      "inputs": "a levels manifest + the study report for this kind, the per-level CaseSpecs and their run directories, and the base CaseSpec + registered geometry-only .sim",
+      "outputs": [
+        "<kind>-study-reuse.json (consistency, provenance, the study verdict and every exclusion reason)",
+        "a stage record for the post step so the automatic report prints the conclusion"
+      ],
+      "parameters": {
+        "source": "case_spec",
+        "requires": [],
+        "env": []
+      },
+      "scope": "Mesh sensitivity study, consumed as an OFFLINE summary/reuse step on the formal path. It re-hashes and re-cites the existing level measurement records, records the input/condition/parameter/macro/pipeline consistency, and carries the study's OWN verdict. On scenario 1 that verdict is NOT_ESTABLISHED, which is a statement about sensitivity, NOT a failure of this operation. It never recomputes a level and adds no threshold of its own: the minimum level count comes from scripts/evaluate_sensitivity.py::MIN_LEVELS['mesh'] = 3.",
+      "applicable_when": "an existing levels manifest and study report for this kind whose levels are either measured (with citable records) or explicitly reused from named evidence; so far only scenario 1 (static sphere)",
+      "preconditions": [
+        "the study report and every cited level record exist and are CITABLE"
+      ],
+      "evidence": [
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-study-mesh-coarse-20261004b",
+          "record": "test-evidence/static-external-flow/round13-mesh-study/coarse/s1-study-mesh-coarse-20261004b/external_flow_mesh_quality.json",
+          "kind": "measurement",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py",
+          "level": "coarse",
+          "note": "one of the 12 CITABLE measurement records behind the study"
+        },
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-study-mesh-coarse-20261004b",
+          "record": "test-evidence/static-external-flow/round13-mesh-study/coarse/s1-study-mesh-coarse-20261004b/external_flow_solve.json",
+          "kind": "measurement",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py",
+          "level": "coarse",
+          "note": "one of the 12 CITABLE measurement records behind the study"
+        },
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-study-mesh-coarse-20261004b",
+          "record": "test-evidence/static-external-flow/round13-mesh-study/coarse/s1-study-mesh-coarse-20261004b/external_flow_validation.json",
+          "kind": "measurement",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py",
+          "level": "coarse",
+          "note": "one of the 12 CITABLE measurement records behind the study"
+        },
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-study-mesh-fine-20261004b",
+          "record": "test-evidence/static-external-flow/round13-mesh-study/fine/s1-study-mesh-fine-20261004b/external_flow_mesh_quality.json",
+          "kind": "measurement",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py",
+          "level": "fine",
+          "note": "one of the 12 CITABLE measurement records behind the study"
+        },
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-study-mesh-fine-20261004b",
+          "record": "test-evidence/static-external-flow/round13-mesh-study/fine/s1-study-mesh-fine-20261004b/external_flow_solve.json",
+          "kind": "measurement",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py",
+          "level": "fine",
+          "note": "one of the 12 CITABLE measurement records behind the study"
+        },
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-study-mesh-fine-20261004b",
+          "record": "test-evidence/static-external-flow/round13-mesh-study/fine/s1-study-mesh-fine-20261004b/external_flow_validation.json",
+          "kind": "measurement",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py",
+          "level": "fine",
+          "note": "one of the 12 CITABLE measurement records behind the study"
+        },
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "mesh-study-20261004b",
+          "record": "test-evidence/static-external-flow/round13-mesh-study/mesh-study-report.json",
+          "kind": "report",
+          "verdict": "NOT_ESTABLISHED",
+          "citation": "checked_by_scripts/run_record_gate.py",
+          "note": "the study report itself: sensitivity_status=NOT_ESTABLISHED, sensitivity_passed=false"
+        }
+      ],
+      "positive": "the level manifests and study reports assemble; the 12 records across the four measured levels are CITABLE (12/12) and the summary carries the study's own NOT_ESTABLISHED verdict with every exclusion reason",
+      "negative": "test-evidence/static-external-flow/round13-study-defect-key-hijack.json is the defect window 1 found and fixed: a level-spec key could hijack an environment variable a macro reads. The two excluded levels per study are the honest negative OUTCOME of the study (sensitivity not established), reported as such rather than as a pass",
+      "scope_class": "generic",
+      "depends_on_fixed_names": false,
+      "fixed_names": [],
+      "general_acceptance": "TRIALED_POSITIVE",
+      "engineering": "NOT_CLAIMED_BY_WIRING",
+      "registration_basis": {
+        "registered_in": "②R13",
+        "contract_corrections": [
+          "the earlier contract text referred to a CaseSpec key `gci_fine_fraction`. It does not exist in the ① static-sphere CaseSpec nor in any `quality` block - the gates that exist are `quality.sensitivity_rel_change`, `quality.force_window_rel_change` and the GCI computed by scripts/grid_convergence.py with its own uncertainty. (Precisely: the name DOES occur as `acceptance.gci_fine_fraction` in ①'s own `cases/air-three-blade/mrf-draft.json` and `transient-draft.json`, and as a keyword argument in scripts/air3b_contract.py - so it is a real name in the ① sample, not a key the ① static-sphere plan reads. The earlier blanket wording was too strong.)",
+          "the domain study uses the pre-existing rule MIN_LEVELS[\"domain\"] = 2 with partial-closure semantics (fewer valid levels than required => NOT_ESTABLISHED), NOT the 3 levels mesh needs; no new threshold was invented"
+        ],
+        "what_is_not_claimed": [
+          "NOT general acceptance: one case, one kind each, no representative positive+negative across variants",
+          "NOT engineering validation: NOT_ESTABLISHED stays NOT_ESTABLISHED (E remains 0/3)"
+        ]
+      },
+      "engineering_note": "registering an operation proves it can be INVOKED and that its records are citable; it never turns a NOT_ESTABLISHED sensitivity study into a pass"
+    },
+    {
+      "id": "domain_study",
+      "title": "Domain sensitivity study: summary and reuse of the existing level evidence",
+      "mechanism": "offline_tool",
+      "plan_role": "post",
+      "invoked_by": [
+        {
+          "mechanism": "workflow_stage",
+          "file": "scripts/formal_study_reuse.py",
+          "symbol": "summarize_study"
+        }
+      ],
+      "invocation_note": "scripts/formal_run_report.py::report_run calls scripts/formal_study_reuse.py::summarize_study for every study named as a POST step of the submitted plan, writes stage-domain_study.json plus the summary artifact, and the shared reporter prints them. It READS and RE-VERIFIES existing study evidence; it never recomputes a level.",
+      "granularity": "tool",
+      "workflow_id": null,
+      "stage": null,
+      "entry": {
+        "mcp_tool": "mcp report_run(run_id, evidence) / scripts/formal_run_entry.py",
+        "script": "scripts/formal_study_reuse.py",
+        "producer_interface": "python scripts/run_sensitivity_study.py --kind domain --all --evidence <dir>  (window-1 driver that RAN the levels; unchanged by this round)",
+        "applies_to_run_mechanisms": [
+          "workflow_stage"
+        ],
+        "review": "the producer is pinned in scripts/air3b_pipeline_trial.py::SUPPORT_FILES; the formal-side consumer is pinned by review/<record>.json support_hashes",
+        "files": [
+          "scripts/formal_study_reuse.py",
+          "scripts/run_sensitivity_study.py",
+          "scripts/evaluate_sensitivity.py"
+        ],
+        "levels_manifest": "test-evidence/static-external-flow/round13-domain-study/domain-levels.json",
+        "study_report": "test-evidence/static-external-flow/round13-domain-study/domain-study-report.json"
+      },
+      "provides": [
+        "domain_study"
+      ],
+      "inputs": "a levels manifest + the study report for this kind, the per-level CaseSpecs and their run directories, and the base CaseSpec + registered geometry-only .sim",
+      "outputs": [
+        "<kind>-study-reuse.json (consistency, provenance, the study verdict and every exclusion reason)",
+        "a stage record for the post step so the automatic report prints the conclusion"
+      ],
+      "parameters": {
+        "source": "case_spec",
+        "requires": [],
+        "env": []
+      },
+      "scope": "Domain sensitivity study, consumed as an OFFLINE summary/reuse step on the formal path. It re-hashes and re-cites the existing level measurement records, records the input/condition/parameter/macro/pipeline consistency, and carries the study's OWN verdict. On scenario 1 that verdict is NOT_ESTABLISHED, which is a statement about sensitivity, NOT a failure of this operation. It never recomputes a level and adds no threshold of its own: the minimum level count comes from scripts/evaluate_sensitivity.py::MIN_LEVELS['domain'] = 2.",
+      "applicable_when": "an existing levels manifest and study report for this kind whose levels are either measured (with citable records) or explicitly reused from named evidence; so far only scenario 1 (static sphere)",
+      "preconditions": [
+        "the study report and every cited level record exist and are CITABLE"
+      ],
+      "evidence": [
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-study-domain-d1p25-20261004b",
+          "record": "test-evidence/static-external-flow/round13-domain-study/d1p25/s1-study-domain-d1p25-20261004b/external_flow_mesh_quality.json",
+          "kind": "measurement",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py",
+          "level": "d1p25",
+          "note": "one of the 12 CITABLE measurement records behind the study"
+        },
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-study-domain-d1p25-20261004b",
+          "record": "test-evidence/static-external-flow/round13-domain-study/d1p25/s1-study-domain-d1p25-20261004b/external_flow_solve.json",
+          "kind": "measurement",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py",
+          "level": "d1p25",
+          "note": "one of the 12 CITABLE measurement records behind the study"
+        },
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-study-domain-d1p25-20261004b",
+          "record": "test-evidence/static-external-flow/round13-domain-study/d1p25/s1-study-domain-d1p25-20261004b/external_flow_validation.json",
+          "kind": "measurement",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py",
+          "level": "d1p25",
+          "note": "one of the 12 CITABLE measurement records behind the study"
+        },
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-study-domain-d1p50-20261004b",
+          "record": "test-evidence/static-external-flow/round13-domain-study/d1p50/s1-study-domain-d1p50-20261004b/external_flow_mesh_quality.json",
+          "kind": "measurement",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py",
+          "level": "d1p50",
+          "note": "one of the 12 CITABLE measurement records behind the study"
+        },
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-study-domain-d1p50-20261004b",
+          "record": "test-evidence/static-external-flow/round13-domain-study/d1p50/s1-study-domain-d1p50-20261004b/external_flow_solve.json",
+          "kind": "measurement",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py",
+          "level": "d1p50",
+          "note": "one of the 12 CITABLE measurement records behind the study"
+        },
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "s1-study-domain-d1p50-20261004b",
+          "record": "test-evidence/static-external-flow/round13-domain-study/d1p50/s1-study-domain-d1p50-20261004b/external_flow_validation.json",
+          "kind": "measurement",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py",
+          "level": "d1p50",
+          "note": "one of the 12 CITABLE measurement records behind the study"
+        },
+        {
+          "case": "static-sphere-external-flow",
+          "trial_id": "domain-study-20261004b",
+          "record": "test-evidence/static-external-flow/round13-domain-study/domain-study-report.json",
+          "kind": "report",
+          "verdict": "NOT_ESTABLISHED",
+          "citation": "checked_by_scripts/run_record_gate.py",
+          "note": "the study report itself: sensitivity_status=NOT_ESTABLISHED, sensitivity_passed=false"
+        }
+      ],
+      "positive": "the level manifests and study reports assemble; the 12 records across the four measured levels are CITABLE (12/12) and the summary carries the study's own NOT_ESTABLISHED verdict with every exclusion reason",
+      "negative": "test-evidence/static-external-flow/round13-study-defect-key-hijack.json is the defect window 1 found and fixed: a level-spec key could hijack an environment variable a macro reads. The two excluded levels per study are the honest negative OUTCOME of the study (sensitivity not established), reported as such rather than as a pass",
+      "scope_class": "generic",
+      "depends_on_fixed_names": false,
+      "fixed_names": [],
+      "general_acceptance": "TRIALED_POSITIVE",
+      "engineering": "NOT_CLAIMED_BY_WIRING",
+      "registration_basis": {
+        "registered_in": "②R13",
+        "contract_corrections": [
+          "the earlier contract text referred to a CaseSpec key `gci_fine_fraction`. It does not exist in the ① static-sphere CaseSpec nor in any `quality` block - the gates that exist are `quality.sensitivity_rel_change`, `quality.force_window_rel_change` and the GCI computed by scripts/grid_convergence.py with its own uncertainty. (Precisely: the name DOES occur as `acceptance.gci_fine_fraction` in ①'s own `cases/air-three-blade/mrf-draft.json` and `transient-draft.json`, and as a keyword argument in scripts/air3b_contract.py - so it is a real name in the ① sample, not a key the ① static-sphere plan reads. The earlier blanket wording was too strong.)",
+          "the domain study uses the pre-existing rule MIN_LEVELS[\"domain\"] = 2 with partial-closure semantics (fewer valid levels than required => NOT_ESTABLISHED), NOT the 3 levels mesh needs; no new threshold was invented"
+        ],
+        "what_is_not_claimed": [
+          "NOT general acceptance: one case, one kind each, no representative positive+negative across variants",
+          "NOT engineering validation: NOT_ESTABLISHED stays NOT_ESTABLISHED (E remains 0/3)"
+        ]
+      },
+      "engineering_note": "registering an operation proves it can be INVOKED and that its records are citable; it never turns a NOT_ESTABLISHED sensitivity study into a pass"
+    },
+    {
+      "id": "original_geometry_mrf_chain",
+      "title": "Registered original fluid-sector material recovery and finite MRF chain",
+      "mechanism": "restricted_trial",
+      "granularity": "pipeline",
+      "entry": {
+        "command": "python3 scripts/run_registered_workflow.py --workflow original-geometry-mrf-2502 --source-sim <source.sim> --case-spec <CaseSpec.json> --trial-id <id> --evidence <reviewed-evidence-dir>",
+        "pipeline": "cases/original-geometry/r21/pipeline.json",
+        "inputs": "cases/original-geometry/r21/e2e-inputs.json",
+        "controller": "scripts/air3b_pipeline_trial.py",
+        "runner": "scripts/security/trial_air3b_pipeline.ps1",
+        "registration": "registered-workflows/original-geometry-mrf-2502/manifest.json"
+      },
+      "provides": [],
+      "inputs": "Registered real original source SHA517cfd27…65d8 and hash-reviewed R20 CaseSpec; changed input requires registration/review",
+      "outputs": [
+        "original_mrf_solved.sim",
+        "stage certificates",
+        "field PNGs",
+        "native CSV",
+        "curves",
+        "Chinese HTML/Markdown"
+      ],
+      "parameters": {
+        "source": "CaseSpec + pinned pipeline",
+        "env": [],
+        "requires": [
+          "geometry roles",
+          "8000 rpm / 20 m/s",
+          "100 iterations"
+        ]
+      },
+      "scope": "Audited original fluid-sector source only; recovery does not accept arbitrary geometry. No general-operation or engineering promotion.",
+      "applicable_when": "exact registered source/input bytes and independent review",
+      "evidence": [
+        {
+          "case": "original-geometry",
+          "trial_id": "original-r20-20261005b",
+          "record": "test-evidence/original-geometry/r20/run/original-r20-20261005b/mrf_physics_readback.json",
+          "kind": "measurement",
+          "verdict": "ok",
+          "citation": "checked_by_scripts/run_record_gate.py"
+        }
+      ],
+      "general_acceptance": "TRIALED_POSITIVE",
+      "depends_on_fixed_names": true,
+      "sample_specific": true,
+      "engineering": "NOT_CLAIMED_BY_WIRING",
+      "capability_levels": {
+        "interface_exists": true,
+        "compiled": true,
+        "isolated_trial_run": true,
+        "general_operation_acceptance": false,
+        "engineering_validation": false
+      },
+      "scope_class": "sample_specific",
+      "provides_on_own_case": [
+        "audit_geometry",
+        "assign_boundaries",
+        "mesh",
+        "mesh_qa",
+        "configure_physics",
+        "solve_pilot",
+        "export_evidence",
+        "report"
+      ]
+    },
+    {
+      "id": "hypermesh_native_mesh_admission",
+      "title": "Offline HyperMesh native mesh-quality admission (check + bad-element localization)",
+      "mechanism": "offline_tool",
+      "invoked_by": [],
+      "invocation_note": "No run mechanism invokes this tool YET, and this entry does not pretend otherwise: it declares no plan_role, so it can never be placed in a plan or complete a plan step. It is registered because AGENTS.md section 4 requires every catalog item to carry its status, scope, positive and negative examples, and fixed-name dependence. The consumer wiring (the STAR-side preparation step that must call assert_admissible before an external mesh is imported) is a separate, not-yet-written change; until it exists, the gate is reachable by hand/MCP only.",
+      "granularity": "tool",
+      "workflow_id": null,
+      "stage": null,
+      "entry": {
+        "mcp_tool": null,
+        "script": "scripts/hypermesh_quality_gate.py",
+        "applies_to_run_mechanisms": [],
+        "files": [
+          "scripts/hypermesh_quality_gate.py"
+        ]
+      },
+      "provides": [
+        "hypermesh_quality_admission"
+      ],
+      "inputs": "a HyperMesh native quality record (JSON): tool name/version, source file+sha256, mesh file+sha256/dimension/element_count/units (plus optional dimension_counts), and one entry per native criterion (*elementtestaspect/skew/jacobian) carrying command, short label, threshold, direction, units, checked count, failed count, worst value, and - whenever failed>0 - the bad-element localization (output mark, failed element IDs, per-element values, coordinates); the record must also declare localization_complete and per_cell_values_saved as booleans, and - whenever any criterion fails - mesh.element_id_bounds [lo, hi] so the failed IDs can be shown to belong to this mesh, because a run whose per-cell check values were not saved cannot be admitted even when every criterion passes",
+      "outputs": [
+        "an admission verdict (RECORD_INCOMPLETE / LOCALIZATION_MISSING / FAILED_CRITERIA_WITH_LOCALIZATION / ADMITTED) plus reasons, per-criterion facts and repair_targets for a targeted HyperMesh-side fix"
+      ],
+      "parameters": {
+        "source": "json_record",
+        "requires": [],
+        "env": []
+      },
+      "scope": "Offline, fail-closed admission judge for the HyperMesh NATIVE quality gate only. It never claims STAR or CFD admission: star_admitted / cfd_admitted / engineering_verified are always False in its verdict (AGENTS.md section 8 - the two tools' metrics do not substitute for each other). Its other output is the honest boundary of what a failure means: a record without bad-element localization cannot be cited as a HyperMesh capability gap.",
+      "applicable_when": "any case whose mesh was checked with HyperMesh native element checks (*elementtestaspect / *elementtestskew / *elementtestjacobian and hm_getelemcheckvalues) before any STAR import",
+      "preconditions": [],
+      "positive": "a complete record whose every criterion passes with per-cell values saved AND localization_complete=true is admitted for the next INDEPENDENT stage; verdict.quality_admitted=true while star_admitted/cfd_admitted/engineering_verified stay false (tests/test_hypermesh_quality_gate.py::PassingAndIncomplete)",
+      "negative": "the same real repair2 numbers fed to the gate TWO ways: the actual file (test-evidence/finite-trailing-edge-policy-20261014/hypermesh-native2d-surface-repair2-preparation/quality_gate.json) carries aggregate fields only, so the gate returns RECORD_INCOMPLETE on it; a record rebuilt from those numbers returns LOCALIZATION_MISSING with can_claim_hypermesh_capability_gap=false. Further negatives: wrong number of IDs, duplicate/non-positive IDs, an ID outside mesh.element_id_bounds, missing per-element value, missing coordinate, a criterion that covered only part of the mesh, a declared dimension covered by no criterion (independent review D-1), non-finite worst, status=ok with failures, and a record claiming cfd_admitted/star_admitted true",
+      "registration_basis": "Registered as TRIALED_POSITIVE_AND_NEGATIVE for the JUDGE ITSELF - an offline pure function with a positive fixture, a REAL negative fixture and mutant negatives, exercised by tests/test_hypermesh_quality_gate.py and by the independent adversarial suite test-evidence/hypermesh-mesh-tooling-policy-20261014/independent_review_tests.py. This entry deliberately carries NO evidence[] array: no case-bound certificate exists, so nothing here can make verified_on_current_case true. This is NOT an acceptance of any HyperMesh execution: invoked_by is empty, plan_role is absent (so it contributes no capability to any mechanism coverage and cannot complete a required plan step, measured), and the mesh-generation/check/repair route on Windows stays unaccepted until a localized native quality record exists.",
+      "scope_class": "generic",
+      "depends_on_fixed_names": false,
+      "fixed_names": [],
+      "general_acceptance": "TRIALED_POSITIVE_AND_NEGATIVE",
+      "engineering": "NOT_CLAIMED_BY_WIRING",
+      "open_gap": "C-3 (independent review): no consumer calls this gate yet. Until the STAR-side preparation step invokes assert_admissible before an external mesh is imported, the single judge is a written rule plus an offline tool, not an enforced gate in any pipeline. Separately (review R2-7, measured by the parent): naming this id in plan_operations is ACCEPTED (the resolver lists it among the selected plan operations) but it contributes NO capability to any mechanism coverage - validate_case_spec on the scenario-1 fixture reports plan_unresolved=[] and the capability hypermesh_quality_admission does not appear in mechanism_coverage, with or without the id named. It therefore cannot complete a required plan step; the earlier wording claimed more than that.",
+      "native_trial": {
+        "positive": {
+          "run_id": "finite-te-localization-positive-20261014b",
+          "record": "test-evidence/hypermesh-localization-producer-20261014/bound-trial-20261014/positive-run-20261014b/RUN-RECORD-POSITIVE.json",
+          "mesh": "mcp_thin_s5.hm",
+          "checked": 3360,
+          "failed": 0,
+          "gate": "ADMITTED"
+        },
+        "negative": {
+          "run_id": "finite-te-localization-trial-20261014a",
+          "record": "test-evidence/hypermesh-localization-producer-20261014/bound-trial-20261014/RUN-RECORD.json",
+          "mesh": "cap.hm",
+          "checked": 1668,
+          "failed": "19 次失败（跨准则）/ 11 个不同单元",
+          "gate": "FAILED_CRITERIA_WITH_LOCALIZATION"
+        },
+        "pair_record": "test-evidence/hypermesh-localization-producer-20261014/bound-trial-20261014/POSITIVE-NEGATIVE-PAIR.json",
+        "promotion": "代表性正例+负例已在真实原生数据上齐备；泛化矩阵未做 → 仍非 GENERAL_OPERATION",
+        "honest_scope": "两次运行的核数未由通道设置（不得声称 64 核）；不替代 STAR 验收；正反例非同一几何"
+      }
+    }
+  ],
+  "capabilities": {
+    "audit_geometry": [
+      "audit_geometry",
+      "audit_static_body",
+      "static_external_flow_chain"
+    ],
+    "build_external_domain": [
+      "build_external_domain",
+      "static_external_flow_chain"
+    ],
+    "assign_boundaries": [
+      "build_external_flow_region_physics_mesh",
+      "static_external_flow_chain"
+    ],
+    "configure_physics": [
+      "build_external_flow_region_physics_mesh",
+      "static_external_flow_chain"
+    ],
+    "mesh": [
+      "build_external_flow_region_physics_mesh",
+      "static_external_flow_chain"
+    ],
+    "mesh_qa": [
+      "audit_external_flow_mesh",
+      "static_external_flow_chain"
+    ],
+    "solve_pilot": [
+      "run_external_flow_solve",
+      "static_external_flow_chain"
+    ],
+    "solve_converged": [
+      "audit_external_flow_convergence",
+      "static_external_flow_chain"
+    ],
+    "classify_parts": [
+      "classify_parts"
+    ],
+    "export_evidence": [
+      "export_evidence",
+      "static_external_flow_chain"
+    ],
+    "report": [
+      "report",
+      "static_external_flow_chain"
+    ],
+    "mesh_study": [
+      "mesh_study"
+    ],
+    "domain_study": [
+      "domain_study"
+    ]
+  },
+  "reserved_interfaces": [],
+  "_not_registered_on_purpose": {
+    "time_step_study": "no implementation and no owner handover: it stays MISSING. Registering a placeholder would be the \"fill in an id\" defect the R11 instruction forbids.",
+    "solve_converged": "satisfied only by a read-only convergence AUDIT (audit_external_flow_convergence); the engineering level stays NOT_PASSED, and no operation produces a converged steady solution for these cases.",
+    "mesh_study": "REGISTERED in ②R13 as an offline_tool summary/reuse step - see operations[].",
+    "domain_study": "REGISTERED in ②R13 as an offline_tool summary/reuse step - see operations[]."
+  },
+  "_reserved_interfaces_note": "②R13: mesh_study and domain_study are now REGISTERED as offline_tool operations (see their entries). Nothing is reserved any more. time_step_study remains a real GAP, not a reservation: it has no implementation and no owner handover, and inventing a placeholder for it is exactly the \"fill in an id\" defect the rules forbid."
+}

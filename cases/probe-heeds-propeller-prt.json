@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "scenario": "propeller_mrf",
+  "case_ref": "library/517cfd27aa4cf69519470d301d9088d060ec1cbb85aff7e8b848207d8bd065d8.sim",
+  "objective": "Read-only inspection of a candidate NX propeller part for actual blade solids",
+  "model_length_unit": "m",
+  "medium": "air",
+  "geometry": {
+    "body_parts": [
+      "PROPELLER"
+    ],
+    "rotor_parts": [
+      "PROPELLER",
+      "AUTO_FULL_ROTOR_BLADE_120",
+      "AUTO_FULL_ROTOR_BLADE_240"
+    ]
+  },
+  "domain": {
+    "shape": "cylinder",
+    "outer_bounds_m": [
+      -2.05,
+      -2.05,
+      -6.15,
+      2.05,
+      2.05,
+      2.05
+    ],
+    "cylinder_center_xy_m": [
+      0.0,
+      0.0
+    ],
+    "cylinder_radius_m": 2.05,
+    "cylinder_z_min_m": -6.15,
+    "cylinder_z_max_m": 2.05
+  },
+  "boundary_roles": {
+    "region": "AUTO_FULL360_FLOW",
+    "inlet": "AUTO_INLET",
+    "outlet": "AUTO_OUTLET",
+    "radial_farfield": "AUTO_RADIAL_FARFIELD"
+  },
+  "flow": {
+    "velocity_m_s": [
+      0.0,
+      0.0,
+      -30.0
+    ],
+    "pressure_pa": 101325.0,
+    "temperature_k": 300.0,
+    "turbulence_intensity": 0.01,
+    "turbulent_viscosity_ratio": 10.0
+  },
+  "rotation": {
+    "axis": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "center_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "rpm": 10000.0
+  },
+  "assumptions": [
+    "Candidate CAD is untrusted until its shell topology and role are audited; this stage imports only on an isolated simulation copy."
+  ],
+  "candidate_cad_ref": "library/cad_candidates/heeds_propeller.prt",
+  "candidate_cad_sha256": "0ce3cd6816c7e492d93f24223e678df460f3e2d0c8198e1c6103faf3c1401328"
+}

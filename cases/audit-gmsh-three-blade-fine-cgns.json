@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "scenario": "geometry_mesh_probe_only",
+  "case_ref": "jobs/probe-gmsh-fine-20260928a/gmsh_cgns_imported.sim",
+  "objective": "Read-only STAR 2502 quality check of finer synthetic Gmsh rotor mesh",
+  "mesh_region_name": "rotor_fluid_pilot_Part0",
+  "expected_fluid_volume_m3": 0.08470170793622973,
+  "expected_tetra_count": 284255,
+  "source_mesh_sha256": "d50de1b461a49d7d88404d69ad4ccb423024a81b6788100615a77b0618cb13f1"
+}

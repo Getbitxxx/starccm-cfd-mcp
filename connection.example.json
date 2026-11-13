@@ -1,0 +1,12 @@
+{
+  "host": "windows-cfd.example.internal",
+  "user": "cfdworker",
+  "identity_file": "/absolute/path/to/private-key",
+  "remote_root": "C:\\CodexCFDRestricted\\service",
+  "star_launcher": "C:\\Program Files\\Siemens\\20.02.008-R8\\STAR-CCM+20.02.008-R8\\star\\bin\\starccm+.bat",
+  "javac_path": "C:\\Program Files\\Siemens\\20.02.008-R8\\jdk\\win64\\jdk21.0.4\\bin\\javac.exe",
+  "local_results": "/absolute/path/to/compact-results",
+  "windows_case_roots": [
+    "F:\\CFDArchives"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "scenario": "geometry_mesh_probe_only",
+  "case_ref": "jobs/probe-gmsh-tip-interfaces-20260929a/gmsh_mrf_interfaces_probe.sim",
+  "objective": "Remove audited historical host regions while preserving imported synthetic rotor/stator mesh and three interfaces",
+  "expected_input_sha256": "f1834dc8c176c849bb433e762e0f1b693a6d66a1d5c279f9f5df8072a09443e2",
+  "rotor_region": "rotor_fluid_pilot_Part0",
+  "stator_region": "three_blade_stator_pilot_Part0",
+  "legacy_region_a": "FLUID",
+  "legacy_region_b": "PROPELLER",
+  "legacy_interface_a": "FLUID/FLUID",
+  "legacy_interface_b": "FLUID/PROPELLER",
+  "legacy_interface_c": "PROPELLER/PROPELLER",
+  "retained_interface_a": "PILOT_MRF_TOP 1",
+  "retained_interface_b": "PILOT_MRF_BOTTOM 1",
+  "retained_interface_c": "PILOT_MRF_SIDE 1",
+  "expected_cells_before": 431972,
+  "expected_cells_after": 374574
+}

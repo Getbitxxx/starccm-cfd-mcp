@@ -1,0 +1,68 @@
+{
+ "schema_version": 1,
+ "verified_on": "2026-10-30",
+ "verified_by": "lead (independent of p30-registry report)",
+ "subject": "Known pre-existing contract-chain divergences carried into the plan data by F1. The 87/87 golden identity requires materialising the PRE-refactor prepare() behaviour, which itself is wrong for these plans. The fixture pins the exact contract bytes so that (a) a silent change of a known-divergent plan fails, (b) a deliberate data-only fix must update this fixture.",
+ "source_record": "campaigns/uav-2026/evidence/phase3-p30-20261030/PIN-IMPACT.json (contract_divergences_of_existing_pins)",
+ "known_divergent": {
+  "part35": {
+   "contract_sha256": "ae183b1dfa111010ebce99a30bcebfdf215d70dab41be643a590c1db7b56de27",
+   "flags": [
+    "no_mesh_no_physics_no_solve",
+    "plan",
+    "steps"
+   ],
+   "reason": "the pre-refactor ternary chain lost the part35 branch (only the surviving no_mesh_no_physics_no_solve flag remains); the executed staging mrf-almcond pinned read_only_diagnostic/no_solve/alm_condition_values_probe"
+  },
+  "part37": {
+   "contract_sha256": "6de2c9b893e593bc7d8f11c9c935f9c855bf59b84e23b767369e88a3794e9156",
+   "flags": [
+    "build_volumes_only",
+    "no_mesh_generation",
+    "plan",
+    "steps",
+    "te_variant_step_import"
+   ],
+   "reason": "the shifted chain gave part37 the part36 te-variant flags; the never-run staging pinned j_ladder_velocity/target_j=0.601"
+  },
+  "part75": {
+   "contract_sha256": "a6401d6ecaa3a900de6acf9f85107761a32ce44f512e2d0df99da4b40fa63b82",
+   "flags": [
+    "blocked_reason",
+    "build_volumes_only",
+    "diagnostic_C",
+    "diagnostic_C_BLOCKED",
+    "import_step",
+    "no_mesh_no_physics_no_solve",
+    "not_a_signed_point",
+    "plan",
+    "steps",
+    "te_thickness_mm"
+   ],
+   "reason": "the never-run staging predates the later CONTRACT_OVERRIDES entry that marks diagnostic_C_BLOCKED; the plan data carries the current overrides"
+  }
+ },
+ "verified_not_affected": {
+  "part38": {
+   "contract_sha256": "94582b17f1cfce1d6558e419b6ba165ddeae0cfa19bafa0f5a727e1954086173",
+   "flags": [
+    "j_ladder_velocity",
+    "plan",
+    "steps",
+    "target_j"
+   ],
+   "check": "carries its own j_ladder_velocity/target_j=0.601 (the earlier claim that part38/part39 were shifted is NOT confirmed by measurement)"
+  },
+  "part39": {
+   "contract_sha256": "656d2c5ab68409332822a29d60757160368aee205b3fb8f7e764446e9214d2b8",
+   "flags": [
+    "j_ladder_segment",
+    "plan",
+    "steps",
+    "target_j"
+   ],
+   "check": "carries its own j_ladder_segment/target_j=0.601"
+  }
+ },
+ "disposition": "workflow/data-only fix possible later (no engine bytes); each affected staging stays read-only and must not be re-prepared under its old run_id"
+}

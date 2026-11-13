@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "scenario": "geometry_mesh_probe_only",
+  "case_ref": "jobs/probe-gmsh-tip-transition-20260928a/gmsh_cgns_imported.sim",
+  "objective": "Read-only STAR quality and volume audit of tip-transition rotor mesh",
+  "mesh_region_name": "rotor_fluid_pilot_Part0",
+  "expected_fluid_volume_m3": 0.08470170793622973,
+  "expected_tetra_count": 287936
+}

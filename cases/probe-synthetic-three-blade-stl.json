@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "scenario": "geometry_mesh_probe_only",
+  "case_ref": "library/517cfd27aa4cf69519470d301d9088d060ec1cbb85aff7e8b848207d8bd065d8.sim",
+  "objective": "Isolated STAR 2502 surface import of validated synthetic three-blade STL; original sim is only import host",
+  "candidate_mesh_ref": "library/cad_candidates/three_blade_test_rotor.stl",
+  "candidate_sha256": "1ef76a7bdac4a7af73b6ac7b2a623d9766226ea1513a0b6c89735bb23011971d",
+  "source_length_unit": "mm",
+  "rotation_axis": [
+    0,
+    0,
+    1
+  ]
+}

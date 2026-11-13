@@ -1,0 +1,53 @@
+{
+ "schema_version": 1,
+ "claims": [
+  {
+   "id": "signed-ladder-j0647-ct",
+   "text": "J=0.647 signed-point CT",
+   "value": 0.03568446707542939,
+   "record": "campaigns/uav-2026/evidence/uav-prop-apc10x7e/SIGNED-LADDER-20261030a.json",
+   "field": "points.J0647.ct",
+   "record_sha256": "24fb634e3f16381384a82d3f4f1224cb1d58c193dde6290c9bbe9fbef1ac154b"
+  },
+  {
+   "id": "signed-ladder-j0647-status",
+   "text": "J=0.647 signed-ladder point status",
+   "value": "PASS",
+   "record": "campaigns/uav-2026/evidence/uav-prop-apc10x7e/SIGNED-LADDER-20261030a.json",
+   "field": "points.J0647.status",
+   "record_sha256": "24fb634e3f16381384a82d3f4f1224cb1d58c193dde6290c9bbe9fbef1ac154b"
+  },
+  {
+   "id": "signed-ladder-ct-abs-floor",
+   "text": "signed absolute CT floor",
+   "value": 0.0035,
+   "record": "campaigns/uav-2026/evidence/uav-prop-apc10x7e/SIGNED-LADDER-20261030a.json",
+   "field": "tolerance_source.ct_abs_floor",
+   "record_sha256": "24fb634e3f16381384a82d3f4f1224cb1d58c193dde6290c9bbe9fbef1ac154b"
+  },
+  {
+   "id": "signed-ladder-reference-sha",
+   "text": "reference.json sha256 used by the signed ladder",
+   "value": "2261ae18da36d97ccade6dcf8ddb76d8d1a370426314954ba14c3c039d727db7",
+   "record": "campaigns/uav-2026/evidence/uav-prop-apc10x7e/SIGNED-LADDER-20261030a.json",
+   "field": "tolerance_source.reference_sha256",
+   "record_sha256": "24fb634e3f16381384a82d3f4f1224cb1d58c193dde6290c9bbe9fbef1ac154b"
+  },
+  {
+   "id": "mesh-family-min-cell-quality",
+   "text": "mesh family-gate minimum cell quality",
+   "value": 1e-06,
+   "record": "campaigns/uav-2026/evidence/uav-prop-apc10x7e/MESH-FAMILY-GATE-20261030a.json",
+   "field": "thresholds.mesh_min_cell_quality",
+   "record_sha256": "5fc8c58e6e27a3ad9dec003666d464cacff920cf89493aa1d35b80419b87c617"
+  },
+  {
+   "id": "mesh-family-localization-required",
+   "text": "mesh family-gate localisation requirement",
+   "value": true,
+   "record": "campaigns/uav-2026/evidence/uav-prop-apc10x7e/MESH-FAMILY-GATE-20261030a.json",
+   "field": "acceptance.localization_required_on_failure",
+   "record_sha256": "5fc8c58e6e27a3ad9dec003666d464cacff920cf89493aa1d35b80419b87c617"
+  }
+ ]
+}

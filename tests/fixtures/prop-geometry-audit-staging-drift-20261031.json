@@ -1,0 +1,17 @@
+{
+ "schema_version": 1,
+ "detected_on": "2026-10-31",
+ "case": "uav-prop-apc10x7e",
+ "run_id": "geometry-audit-20261028a",
+ "what": "committed staging case_spec.json no longer matches the bytes the independent review pinned",
+ "reviewed_case_spec_sha256": "033714ff711392635b9426e08e15033b732b7e6393a3b71758cee182703bc23d",
+ "config_case_spec_pin": "033714ff711392635b9426e08e15033b732b7e6393a3b71758cee182703bc23d",
+ "current_committed_case_spec_sha256": "cbc354e22ee72393b6c6131c30e75f7bfbd0af2e985d420c00335c3bccc03f3c",
+ "run_status": "EXECUTION_COMPLETED",
+ "run_started_at": "2026-10-28T06:50:43.5810790Z",
+ "cause": "tests/test_prop_geom_audit_contract.py::setUpClass called audit.config(DEFAULT_JOB_DIR), whose config() copies the CURRENT CaseSpec into the module STAGING directory; repeated test runs therefore rewrote the committed reviewed staging and the drifted bytes were committed. Fixed 2026-10-31: the test now generates into a temporary directory (work/) and never writes the reviewed staging.",
+ "executed_evidence_consistent": "the executed run used the REVIEWED bytes: run.json records EXECUTION_COMPLETED, staging/config.json pins 033714ff..., staging/review.json pins 033714ff...; the drift is post-review bytes.",
+ "restore_possible": "NO: the reviewed bytes are not present in git history (only two commits touch the file and neither matches); the historical staging is therefore kept as-is and marked drifted, never re-run or re-pinned.",
+ "disposition": "staging is HISTORICAL and READ-ONLY; its executed run records remain the evidence; it must not be re-prepared or re-used for a submission. New runs use a fresh run_id.",
+ "test": "tests/test_prop_staging_drift.py"
+}

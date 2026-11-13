@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "id": "external-domain-2502",
+  "title": "Explicit-bounds external fluid volume construction",
+  "description": "Creates a box-shaped external volume and subtracts explicitly selected CAD parts on an isolated simulation copy. Does not assign boundaries, mesh, or solve.",
+  "input": "audited_sim_with_case_spec",
+  "validated_on": "STAR-CCM+ 2502.0001",
+  "stages": {
+    "probe-transform-api": {
+      "description": "Read-only inventory of STAR 2502 geometry transform API signatures for the upcoming full-360 rotor operation.",
+      "macros": ["InspectFullRotorApi.java"],
+      "markers": ["FULL_ROTOR_API_PROBE_COMPLETE"],
+      "required": ["full_rotor_api.json"],
+      "postcheck": "artifacts_v1"
+    },
+    "expand-rotor-360": {
+      "description": "On an isolated copy, rotate the audited 120-degree PROPELLER fluid-sector part at 120 and 240 degrees about +Z; these parts are not blade solids.",
+      "macros": ["BuildFullRotor360.java"],
+      "markers": ["FULL_ROTOR_360_BUILD_COMPLETE"],
+      "required": ["full_rotor_360_build.json", "full_rotor_360_built.sim"],
+      "postcheck": "rotor360_v1",
+      "output_sim": "full_rotor_360_built.sim"
+    },
+    "recover-rotor-solids": {
+      "description": "Diagnostic CAD Boolean: subtract three audited 120-degree fluid sectors from their enclosing disk to recover actual rotor solids on an isolated copy.",
+      "macros": ["RecoverRotorSolidsFromSectorFluid.java"],
+      "markers": ["ROTOR_SOLID_RECOVERY_TRIAL_COMPLETE"],
+      "required": ["recovered_rotor_solids.stl", "recovered_rotor_solids.txt", "recovered_rotor_solids.sim"],
+      "postcheck": "artifacts_v1",
+      "output_sim": "recovered_rotor_solids.sim"
+    },
+    "build": {
+      "description": "Create a block using domain.outer_bounds_m, subtract selected body and rotor CAD parts, save a separate .sim, and export build evidence.",
+      "macros": ["BuildExternalDomain.java"],
+      "markers": ["EXTERNAL_DOMAIN_BUILD_COMPLETE"],
+      "required": ["external_domain_build.json", "external_domain_built.sim"],
+      "postcheck": "external_domain_v1",
+      "output_sim": "external_domain_built.sim"
+    },
+    "build-cylinder": {
+      "description": "Build a Z-axis cylindrical outer domain from explicit SI dimensions, subtract audited solids, and save an isolated geometry-only .sim.",
+      "macros": ["BuildCylindricalDomain.java"],
+      "markers": ["CYLINDRICAL_DOMAIN_BUILD_COMPLETE"],
+      "required": ["cylindrical_domain_build.json", "cylindrical_domain_built.sim"],
+      "postcheck": "cylindrical_domain_v1",
+      "output_sim": "cylindrical_domain_built.sim"
+    },
+    "create-full-region": {
+      "description": "Create a new region with one boundary per split part surface from the audited full-360 cylindrical Boolean output; retain legacy regions for diagnostic comparison.",
+      "macros": ["CreateFullFlowRegion.java"],
+      "markers": ["FULL_FLOW_REGION_CREATE_COMPLETE"],
+      "required": ["full_flow_region_build.json", "full_flow_region_built.sim"],
+      "postcheck": "artifacts_v1",
+      "output_sim": "full_flow_region_built.sim"
+    },
+    "audit-cylinder-patches": {
+      "description": "Read-only patch ID mapping of explicit cylinder cap and side sample points in the geometry part.",
+      "macros": ["AuditCylinderPatchMap.java"],
+      "markers": ["CYLINDER_PATCH_MAP_COMPLETE"],
+      "required": ["cylinder_patch_map.json"],
+      "postcheck": "artifacts_v1",
+      "output_sim": null
+    },
+    "map-full-flow-outer-boundaries": {
+      "description": "Use audited cylinder patch locations to assign inlet, outlet, and radial symmetry boundary types on the new full-360 region in an isolated copy.",
+      "macros": ["MapFullFlowOuterBoundaries.java"],
+      "markers": ["FULL_FLOW_OUTER_BOUNDARIES_MAPPED"],
+      "required": ["full_flow_boundaries_map.json", "full_flow_boundaries_mapped.sim"],
+      "postcheck": "artifacts_v1",
+      "output_sim": "full_flow_boundaries_mapped.sim"
+    },
+    "remove-legacy-sector-regions": {
+      "description": "On an audited isolated full-domain copy, remove the two original 120-degree sector regions and their three interfaces, leaving only the full-360 flow region.",
+      "macros": ["RemoveLegacySectorRegions.java"],
+      "markers": ["LEGACY_SECTOR_REGIONS_REMOVED"],
+      "required": ["full_flow_sector_cleanup.json", "full_flow_sector_cleaned.sim"],
+      "postcheck": "artifacts_v1",
+      "output_sim": "full_flow_sector_cleaned.sim"
+    },
+    "configure-normal-inlet-outlet": {
+      "description": "Apply explicit CaseSpec speed, temperature, absolute ambient pressure and turbulence values to audited inlet/outlet boundaries of a Z-axis cylinder.",
+      "macros": ["ConfigureNormalInletOutlet.java"],
+      "markers": ["NORMAL_INLET_OUTLET_CONFIGURED"],
+      "required": ["flow_boundaries_configured.json", "flow_boundaries_configured.sim"],
+      "postcheck": "boundary_values_v1",
+      "output_sim": "flow_boundaries_configured.sim"
+    },
+    "build-mrf-fluid-volumes": {
+      "description": "Build separate stationary outer and blade-subtracted rotating fluid parts from an explicit SI rotor cylinder; geometry-only isolated trial.",
+      "macros": ["BuildMrfFluidVolumes.java"],
+      "markers": ["MRF_FLUID_VOLUMES_BUILT"],
+      "required": ["mrf_fluid_volumes_build.json", "mrf_fluid_volumes_built.sim"],
+      "postcheck": "artifacts_v1",
+      "output_sim": "mrf_fluid_volumes_built.sim"
+    },
+    "create-mrf-regions": {
+      "description": "Create separate fluid regions from audited stationary and rotating MRF Boolean parts; replace the prior full-flow region without creating an interface yet.",
+      "macros": ["CreateMrfRegions.java"],
+      "markers": ["MRF_REGIONS_CREATED"],
+      "required": ["mrf_regions_build.json", "mrf_regions_built.sim"],
+      "postcheck": "artifacts_v1",
+      "output_sim": "mrf_regions_built.sim"
+    },
+    "audit-mrf-surface-map": {
+      "description": "Read-only patch sampling of outer-cylinder and matching inner-envelope cap/side surfaces in the two MRF fluid parts.",
+      "macros": ["AuditMrfSurfaceMap.java"],
+      "markers": ["MRF_SURFACE_MAP_COMPLETE"],
+      "required": ["mrf_surface_map.json"],
+      "postcheck": "artifacts_v1",
+      "output_sim": null
+    },
+    "configure-mrf-interfaces": {
+      "description": "Apply audited free-air boundary values, connect three stationary/rotating envelope surface pairs, and assign the audited rotating reference frame on an isolated copy.",
+      "macros": ["ConfigureMrfInterfaces.java"],
+      "markers": ["MRF_INTERFACES_CONFIGURED"],
+      "required": ["mrf_interfaces_configured.json", "mrf_interfaces_configured.sim"],
+      "postcheck": "mrf_interfaces_v1",
+      "output_sim": "mrf_interfaces_configured.sim"
+    },
+    "configure-mrf-mesh": {
+      "description": "Configure, but do not execute, a two-part MRF surface remesher, trimmer and prism mesh operation with explicit blade and interface controls.",
+      "macros": ["ConfigureMrfMeshOperation.java"],
+      "markers": ["MRF_MESH_OPERATION_CONFIGURED"],
+      "required": ["mrf_mesh_configured.json", "mrf_mesh_configured.sim"],
+      "postcheck": "artifacts_v1",
+      "output_sim": "mrf_mesh_configured.sim"
+    },
+    "execute-mrf-diagnostic-mesh": {
+      "description": "Execute the previously audited two-part MRF mesh operation on an isolated simulation copy and save volume-cell evidence.",
+      "macros": ["ExecuteMrfDiagnosticMesh.java"],
+      "markers": ["MRF_DIAGNOSTIC_MESH_GENERATED"],
+      "required": ["mrf_diagnostic_mesh.json", "mrf_diagnostic_meshed.sim"],
+      "postcheck": "mrf_mesh_generated_v1",
+      "output_sim": "mrf_diagnostic_meshed.sim"
+    },
+    "split-mrf-mesh-operations": {
+      "description": "Split a joint two-part MRF mesh operation into separate stationary and rotating operations after a documented joint-surface meshing failure.",
+      "macros": ["SplitMrfMeshOperations.java"],
+      "markers": ["MRF_MESH_OPERATIONS_SPLIT"],
+      "required": ["mrf_mesh_split.json", "mrf_mesh_split.sim"],
+      "postcheck": "artifacts_v1",
+      "output_sim": "mrf_mesh_split.sim"
+    },
+    "execute-mrf-split-diagnostic-mesh": {
+      "description": "Mesh the rotating and stationary MRF fluid parts separately, saving a rotating-region checkpoint and a two-region diagnostic mesh.",
+      "macros": ["ExecuteMrfSplitDiagnosticMesh.java"],
+      "markers": ["MRF_SPLIT_DIAGNOSTIC_MESH_GENERATED"],
+      "required": ["mrf_split_diagnostic_mesh.json", "mrf_rotating_mesh_checkpoint.sim", "mrf_split_diagnostic_meshed.sim"],
+      "postcheck": "mrf_split_mesh_generated_v1",
+      "output_sim": "mrf_split_diagnostic_meshed.sim"
+    },
+    "adjust-mrf-rotating-prisms": {
+      "description": "On an isolated copy, reduce the audited rotating-region prism-layer count after STAR mesh quality flags while keeping stationary settings unchanged.",
+      "macros": ["AdjustMrfRotatingPrismLayers.java"],
+      "markers": ["MRF_ROTATING_PRISM_LAYERS_ADJUSTED"],
+      "required": ["mrf_mesh_prism_adjusted.json", "mrf_mesh_prism_adjusted.sim"],
+      "postcheck": "artifacts_v1",
+      "output_sim": "mrf_mesh_prism_adjusted.sim"
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "scenario": "propeller_mrf",
+  "case_ref": "jobs/full360-boundary-values-20260925b/flow_boundaries_configured.sim",
+  "objective": "Geometry-only split into stationary and rotating MRF fluid volumes for the full-circle free-air propeller",
+  "model_length_unit": "m",
+  "medium": "air",
+  "geometry": {
+    "body_parts": [
+      "PROPELLER"
+    ],
+    "rotor_parts": [
+      "PROPELLER",
+      "AUTO_FULL_ROTOR_BLADE_120",
+      "AUTO_FULL_ROTOR_BLADE_240"
+    ]
+  },
+  "domain": {
+    "shape": "cylinder",
+    "outer_bounds_m": [
+      -2.05,
+      -2.05,
+      -6.15,
+      2.05,
+      2.05,
+      2.05
+    ],
+    "cylinder_center_xy_m": [
+      0.0,
+      0.0
+    ],
+    "cylinder_radius_m": 2.05,
+    "cylinder_z_min_m": -6.15,
+    "cylinder_z_max_m": 2.05
+  },
+  "boundary_roles": {
+    "region": "AUTO_FULL360_FLOW",
+    "inlet": "AUTO_INLET",
+    "outlet": "AUTO_OUTLET",
+    "radial_farfield": "AUTO_RADIAL_FARFIELD"
+  },
+  "flow": {
+    "velocity_m_s": [
+      0.0,
+      0.0,
+      -30.0
+    ],
+    "pressure_pa": 101325.0,
+    "temperature_k": 300.0,
+    "turbulence_intensity": 0.01,
+    "turbulent_viscosity_ratio": 10.0
+  },
+  "rotation": {
+    "axis": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "center_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "rpm": 10000.0
+  },
+  "assumptions": [
+    "Turbulence intensity 0.01 and turbulent viscosity ratio 10.0 match the audited existing continuum defaults; sensitivity remains to be checked.",
+    "The cylinder domain dimensions are provisional until domain sensitivity passes.",
+    "Provisional MRF envelope has radius 0.30 m, 0.10 m upstream cap and 0.20 m downstream cap; it encloses all audited blade bounds and requires sensitivity testing."
+  ],
+  "rotation_zone": {
+    "shape": "cylinder",
+    "center_xy_m": [
+      0.0,
+      0.0
+    ],
+    "radius_m": 0.3,
+    "z_min_m": -0.2,
+    "z_max_m": 0.1
+  },
+  "legacy_mesh_operations_to_remove": [
+    "Automated Mesh Fluid",
+    "Automated Mesh Propeller"
+  ],
+  "mesh_operation_audit_job_id": "full360-meshops-audit-20260925a"
+}

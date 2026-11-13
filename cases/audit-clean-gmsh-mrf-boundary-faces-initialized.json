@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "scenario": "geometry_mesh_probe_only",
+  "case_ref": "jobs/clean-gmsh-tip-host-20260929a/clean_imported_mrf_probe.sim",
+  "rotor_region": "rotor_fluid_pilot_Part0",
+  "stator_region": "three_blade_stator_pilot_Part0",
+  "inlet_boundary": "3_S_8",
+  "outlet_boundary": "3_S_9",
+  "farfield_boundary": "3_S_7",
+  "stator_top_boundary": "3_S_5 [PILOT_MRF_TOP 1]",
+  "stator_bottom_boundary": "3_S_6 [PILOT_MRF_BOTTOM 1]",
+  "stator_side_boundary": "3_S_4 [PILOT_MRF_SIDE 1]",
+  "rotor_top_boundary": "3_S_584 [PILOT_MRF_TOP 1]",
+  "rotor_bottom_boundary": "3_S_585 [PILOT_MRF_BOTTOM 1]",
+  "rotor_side_boundary": "3_S_583 [PILOT_MRF_SIDE 1]",
+  "stator_original_top": "3_S_5",
+  "stator_original_bottom": "3_S_6",
+  "stator_original_side": "3_S_4",
+  "rotor_original_top": "3_S_584",
+  "rotor_original_bottom": "3_S_585",
+  "rotor_original_side": "3_S_583",
+  "initialize_before_audit": true
+}
